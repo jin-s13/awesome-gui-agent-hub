@@ -1,0 +1,185 @@
+# Daily incremental update and GitHub Pages deployment.
+#
+# This file belongs in the downstream awesome-*-hub repository under
+# .github/workflows/daily-update.yml.
+#
+# Required repository secrets:
+#   - ARK_API_KEY
+#
+# Optional repository secrets:
+#   - ARK_API_BASE_URL
+#   - ARK_MODEL_NAME
+#   - SMART_MODEL_NAME
+#   - MINERU_API_KEY
+#   - OPENALEX_API_KEY
+#   - OPENALEX_MAILTO
+#   - SEMANTIC_SCHOLAR_API_KEY
+#   - GH_DISCOVERY_TOKEN
+#
+# Optional repository variables:
+#   - GENERATOR_REPO
+#   - ARK_TIMEOUT_SECONDS
+#   - ARK_SURVEY_TIMEOUT_SECONDS
+#   - ARK_SURVEY_MAX_TOKENS
+#   - SEMANTIC_SCHOLAR_REQUEST_INTERVAL_SECONDS
+
+name: Daily Update
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'data/**'
+      - 'assets/**'
+      - 'resource/**'
+      - 'backups/**'
+      - 'website/**'
+  schedule:
+    # 08:00 Asia/Shanghai
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      search_days:
+        description: 'Search recent N days; empty uses awesome.yaml'
+        required: false
+        default: ''
+        type: string
+      skip_build:
+        description: 'Skip website build'
+        required: false
+        default: false
+        type: boolean
+      skip_update:
+        description: 'Skip data update and only rebuild the website'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout hub repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout generator
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.GENERATOR_REPO || 'jin-s13/awesome-hub-generator' }}
+          ref: main
+          path: awesome-hub-generator
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('awesome-hub-generator/requirements.txt') }}
+
+      - name: Install dependencies
+        run: |
+          pip install -r awesome-hub-generator/requirements.txt
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Restore data cache
+        if: github.event_name != 'push'
+        uses: actions/cache@v4
+        with:
+          path: |
+            data
+            assets
+            resource
+          key: site-data-${{ github.run_id }}
+          restore-keys: |
+            site-data-
+
+      - name: Run daily update
+        if: github.event_name != 'push' && github.event.inputs.skip_update != 'true'
+        env:
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          ARK_API_BASE_URL: ${{ secrets.ARK_API_BASE_URL || 'https://ark.cn-beijing.volces.com/api/coding/v3' }}
+          ARK_MODEL_NAME: ${{ secrets.ARK_MODEL_NAME || 'deepseek-v4-flash' }}
+          SMART_MODEL_NAME: ${{ secrets.SMART_MODEL_NAME || secrets.ARK_MODEL_NAME || 'deepseek-v4-pro' }}
+          ARK_TIMEOUT_SECONDS: ${{ vars.ARK_TIMEOUT_SECONDS || '60' }}
+          ARK_SURVEY_TIMEOUT_SECONDS: ${{ vars.ARK_SURVEY_TIMEOUT_SECONDS || '180' }}
+          ARK_SURVEY_MAX_TOKENS: ${{ vars.ARK_SURVEY_MAX_TOKENS || '8192' }}
+          MINERU_API_KEY: ${{ secrets.MINERU_API_KEY }}
+          MINERU_BASE_URL: https://mineru.net/api/v4
+          MINERU_API_MODE: official
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          OPENALEX_MAILTO: ${{ secrets.OPENALEX_MAILTO }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          SEMANTIC_SCHOLAR_REQUEST_INTERVAL_SECONDS: ${{ vars.SEMANTIC_SCHOLAR_REQUEST_INTERVAL_SECONDS || '1.0' }}
+          GH_TOKEN: ${{ secrets.GH_DISCOVERY_TOKEN || github.token }}
+        run: |
+          SEARCH_DAYS_ARGS=""
+          if [ -n "${{ github.event.inputs.search_days }}" ]; then
+            SEARCH_DAYS_ARGS="--search-days ${{ github.event.inputs.search_days }}"
+          fi
+          python awesome-hub-generator/scripts/update.py $SEARCH_DAYS_ARGS --data-dir data --output website --skip-build
+
+      - name: Refresh repository README
+        if: github.event_name != 'push' && github.event.inputs.skip_update != 'true'
+        run: |
+          python awesome-hub-generator/scripts/repo_readme.py --config awesome.yaml --data-dir data --output-dir .
+
+      - name: Build site
+        if: github.event.inputs.skip_build != 'true'
+        run: |
+          python awesome-hub-generator/scripts/build.py --data-dir data --output website --render-only --skip-build
+          cd website
+          npm install
+          npm run build
+
+      - name: Publish GitHub Pages branch
+        if: github.event.inputs.skip_build != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          rm -rf /tmp/awesome-hub-pages
+          git worktree add --detach /tmp/awesome-hub-pages
+          cd /tmp/awesome-hub-pages
+          git switch --orphan gh-pages
+          git rm -r --ignore-unmatch .
+          cp -R "${{ github.workspace }}/website/dist/." .
+          touch .nojekyll
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No GitHub Pages changes to publish"
+          else
+            git commit -m "chore: deploy pages ${{ github.sha }}"
+            git push -f origin gh-pages
+          fi
+
+      - name: Commit data changes
+        if: github.event_name != 'push' && github.event.inputs.skip_update != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f data/ assets/ resource/ README.md AWESOME.md || true
+          if git diff --staged --quiet; then
+            echo "No data changes to commit"
+          else
+            git commit -m "chore: daily update $(date -u +%Y-%m-%d)"
+            git push
+          fi

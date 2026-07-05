@@ -1,0 +1,303 @@
+project:
+  name: Awesome GUI Agent Hub
+  description: A curated hub for GUI agent papers, benchmarks, datasets, projects,
+    and computer-use research.
+  github_url: https://github.com/jin-s13/awesome-gui-agent-hub
+  site_url: https://jin-s13.github.io/awesome-gui-agent-hub
+  generator_repo: jin-s13/awesome-hub-generator
+research:
+  keywords:
+  - GUI agent
+  - graphical user interface agent
+  - computer use agent
+  - computer control agent
+  - visual GUI automation
+  - web agent
+  - mobile agent
+  - OS agent
+  - screen grounding
+  - UI grounding
+  - browser agent
+  taxonomy:
+    paper_types:
+    - label: method
+      description: GUI agent models, planning, grounding, action prediction, training,
+        or reasoning methods
+    - label: benchmark
+      description: GUI/web/mobile/OS automation datasets, environments, tasks, metrics,
+        and benchmarks
+    - label: system
+      description: Runnable GUI agent systems, frameworks, sandboxes, tool-use platforms,
+        or orchestration layers
+    - label: theory
+      description: Formal analysis, task abstractions, interaction theory, or reliability/safety
+        framing for GUI agents
+    - label: survey
+      description: Surveys, taxonomies, tutorials, position papers, or roadmap papers
+        for GUI agents
+    - label: application
+      description: Domain applications of GUI agents, such as office automation, mobile
+        apps, web tasks, software operation, or professional tools
+    dimensions:
+    - name: techniques
+      description: key techniques such as screenshot perception, grounding, planning,
+        memory, RL, SFT, tool use, or reflection
+    - name: inputs
+      description: input types such as screenshots, DOM/accessibility trees, OCR,
+        natural-language instructions, trajectories, or APIs
+    - name: outputs
+      description: output/action types such as clicks, typing, gestures, browser actions,
+        app commands, code, or tool calls
+  taxonomy_discovery:
+    enabled: true
+    update_mode: propose
+    max_depth: 3
+    max_children_per_node: 8
+    nodes: []
+    source_headings: []
+  relevance_criteria:
+    include:
+    - Agents that operate graphical user interfaces from screenshots, UI trees, DOM,
+      accessibility trees, or screen observations
+    - Computer-use, browser-use, desktop-use, mobile-use, OS-use, web navigation,
+      or app automation agents
+    - GUI grounding, screen grounding, element localization, action prediction, click/typing/gesture
+      planning, or multimodal UI understanding
+    - Benchmarks and environments such as OSWorld, WebArena, MiniWoB, AndroidWorld,
+      MobileBench, ScreenSpot, Mind2Web, WebVoyager, or related GUI automation tasks
+    - Training methods for GUI agents, including trajectory data, SFT, RL, preference
+      learning, reflection, memory, or tool/MCP integration
+    - Open-source GUI agent systems, browser agents, computer-use frameworks, mobile
+      agents, and sandboxed evaluation projects
+    exclude:
+    - General LLM agents without GUI, screen, browser, desktop, mobile, OS, or web-interaction
+      contribution
+    - Pure chatbots, RAG systems, coding assistants, workflow automation, or tool
+      agents that do not interact with GUIs
+    - Robotics manipulation or embodied navigation unless the main task is digital
+      GUI interaction
+    - General OCR, document parsing, UI design generation, or screenshot classification
+      without agentic action
+    - General computer vision, image generation, visual question answering, or object
+      detection without GUI grounding/action
+    - Security, finance, medical, weather, biology, or generic benchmark papers unrelated
+      to GUI automation
+  llm:
+    workers: 4
+    survey_workers: 2
+  negative_keywords:
+  - medical imaging
+  - weather forecast
+  - protein folding
+  - drug discovery
+  - cancer detection
+  - breast cancer
+  - thyroid cancer
+  - coronary artery
+  - cardiovascular
+  - mammogr
+  - radiology
+  - clinical diagnosis
+  - dental
+  - caries
+  - molar
+  - tumor
+  - lesion segmentation
+  - ECG
+  - EEG
+  - blood pressure
+  - diabetes
+  - COVID
+  - pneumonia
+  - skin lesion
+  - financial
+  - stock market
+  - trading
+  - cryptocurr
+  - look-ahead bias
+  - dexterous manipulation
+  - humanoid
+  - grasping
+  - robot manipulation
+  - climate
+  - weather
+  - microfluidic
+  - live-cell
+  - anomaly detection
+  - defect detection
+  - point cloud registration
+  - articulated pose
+  - category-level pose
+  - egocentric
+  - sim-to-real
+  - medical image
+  - radiology report
+  - protein
+  - molecule
+  - stock
+  - weather
+  - autonomous driving
+  - robot grasping
+  - robotic manipulation
+  domain_boost_keywords:
+  - GUI agent
+  - computer use
+  - screen grounding
+  - UI grounding
+  - OSWorld
+  - WebArena
+  - AndroidWorld
+  - Mind2Web
+  - MiniWoB
+  - WebVoyager
+  - browser agent
+  - mobile agent
+  arxiv_categories:
+  - cs.CV
+  - cs.LG
+  - cs.AI
+  - cs.CL
+  - cs.HC
+  date_from: '2023-01-01'
+  huggingface_daily_max_days: 7
+  daily_search_days: 3
+  sources:
+    arxiv: true
+    huggingface_daily: true
+    huggingface_trending: true
+    huggingface_datasets: true
+    upstream_awesome: true
+    alphaxiv: false
+  datasets:
+    huggingface: true
+    huggingface_max_keywords: 5
+    huggingface_limit_per_keyword: 20
+    derive_from_papers: true
+  alphaxiv:
+    enabled: false
+    endpoint: ''
+  upstream_awesome:
+    repos: []
+    auto_discover: true
+  auto_discover:
+    enabled: true
+    min_stars: 5
+    max_sources: 10
+    max_search_terms: 2
+    max_repos_to_fetch: 5
+    request_timeout_seconds: 10
+    max_rate_limit_sleep_seconds: 30
+    query_expansion:
+    - GUI agent
+    - computer use agent
+    - browser agent
+    - web agent benchmark
+    - OSWorld
+    - WebArena
+    - AndroidWorld
+  seed_discovery:
+    enabled: false
+    api: semantic_scholar
+    max_references_per_paper: 50
+    max_seeds_per_run: 10
+    initial_seed_arxiv_ids:
+    - '2404.07972'
+    - '2307.13854'
+    - '2306.06070'
+    - '2410.05243'
+  candidate_pool:
+    enabled: true
+    db_path: data/candidates.db
+    promote_batch_size: 80
+  overrides:
+    enabled: true
+    file: data/papers.overrides.yaml
+  scoring:
+    base_score: 1.5
+    weight_coefficient: 2.5
+    max_score_per_keyword: 10
+    filter_min_score: 5.0
+    author_bonus:
+      enabled: false
+      bonus_points: 5.0
+      expert_authors: []
+  ranking:
+    enabled: true
+    weights:
+      topical_relevance: 0.25
+      citation_impact: 0.15
+      graph_prestige: 0.15
+      citation_velocity: 0.1
+      methodology_quality: 0.15
+      reproducibility: 0.15
+      recency: 0.05
+    citation_graph:
+      enabled: true
+      fetch_openalex: false
+      timeout: 20
+      workers: 6
+      api_key: ''
+      mailto: ''
+  deep_analysis:
+    enabled: true
+    min_score: 30
+    pdf_parser: mineru
+    max_papers_per_run: 10
+  interpretations:
+    enabled: true
+    workers: 4
+    daily_limit: 80
+    checkpoint_interval: 5
+    force_analysis: false
+    sleep: 0.0
+  teasers:
+    workers: 4
+    retry_fallbacks: true
+  deep_research:
+    enabled: true
+    min_read_first_score: 70
+    max_papers_per_run: 10
+  enrichment:
+    enabled: true
+    max_concurrent: 4
+    request_timeout: 30
+    progress_interval_seconds: 15
+    use_mineru_pdf_fallback: true
+    mineru_poll_timeout: 180
+    extract_affiliations: true
+    extract_figures: true
+    extract_methods: true
+  grading:
+    enabled: true
+    must_read_min_score: 40
+    worth_reading_min_score: 20
+  history:
+    enabled: true
+    retention_days: 30
+    min_papers_per_run: 20
+    weekend_mode: true
+  image_localization:
+    enabled: true
+    check_reachability: true
+    download_fallback: true
+    pdf_extract_fallback: true
+  keyword_tracking:
+    enabled: true
+    report_frequency: weekly
+website:
+  sections:
+    papers: true
+    surveys: true
+    datasets: true
+    projects: true
+    resources: false
+  nav:
+  - label: Home
+    href: /
+  - label: Papers
+    href: /papers
+  - label: Datasets
+    href: /datasets
+  footer: 'Built with <a href="https://github.com/jin-s13/awesome-hub-generator">awesome-hub-generator</a>.
+
+    '
