@@ -1,5 +1,7 @@
 # Awesome GUI Agent Hub
 
+> English | [简体中文](README.zh-CN.md)
+
 <p align="center">
   <a href="https://jin-s13.github.io/awesome-gui-agent-hub/zh/"><img alt="中文 Web UI" src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-Web%20UI-2563eb"></a>
   <a href="https://jin-s13.github.io/awesome-gui-agent-hub/en/"><img alt="English Web UI" src="https://img.shields.io/badge/English-Web%20UI-0f172a"></a>

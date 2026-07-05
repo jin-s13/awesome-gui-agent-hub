@@ -3,7 +3,7 @@
 A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer-use research.
 
 - Web UI: [https://jin-s13.github.io/awesome-gui-agent-hub/zh/](https://jin-s13.github.io/awesome-gui-agent-hub/zh/)
-- Project README: [README.md](./README.md)
+- Project README: [English](./README.md) / [简体中文](./README.zh-CN.md)
 
 ## Papers
 
