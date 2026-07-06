@@ -55,6 +55,11 @@ on:
         required: false
         default: false
         type: boolean
+      cleanup_only:
+        description: 'Only prune non-public assets and commit cleanup'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -102,7 +107,7 @@ jobs:
           sudo apt-get install -y poppler-utils
 
       - name: Restore data cache
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && github.event.inputs.skip_update != 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -114,7 +119,7 @@ jobs:
             site-data-
 
       - name: Run daily update
-        if: github.event_name != 'push' && github.event.inputs.skip_update != 'true'
+        if: github.event_name != 'push' && github.event.inputs.skip_update != 'true' && github.event.inputs.cleanup_only != 'true'
         env:
           ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
           ARK_API_BASE_URL: ${{ secrets.ARK_API_BASE_URL || 'https://ark.cn-beijing.volces.com/api/coding/v3' }}
@@ -138,8 +143,13 @@ jobs:
           fi
           python awesome-hub-generator/scripts/update.py $SEARCH_DAYS_ARGS --data-dir data --output website --skip-build
 
+      - name: Cleanup public asset set
+        if: github.event_name != 'push' && github.event.inputs.cleanup_only == 'true'
+        run: |
+          python awesome-hub-generator/scripts/asset_prune.py --data-dir data --assets-dir assets/papers
+
       - name: Refresh repository README
-        if: github.event_name != 'push' && github.event.inputs.skip_update != 'true'
+        if: github.event_name != 'push' && github.event.inputs.skip_update != 'true' && github.event.inputs.cleanup_only != 'true'
         run: |
           python awesome-hub-generator/scripts/repo_readme.py --config awesome.yaml --data-dir data --output-dir .
 
@@ -176,7 +186,27 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f data/ assets/ resource/ README.md AWESOME.md || true
+          git rm --cached --ignore-unmatch \
+            data/candidates.db \
+            data/llm_cache.db \
+            data/github_discovery_cache.json \
+            data/github_*cache*.json || true
+          git add -u assets/ data/ resource/ README.md README.zh-CN.md AWESOME.md || true
+          git add -f \
+            data/datasets.yaml \
+            data/paper_taxonomy.yaml \
+            data/papers.yaml \
+            data/projects.yaml \
+            data/research_runs.yaml \
+            data/resources.yaml \
+            data/survey_jobs.yaml \
+            data/surveys.yaml \
+            data/taxonomy.yaml \
+            assets/ \
+            resource/ \
+            README.md \
+            README.zh-CN.md \
+            AWESOME.md || true
           if git diff --staged --quiet; then
             echo "No data changes to commit"
           else
