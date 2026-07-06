@@ -1401,10 +1401,10 @@
   - clicks
   - typing
   - browser actions
-  has_real_world: false
+  has_real_world: true
   title_cn: AsyncWebRL：面向视觉网页代理的高效多步强化学习
   abstract_cn: 使用多步强化学习训练视觉语言网页代理计算密集，存在两种主要的低效形式：同步强化学习中的GPU空闲，以及轨迹使用了比必要更多的步数和令牌。我们提出AsyncWebRL，它同时解决了这两个问题。在系统方面，异步设计将轨迹生成、梯度更新和策略刷新跨迭代重叠，并结合两种针对网页代理的特定适配，即永久轨迹池和轻量级截图处理，共同实现了相比此前最快的开源同步流水线（WebGym）高达2.9倍的端到端训练吞吐量加速。在算法方面，我们识别出多步GRPO中的每轨迹归一化因子1/|τ_i|是轨迹级和令牌级低效的根本原因：由于失败轨迹系统性地比成功轨迹更长，它降低了失败令牌上负梯度的权重，导致策略持续生成冗长的记忆模式。将1/|τ_i|替换为常数1/k打破了这种耦合，在保持总体成功率的同时缩短了轨迹。这些贡献共同在WebGym的分布外测试集上设立了新的开源最优水平（相对此前最佳42.9%提升5.8%），在更难的子集上提升最大（中等难度相对提升42%，困难难度相对提升48%）。
-  grade: skip
+  grade: must_read
   score:
     read_first_score: 27.8
     components:
@@ -1484,32 +1484,45 @@
     - frontier
     warnings: []
     rank_sensitivity:
-      stability: stable
-      rank_range: 0
+      stability: volatile
+      rank_range: 4
       profiles:
         balanced:
-          rank: 72
+          rank: 74
           score: 27.8
         citation_heavy:
-          rank: 72
+          rank: 73
           score: 29.6
         method_repro_heavy:
-          rank: 72
+          rank: 77
           score: 31.6
         frontier_heavy:
-          rank: 72
+          rank: 75
           score: 45.1
         topic_heavy:
-          rank: 72
+          rank: 73
           score: 24.2
+    keyword_scores:
+      GUI agent: 8
+      graphical user interface agent: 7
+      computer use agent: 5
+      computer control agent: 5
+      visual GUI automation: 8
+      web agent: 10
+      mobile agent: 1
+      OS agent: 1
+      screen grounding: 6
+      UI grounding: 6
+      browser agent: 9
+    total: 66
   taxonomy:
-    primary: system
+    primary: method
     secondary:
-    - method
     - benchmark
+    - system
     - survey
     confidence: 0.66
-    evidence: system
+    evidence: method
   enriched:
     figure_url: https://arxiv.org/html/2606.05597v2/x1.png
     authors:
@@ -1563,6 +1576,45 @@
     - VLM
     affiliations:
     - \$^\$UIUC \$^\$Microsoft \$^\$CMU
+  tldr: AsyncWebRL uses asynchronous design and a new normalizer to speed up multi-step
+    RL training for visual web agents, achieving state-of-the-art results on WebGym.
+  reasoning: The paper presents both system-level and algorithmic improvements to
+    address inefficiencies in multi-step RL for web agents, with clear empirical gains
+    on a benchmark. However, the focus is narrow (web agents) and limitations are
+    not discussed in the abstract.
+  analysis:
+    innovations:
+    - Asynchronous training design with everlasting rollout pool and lightweight screenshot
+      handling, overlapping rollout, gradient update, and policy refresh for up to
+      2.9x throughput speedup.
+    - Replacing per-trajectory normalizer 1/|τ_i| with constant 1/k in multi-step
+      GRPO to decouple trajectory length from gradient weighting, reducing verbose
+      trajectories while maintaining success.
+    methodology: AsyncWebRL combines an asynchronous RL system that overlaps rollout,
+      gradient update, and policy refresh using an everlasting rollout pool and lightweight
+      screenshot handling, with an algorithmic change that replaces the per-trajectory
+      normalizer in multi-step GRPO with a constant to prevent down-weighting of failed
+      trajectories. The method is evaluated on the WebGym out-of-distribution test
+      split.
+    key_results: AsyncWebRL achieves a new state-of-the-art on WebGym OOD test split
+      with a +5.8% relative improvement over the prior 42.9%, including +42% relative
+      on Medium and +48% relative on Hard slices, while delivering up to 2.9x training
+      throughput speedup.
+    limitations: []
+  tldr_cn: AsyncWebRL采用异步设计和新归一化器加速视觉网页智能体的多步RL训练，在WebGym上取得最优结果。
+  analysis_cn:
+    innovations:
+    - 异步训练设计，包含永久性rollout池和轻量级截图处理，重叠rollout、梯度更新和策略刷新，实现高达2.9倍的吞吐量加速。
+    - 在多步GRPO中将每个轨迹的归一化器1/|τ_i|替换为常数1/k，解耦轨迹长度与梯度权重，减少冗长轨迹同时保持成功率。
+    methodology: AsyncWebRL结合了异步RL系统（使用永久性rollout池和轻量级截图处理，重叠rollout、梯度更新和策略刷新）与算法改进（将多步GRPO中的每个轨迹归一化器替换为常数，以防止对失败轨迹的降权）。该方法在WebGym的分布外测试集上评估。
+    key_results: AsyncWebRL在WebGym OOD测试集上取得了新的最优结果，相对之前42.9%提升了5.8%，其中Medium子集提升42%，Hard子集提升48%，同时实现了高达2.9倍的训练吞吐量加速。
+    limitations: []
+    tech_stack:
+    - 异步RL
+    - GRPO
+    - WebGym
+    - 视觉语言模型
+    - 多步强化学习
 - id: automating-skill-md-generation-for-computer-using-agents-via-2026
   title: Automating SKILL.md Generation for Computer-Using Agents via Interaction
     Trajectory Mining
@@ -2038,7 +2090,7 @@
     status: planned
     run_status: planned
     report: resource/benchmarking-living-screen-native-gui-agents-on-short-video-2026/research.md
-    queued_at: '2026-07-04T16:25:18Z'
+    queued_at: '2026-07-06T02:44:45Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.04701v1/assets/intro.png
     authors:
@@ -2761,10 +2813,10 @@
     affiliations:
     - Tsinghua University, Beijing, China\\ {\{fansq20, lql24, yrq24\}@mails.tsinghua.edu.cn,
       \\\{gmh, yangshuojin\}@tsinghua.edu.cn}\\ Project Page
-  has_real_world: false
+  has_real_world: true
   title_cn: 通过通用关键帧提取桥接视频问答与视频引导的智能体任务
   abstract_cn: 视频理解是多模态智能的基础能力，近年来多模态大语言模型（MLLMs）在视频问答（VideoQA）基准测试中取得了显著性能。然而，现有基准主要评估模型能否感知浅层视觉线索，很少检验MLLMs能否从视频教程中学习更深层的知识或程序性技能，并将其泛化到下游长周期智能体任务中。为填补这一空白，我们引入了VG-GUIBench（视频引导的GUI基准），这是一个新基准，旨在评估基于MLLM的GUI智能体能否跟随视频教程完成相应的GUI交互任务。此外，我们观察到模型在视频问答和视频引导的智能体任务上的性能关键取决于有效的关键帧提取。基于这一观察，我们提出了TASKER（任务驱动与场景感知的关键帧搜索器），一种联合考虑任务相关性和场景动态以识别信息帧的关键帧提取算法。实验结果表明，TASKER在视频问答和视频引导的智能体任务基准上均取得了显著的性能提升，在EgoSchema完整集上比最佳基线高出2.0%，在NExT-QA数据集上高出1.8%。这些结果进一步凸显了通用关键帧提取方法在视频理解任务中的潜力。我们的代码和数据可在https://github.com/VG-GUI-TASKER/VG-GUI-TASKER获取。
-  grade: skip
+  grade: must_read
   score:
     read_first_score: 50.0
     components:
@@ -2864,14 +2916,60 @@
         topic_heavy:
           rank: 67
           score: 34.4
+    keyword_scores:
+      GUI agent: 9
+      graphical user interface agent: 8
+      computer use agent: 5
+      computer control agent: 5
+      visual GUI automation: 7
+      web agent: 3
+      mobile agent: 3
+      OS agent: 3
+      screen grounding: 6
+      UI grounding: 6
+      browser agent: 2
+    total: 57
   taxonomy:
-    primary: method
+    primary: benchmark
     secondary:
-    - benchmark
+    - method
     - survey
-    - theory
-    confidence: 0.68
-    evidence: method
+    - application
+    confidence: 0.69
+    evidence: benchmark
+  tldr: Introduces VG-GUIBench to evaluate MLLM-based GUI agents on video-guided tasks,
+    and proposes TASKER keyframe extraction algorithm improving VideoQA and agentic
+    benchmarks.
+  reasoning: 'Strengths: Novel benchmark bridging VideoQA and GUI agent tasks, and
+    a practical keyframe extraction method with empirical gains on real datasets.
+    Weaknesses: Limited to GUI domain; no direct comparison on web/mobile/OS agents;
+    abstract lacks detail on agentic task evaluation metrics.'
+  analysis:
+    innovations:
+    - Introduction of VG-GUIBench, a benchmark for evaluating MLLM-based GUI agents
+      on video-guided interactive tasks
+    - Proposal of TASKER, a task-driven and scene-aware keyframe extraction algorithm
+      that jointly considers task relevance and scene dynamics
+    methodology: We introduce VG-GUIBench, a benchmark for video-guided GUI tasks,
+      and propose TASKER, a keyframe extraction algorithm that selects frames based
+      on task relevance and scene dynamics. MLLM-based agents are evaluated on both
+      VideoQA and GUI interactive tasks using TASKER-extracted keyframes.
+    key_results: TASKER outperforms the best baseline by 2.0% on EgoSchema fullset
+      and 1.8% on NExT-QA for VideoQA, showing significant improvements from generalized
+      keyframe extraction.
+    limitations: []
+  tldr_cn: 提出VG-GUIBench和TASKER，提升VideoQA与视频引导代理任务性能。
+  analysis_cn:
+    innovations:
+    - 引入VG-GUIBench，一个用于评估基于MLLM的GUI代理在视频引导交互任务上的基准
+    - 提出TASKER，一种任务驱动且场景感知的关键帧提取算法，联合考虑任务相关性和场景动态
+    methodology: 我们引入了VG-GUIBench，一个用于视频引导GUI任务的基准，并提出了TASKER，一种基于任务相关性和场景动态选择帧的关键帧提取算法。使用TASKER提取的关键帧，基于MLLM的代理在VideoQA和GUI交互任务上均被评估。
+    key_results: TASKER在EgoSchema完整集上比最佳基线高出2.0%，在NExT-QA数据集上高出1.8%，展示了通用关键帧提取带来的显著改进。
+    limitations: []
+    tech_stack:
+    - MLLM
+    - GUI Agent
+    - TASKER
 - id: caped-context-aware-privacy-exposure-defense-for-mobile-gui-2026
   title: 'CAPED: Context-Aware Privacy Exposure Defense for Mobile GUI Agents'
   authors:
@@ -3021,6 +3119,19 @@
         topic_heavy:
           rank: 64
           score: 39.1
+    keyword_scores:
+      GUI agent: 9
+      graphical user interface agent: 8
+      computer use agent: 4
+      computer control agent: 4
+      visual GUI automation: 7
+      web agent: 2
+      mobile agent: 10
+      OS agent: 5
+      screen grounding: 8
+      UI grounding: 8
+      browser agent: 1
+    total: 66
   taxonomy:
     primary: theory
     secondary:
@@ -3096,6 +3207,43 @@
     - The Chinese University of Hong Kong
     - Southeast University
     - Shandong University
+  tldr: CAPED is a context-aware privacy defense for mobile GUI agents that selectively
+    exposes only task-relevant content from screenshots.
+  reasoning: The paper addresses a novel problem (incidental visual privacy exposure)
+    with a context-aware masking approach and provides empirical evaluation on AndroidWorld
+    and a seeded privacy test. However, it is limited to mobile GUI agents and the
+    evaluation is prototype-level, lacking broader real-world deployment evidence.
+  has_real_world: true
+  analysis:
+    innovations:
+    - Context-aware pre-upload exposure control layer (CAPED) for mobile GUI agents
+      to prevent incidental visual privacy exposure
+    - Task-driven selective exposure that uses screen context as a privacy prior to
+      mask only incidental private content while preserving task-relevant UI elements
+    methodology: CAPED is a phone-side protection layer that extracts task requirements,
+      uses screen context as a privacy prior, parses visible UI elements, and selectively
+      exposes only content needed for the current task. It is evaluated on AndroidWorld
+      for task utility and with a controlled 28-task seeded privacy evaluation measuring
+      trajectory-level incidental leakage.
+    key_results: Full CAPED reduces success-conditioned weighted seeded leakage from
+      0.766 under raw screenshots to 0.268 while preserving high task utility; a broader
+      AndroidWorld run shows a remaining prototype-level utility cost.
+    limitations:
+    - Prototype-level utility cost remains in broader AndroidWorld evaluation, indicating
+      that the approach may not yet be fully optimized for all tasks.
+  title_cn: CAPED：面向移动GUI代理的上下文感知隐私暴露防御
+  abstract_cn: 基于截图的移动GUI代理可以通过与人类用户相同的视觉界面操作普通智能手机应用，但这种能力也将每一次屏幕观察变成了隐私边界。在正常任务执行过程中，截图可能暴露联系人、消息、照片、文件、推荐、健康提示等与用户请求无关的敏感上下文。我们将此问题称为偶然的视觉隐私暴露。现有防御措施难以解决这一问题：文本匿名化会遗漏许多视觉和推断线索，而通用隐私掩码可能移除GUI代理完成任务所需的证据和控件。本文提出了CAPED，一种面向移动GUI代理的上下文感知上传前暴露控制层。CAPED被设计为手机端保护层：在截图被释放到远程多模态代理之前，它提取任务需求，利用屏幕上下文作为隐私先验，解析可见UI元素，并选择性仅暴露当前任务所需的内容，同时掩盖偶然的私有内容。我们在AndroidWorld上评估CAPED的广泛任务实用性，并使用一个受控的28任务种子隐私评估作为测量工具，评估轨迹级别的偶然泄露。在该种子评估中，完整CAPED将成功条件下的加权种子泄露从原始截图下的0.766降低到0.268，同时保持高任务实用性。更广泛的AndroidWorld运行显示仍存在原型级别的实用性成本，但结果表明，任务驱动的选择性暴露可以在截图释放到远程GUI代理之前减少偶然的视觉泄露。
+  tldr_cn: CAPED是一种上下文感知隐私防御方法，选择性暴露截图中的任务相关内容。
+  analysis_cn:
+    innovations:
+    - 面向移动GUI代理的上下文感知上传前暴露控制层（CAPED），用于防止偶然的视觉隐私暴露
+    - 任务驱动的选择性暴露方法，利用屏幕上下文作为隐私先验，仅掩盖偶然的隐私内容，同时保留任务相关的UI元素
+    methodology: CAPED是一个手机端保护层，提取任务需求，利用屏幕上下文作为隐私先验，解析可见UI元素，并选择性仅暴露当前任务所需的内容。在AndroidWorld上评估任务实用性，并通过一个受控的28任务种子隐私评估来衡量轨迹级别的偶然泄露。
+    key_results: 完整CAPED将成功条件下的加权种子泄露从原始截图下的0.766降低到0.268，同时保持高任务实用性；更广泛的AndroidWorld运行显示仍存在原型级别的实用性成本。
+    limitations:
+    - 在更广泛的AndroidWorld评估中仍存在原型级别的实用性成本，表明该方法可能尚未对所有任务完全优化。
+    tech_stack: []
+  grade: must_read
 - id: capable-but-careless-do-computer-use-agents-follow-contextu-2026
   title: 'Capable but Careless: Do Computer-Use Agents Follow Contextual Integrity?'
   authors:
@@ -3782,6 +3930,19 @@
         topic_heavy:
           rank: 65
           score: 36.9
+    keyword_scores:
+      GUI agent: 2
+      graphical user interface agent: 2
+      computer use agent: 3
+      computer control agent: 3
+      visual GUI automation: 2
+      web agent: 0
+      mobile agent: 0
+      OS agent: 1
+      screen grounding: 2
+      UI grounding: 2
+      browser agent: 0
+    total: 17
   taxonomy:
     primary: benchmark
     secondary:
@@ -3866,6 +4027,25 @@
     - Shi, Botian
     - Zhang, Kaipeng
     - Wen, Licheng
+    affiliations:
+    - <sup></sup> Wuhan University <sup></sup> Shanghai Artificial Intelligence Laboratory
+    - <sup></sup> Shanghai Innovation Institute <sup></sup> University of Science
+      and Technology of China
+    - <sup></sup> The Australian National University <sup></sup> Fudan University
+      <sup></sup> Alaya Studio
+    - 'Project Page: https://knowledgexlab.github.io/ComAct/'
+    - 'Huggingface Model: https://huggingface.co/KnowledgeXLab/ComActor-B'
+  tldr: Proposes COM-as-Action paradigm for professional software manipulation using
+    Component Object Model, introduces ComCADBench benchmark, and develops ComActor
+    agent.
+  reasoning: 'Strengths: novel paradigm addressing GUI/API limitations, introduces
+    real industrial CAD benchmark, shows significant gains. Weaknesses: limited to
+    Windows COM-based software, may not generalize broadly.'
+  has_real_world: true
+  title_cn: 'ComAct: 通过COM即行动范式重构专业软件操作'
+  abstract_cn: 现有的计算机使用智能体在专业软件操作方面仍然存在根本性局限：基于GUI的智能体受困于脆弱的视觉定位和长程错误累积，而基于API的方法则面临异构协议和不可访问的商业接口问题。在本工作中，我们将组件对象模型（COM）识别为一种统一的可执行抽象，提出COM即行动（COM-as-Action）这一新范式，将专业软件交互重新定义为确定性的程序合成而非顺序视觉控制。为了在最苛刻的环境中验证这一范式，我们引入了ComCADBench，这是首个针对操作真实工业CAD软件的智能体基准。我们的实验揭示了显著的范式差距：前沿专有模型在基于GUI的交互下成功率接近零，而基于COM的执行则带来了立竿见影的显著提升。为了弥合语法正确性与几何精度之间尚存的差距，我们开发了ComActor，一种通过渐进式三阶段框架训练的自校正智能体，以及ComForge，一个用于在Windows容器中进行大规模训练的可扩展平台。大量实验表明，ComActor在ComCADBench上取得了最先进的性能，在基线崩溃的长程任务中表现出强大的韧性，并能泛化到外部CAD基准。
+  tldr_cn: 提出COM-as-Action范式，引入ComCADBench基准，开发ComActor智能体。
+  grade: skip
 - id: context-aware-workflow-decomposition-for-automated-mobile-ui-2026
   title: Context-Aware Workflow Decomposition for Automated Mobile UI Annotation Using
     Multimodal Large Language Models
@@ -4145,6 +4325,11 @@
       eight common UI element classes. Each screenshot is then processed using multiple
       LLM-based annotation workflows, including one-step, two-step, four-step, and
       eight-step strategies.
+    affiliations:
+    - <sup></sup>Information and Computer Science Department, King Fahd University
+      of Petroleum and Minerals, Dhahran , Saudi Arabia <sup></sup>SDAIA–KFUPM Joint
+      Research Center for Artificial Intelligence, King Fahd University of Petroleum
+      and Minerals, Dhahran , Saudi Arabia
 - id: demo2tutorial-from-human-experience-to-multimodal-software-2026
   title: 'Demo2Tutorial: From Human Experience to Multimodal Software Tutorials'
   authors:
@@ -4408,6 +4593,9 @@
     - Guo, Xiangwu
     - Wang, Xin
     - Shou, Mike Zheng
+    affiliations:
+    - Zechen Bai, Zhiheng Chen, Yiqi Lin, Kevin Qinghong Lin, Difei Gao, Xiangwu Guo,
+      Xin Wang, Mike Zheng Shou ✉ Show Lab, National University of Singapore
 - id: domain-conditioned-safety-in-frontier-computer-using-agents-2026
   title: 'Domain-Conditioned Safety in Frontier Computer-Using Agents: A 793-Episode
     Browser Benchmark, a Coding-Domain Cross-Reference, and a Reproducibility Audit
@@ -4874,7 +5062,7 @@
     status: planned
     run_status: planned
     report: resource/dragon-a-benchmark-and-dataset-for-drag-based-gui-interacti-2026/research.md
-    queued_at: '2026-07-04T16:25:18Z'
+    queued_at: '2026-07-06T02:44:45Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.06322v1/figures/text_highlight_001870fc_cropped.jpg
     authors:
@@ -4932,6 +5120,9 @@
     - GPT
     - VLM
     - JSON
+    affiliations:
+    - '<sup></sup>H Company. Correspondence to: Nathan Bout <nathan.bout@hcompany.ai>,
+      Ronan Riochet <ronan.riochet@hcompany.ai>'
 - id: envs-environment-native-verified-search-for-long-horizon-gu-2026
   title: 'ENVS: Environment-Native Verified Search for Long-Horizon GUI Agents'
   authors:
@@ -5205,6 +5396,11 @@
     - Zhang, Kevin
     - Shang, Teresa Xiaotao
     - Zhang, Shanghang
+    affiliations:
+    - Yincheng Zhou<sup>,∗</sup> Athena Zhuoming Zhong<sup>,∗</sup> Shijie Zhang<sup>,∗</sup>
+      Kevin Zhang<sup></sup> Teresa Xiaotao Shang<sup></sup> Shanghang Zhang<sup>,</sup>
+    - <sup></sup>University of Pennsylvania <sup></sup>Peking University <sup>∗</sup>Equal
+      contribution. <sup></sup>Corresponding author
 - id: empowering-gui-agents-via-autonomous-experience-exploration-2026
   title: Empowering GUI Agents via Autonomous Experience Exploration and Hindsight
     Experience Utilization for Task Planning
@@ -5476,6 +5672,13 @@
       that first sets goals adaptively and explores in unfamiliar websites. Then it
       extracts planning experiences from trajectories and uses them to build aligned
       and constrained training data.
+    affiliations:
+    - Tianyi Men<sup>,</sup>, Zhuoran Jin<sup>,</sup>, Pengfei Cao<sup>,</sup>, Yubo
+      Chen<sup>,</sup>, Kang Liu<sup>,</sup>, Jun Zhao<sup>,,</sup> <sup></sup>The
+      Key Laboratory of Cognition and Decision Intelligence for Complex Systems, Institute
+      of Automation, Chinese Academy of Sciences, Beijing, China <sup></sup>School
+      of Artificial Intelligence, University of Chinese Academy of Sciences, Beijing,
+      China tianyi.men, zhuoran.jin, pengfei.cao, yubo.chen, kliu, jzhao@nlpr.ia.ac.cn
 - id: fara-1-5-scalable-learning-environments-for-computer-use-ag-2026
   title: 'Fara-1.5: Scalable Learning Environments for Computer Use Agents'
   authors:
@@ -5715,6 +5918,8 @@
     - Vineet, Vibhav
     - Whitehead, Spencer
     - Zhao, Andrew
+    affiliations:
+    - 'Fara-.: Scalable Learning Environments for Computer Use Agents'
 - id: fraudsmswalker-benchmarking-agentic-large-language-models-f-2026
   title: 'FraudSMSWalker: Benchmarking Agentic Large Language Models for SMS-to-Webpage
     Fraud Detection'
@@ -5982,6 +6187,8 @@
     - GPT
     - GitHub
     - DeepResearch
+    affiliations:
+    - Labeling and Quality Control
 - id: gui-agent-guided-exploration-of-user-sensitive-screens-2026
   title: 'GUI agent: Guided Exploration of User-Sensitive Screens'
   authors:
@@ -7045,7 +7252,7 @@
     status: planned
     run_status: planned
     report: resource/guicrafter-weakly-supervised-gui-agent-leveraging-massive-u-2026/research.md
-    queued_at: '2026-07-04T16:25:18Z'
+    queued_at: '2026-07-06T02:44:45Z'
 - id: hansel-extracting-breadcrumbs-from-web-agent-trajectories-f-2026
   title: 'HANSEL: Extracting Breadcrumbs from Web Agent Trajectories for Interactive
     Verification'
@@ -8063,6 +8270,9 @@
     - HTML
     - GitHub
     - OmniParser
+    affiliations:
+    - Department of Electrical and Computer Engineering
+    - University of Texas at Dallas
 - id: labosbench-benchmarking-computer-use-agents-for-scientific-2026
   title: 'LabOSBench: Benchmarking Computer Use Agents for Scientific Instrument Control'
   authors:
@@ -8345,6 +8555,12 @@
       2025 ) , GPT-5.5 (OpenAI, 2026 ) , and Claude Opus-4.5 (Anthropic, 2025a ) .
       The second group consists of specialized GUI models, including UI-TARS-1.5-7B
       (Qin et al.
+    affiliations:
+    - 'LABOSBENCH: BENCHMARKING COMPUTER USE AGENTS TOWARDS SCIENTIFIC INSTRUMENT
+      CONTROL'
+    - <sup></sup> Shenzhen Loop Area Institute
+    - <sup></sup> Dalian University of Technology
+    - <sup></sup> The Chinese University of Hong Kong
 - id: learning-from-failure-inference-time-self-improvement-for-c-2026
   title: 'Learning from Failure: Inference-Time Self-Improvement for Computer-Use
     Agents'
@@ -8905,6 +9121,11 @@
     - MSE
     - TARS
     - MAI
+    affiliations:
+    - <sup></sup>Beihang University <sup></sup>Northwestern Polytechnical University
+      <sup></sup>Institute of Software, Chinese Academy of Sciences <sup></sup>National
+      University of Singapore <sup></sup>Peking University <sup></sup>Corresponding
+      authors
 - id: mirage-stealthy-visual-prompt-injection-for-vulnerability-d-2026
   title: 'MIRAGE: Stealthy Visual Prompt Injection for Vulnerability Detection in
     Web Agents'
@@ -9026,31 +9247,44 @@
     - bridge
     warnings: []
     rank_sensitivity:
-      stability: stable
-      rank_range: 0
+      stability: sensitive
+      rank_range: 2
       profiles:
         balanced:
           rank: 71
           score: 33.8
         citation_heavy:
-          rank: 71
+          rank: 72
           score: 34.9
         method_repro_heavy:
           rank: 71
           score: 38.3
         frontier_heavy:
-          rank: 71
+          rank: 73
           score: 49.8
         topic_heavy:
-          rank: 71
+          rank: 72
           score: 29.2
+    keyword_scores:
+      GUI agent: 8
+      graphical user interface agent: 8
+      computer use agent: 5
+      computer control agent: 4
+      visual GUI automation: 9
+      web agent: 10
+      mobile agent: 0
+      OS agent: 0
+      screen grounding: 6
+      UI grounding: 7
+      browser agent: 10
+    total: 67
   taxonomy:
     primary: method
     secondary:
     - benchmark
+    - system
     - application
-    - survey
-    confidence: 0.37
+    confidence: 0.67
     evidence: method
   enriched:
     figure_url: https://arxiv.org/html/2606.20717v1/x1.png
@@ -9112,6 +9346,50 @@
       spatial constraints—without resorting to full-screen gradient injections or
       unrealistic DOM manipulations—our framework operationalizes a global evasion
       via Local Attention Collapse strategy.
+  tldr: MIRAGE proposes a stealthy visual prompt injection attack using diffusion
+    models to hijack web agents within constrained ad slots.
+  reasoning: The paper presents a novel attack framework with a realistic threat model
+    and robust optimization, but its evaluation is limited to two web agent frameworks,
+    leaving generalizability unclear.
+  has_real_world: true
+  analysis:
+    innovations:
+    - 'Constrained threat model: unprivileged third-party attacker controlling only
+      a spatially constrained, semantically legitimate region (e.g., ad slot, widget)'
+    - Visual indirect prompt injection framework (MIRAGE) that uses diffusion models
+      to generate perceptually benign adversarial images within attacker-controlled
+      boundaries
+    - Robust optimization technique combining curvature-aware adversarial diffusion
+      guidance with sparse, dark-pixel residual perturbations
+    methodology: MIRAGE leverages diffusion models to craft adversarial images strictly
+      within attacker-controlled regions on a trusted web platform. A robust optimization
+      method with curvature-aware guidance and sparse dark-pixel perturbations is
+      used to maximize attack efficacy. The framework is evaluated against MLLM web
+      agents SeeAct and OpenClaw.
+    key_results: MIRAGE demonstrates potency, realism, and stealth in targeted next-action
+      hijacking against SeeAct and OpenClaw web agents.
+    limitations: []
+  title_cn: MIRAGE：面向Web代理漏洞检测的隐蔽视觉提示注入
+  abstract_cn: 基于多模态大语言模型（MLLM）的Web代理为视觉浏览器自动化提供了实用且高精度的解决方案，然而它们固有地扩大了攻击面，引入了新型基于视觉的漏洞。现有的针对这些代理的对抗性评估通常依赖于宽松的威胁模型和视觉上明显的伪影。在本文中，我们研究了一种受限的漏洞检测场景：一个可信的Web平台，评估者仅作为无特权的第三方（如商家或广告商），控制一个语义合法且空间受限的区域（如广告位、赞助卡片或局部小部件）。在此现实约束下，我们提出了MIRAGE，一种新颖的视觉间接提示注入框架，用于定向下一步动作劫持。我们的方法利用扩散模型生成感知上良性的对抗图像，严格限制在可信服务提供商允许的攻击者控制边界内。为了在这种限制性设置中最大化攻击效果，我们引入了一种鲁棒优化技术，结合了曲率感知对抗扩散引导与稀疏暗像素残差扰动。针对主流MLLM
+    Web代理框架（具体为SeeAct和OpenClaw）的全面评估，实证证明了我们提出的MIRAGE的有效性、真实性和隐蔽性。
+  tldr_cn: MIRAGE提出利用扩散模型在受限广告位中实施隐蔽视觉提示注入攻击以劫持Web代理。
+  analysis_cn:
+    innovations:
+    - 受限威胁模型：无特权第三方攻击者仅控制空间受限且语义合法的区域（如广告位、小部件）
+    - 视觉间接提示注入框架（MIRAGE），利用扩散模型在攻击者控制的边界内生成感知上良性的对抗图像
+    - 结合曲率感知对抗扩散引导与稀疏暗像素残差扰动的鲁棒优化技术
+    methodology: MIRAGE利用扩散模型在可信Web平台上严格限于攻击者控制的区域内制作对抗图像。采用结合曲率感知引导和稀疏暗像素扰动的鲁棒优化方法以最大化攻击效果。该框架针对MLLM
+      Web代理SeeAct和OpenClaw进行了评估。
+    key_results: MIRAGE在针对SeeAct和OpenClaw Web代理的定向下一步动作劫持中展示了有效性、真实性和隐蔽性。
+    limitations: []
+    tech_stack:
+    - Diffusion models
+    - MLLM (Multimodal Large Language Model)
+    - SeeAct
+    - OpenClaw
+    - Curvature-aware adversarial diffusion guidance
+    - Sparse dark-pixel perturbations
+  grade: must_read
 - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
   title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
   authors:
@@ -9327,7 +9605,7 @@
     status: planned
     run_status: planned
     report: resource/macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026/research.md
-    queued_at: '2026-07-04T16:25:18Z'
+    queued_at: '2026-07-06T02:44:45Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.22557v1/x3.png
     authors:
@@ -9392,6 +9670,11 @@
       user message templates for each framework are provided in Appendix C.4 . Baseline
       (/). A pure GUI agent that interacts with the environment through screenshots
       and pyautogui code output. Claude Opus 4.6, GPT-5.4, and Gemini 3.
+    affiliations:
+    - <sup></sup>Shanghai Jiao Tong University <sup></sup>Shanghai AI Laboratory <sup></sup>Xi’an
+      Jiaotong University <sup></sup>Fudan University
+    - <sup></sup>University of Science and Technology of China <sup></sup>Zhejiang
+      University <sup></sup>East China Normal University <sup></sup>Tsinghua University
 - id: macarena-benchmarking-computer-use-agents-on-an-online-maco-2026
   title: 'MacArena: Benchmarking Computer Use Agents on an Online macOS Environment'
   authors:
@@ -9633,6 +9916,21 @@
       Unlike traditional virtualization solutions such as QEMU, which rely on software
       emulation, the framework leverages the hardware virtualization extensions of
       M-series chips to run guest operating systems at near-native performa...
+  title_cn: MacArena：在在线macOS环境中基准测试计算机使用代理
+  abstract_cn: 计算机使用代理（CUA）通过视觉和控制原语操作图形用户界面（GUI），其能力在标准化在线评估基准（如OSWorld）的推动下迅速发展，这些基准既作为评估工具，也作为强化学习的训练环境。然而，macOS在此领域中仍未被充分覆盖：现有的唯一基准macOSWorld仅覆盖了少数第一方应用且任务较简单，并在与Apple
+    Silicon不兼容的x86虚拟机上运行。我们提出了MacArena，一个包含50个应用、421个手动验证任务的基准，它结合了OSWorld任务的精选移植、来自macOSWorld的内容以及49个新的macOS原生任务，全部在Apple
+    Silicon上的Apple原生虚拟化框架上运行。我们认为macOS带来了Linux基准无法捕捉的独特GUI挑战，我们的评估支持这一观点：模型在现有基准上的强劲表现可能反映的是对任务分布的熟悉程度，而非真正的跨平台GUI能力。值得注意的是，模型排名在移植任务和macOS原生任务之间发生反转，一个领先模型在MacArena子集上落后超过26%，这表明macOS对当前GUI代理而言是一个更困难的环境。
+  tldr_cn: MacArena基准测试含50应用421任务，显示GUI代理在macOS上比Linux更难。
+  analysis_cn:
+    innovations:
+    - 提出了MacArena，一个包含50个应用、421个手动验证任务的计算机使用代理基准，结合了OSWorld任务的移植、macOSWorld内容以及49个新的macOS原生任务。
+    - 在Apple Silicon上的Apple原生虚拟化框架上运行，解决了先前macOS基准与Apple Silicon不兼容的问题。
+    - 证明了macOS存在独特的GUI挑战，且模型排名在移植任务和macOS原生任务之间反转，揭示了在现有基准上的强劲表现可能反映的是任务分布熟悉度而非跨平台能力。
+    methodology: 该基准包含50个应用中的421个任务，结合了OSWorld任务的精选移植、来自macOSWorld的内容以及49个新的macOS原生任务，全部在Apple
+      Silicon上的Apple原生虚拟化框架上执行。计算机使用代理在此基准上进行评估，并比较了移植任务子集和macOS原生任务子集的性能。
+    key_results: 模型排名在移植任务和macOS原生任务之间反转，一个领先模型在MacArena子集上落后超过26%，表明macOS对当前GUI代理而言是一个更困难的环境。
+    limitations: []
+    tech_stack: []
 - id: medcua-bench-a-screenshot-only-benchmark-for-clinical-compu-2026
   title: 'MedCUA-Bench: A Screenshot-Only Benchmark for Clinical Computer-Use Agents'
   authors:
@@ -9910,6 +10208,11 @@
     - PID
     - GUI
     - BrowserGym
+    affiliations:
+    - <sup></sup>Microsoft Research Asia, Shanghai, China
+    - <sup></sup>Digital Medical Research Center, School of Basic Medical Sciences,
+      Fudan University, Shanghai, China <sup></sup>Shanghai Key Laboratory of MICCAI,
+      Shanghai, China
 - id: memgui-agent-an-end-to-end-long-horizon-mobile-gui-agent-wi-2026
   title: 'MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive
     Context Management'
@@ -10132,7 +10435,7 @@
     status: planned
     run_status: planned
     report: resource/memgui-agent-an-end-to-end-long-horizon-mobile-gui-agent-wi-2026/research.md
-    queued_at: '2026-07-04T16:25:18Z'
+    queued_at: '2026-07-06T02:44:45Z'
   enriched:
     authors:
     - Liu, Guangyi
@@ -10145,6 +10448,8 @@
     - Wang, Mengyan
     - Guo, Liang
     - Liu, Yong
+    affiliations:
+    - <sup></sup>Zhejiang University <sup></sup>Kuaishou Technology
 - id: memvenom-triggered-poisoning-of-multimodal-memories-in-web-2026
   title: 'MemVenom: Triggered Poisoning of Multimodal Memories in Web Agents'
   authors:
@@ -11502,6 +11807,9 @@
     authors:
     - Mohammadmirzaei, Mina
     - Flanigan, Jeffrey
+    affiliations:
+    - Mina Mohammadmirzaei, Jeffrey Flanigan University of California, Santa Cruz
+      mmohamm@ucsc.edu, jmflanig@ucsc.edu
 - id: osworld2-0-benchmarking-computer-use-agents-on-long-horizon-2026
   title: 'OSWorld2.0: Benchmarking Computer Use Agents on Long-Horizon Real-World
     Tasks'
@@ -11859,6 +12167,8 @@
     - Qi, Peng
     - Xie, Tianbao
     - Yu, Tao
+    affiliations:
+    - XLANG Lab and Collaborators ∗
 - id: online-skill-learning-for-web-agents-via-state-grounded-dyna-2026
   title: Online Skill Learning for Web Agents via State-Grounded Dynamic Retrieval
   authors:
@@ -11917,7 +12227,7 @@
   has_real_world: false
   title_cn: 基于状态引导的动态检索的在线技能学习：面向Web智能体
   abstract_cn: 语言智能体越来越依赖可复用技能来改进跨相关任务的多步Web自动化。越来越多的研究关注在线技能学习，即智能体从先前的任务轨迹中持续归纳技能，并在未来任务中动态复用。然而，现有方法主要在任务级别复用技能：基于初始任务指令检索一组固定技能，并在执行过程中保持不变。这种静态策略与Web执行场景不匹配，因为合适的下一步动作不仅取决于任务目标，还取决于当前网页状态，而网页状态常常会过渡到初始技能无法覆盖的情况。为解决这一问题，我们提出状态引导的动态检索（SGDR），一种在线技能学习方法，使Web智能体能够逐步复用技能。SGDR包含三个组件：滑动窗口提取过程，将已完成轨迹转化为可在中间执行状态调用的可复用子程序；双文本-代码表示，连接技能检索与可执行动作；以及状态引导的动态检索机制，将技能与任务目标和当前网页状态相匹配。在WebArena五个领域的实验表明，SGDR持续优于强基线，使用GPT-4.1时平均成功率为37.5%，使用Qwen3-4B时为24.3%，分别比最强基线相对提升10.6%和10.0%。代码开源在https://github.com/plusnli/skill-dynamic-retrieval。
-  grade: skip
+  grade: must_read
   score:
     read_first_score: 43.5
     components:
@@ -12016,14 +12326,27 @@
         topic_heavy:
           rank: 70
           score: 31.3
+    keyword_scores:
+      GUI agent: 7
+      graphical user interface agent: 7
+      computer use agent: 3
+      computer control agent: 3
+      visual GUI automation: 2
+      web agent: 10
+      mobile agent: 0
+      OS agent: 0
+      screen grounding: 1
+      UI grounding: 5
+      browser agent: 8
+    total: 46
   taxonomy:
-    primary: method
+    primary: benchmark
     secondary:
-    - benchmark
+    - method
     - application
     - theory
-    confidence: 0.67
-    evidence: method
+    confidence: 0.68
+    evidence: benchmark
   enriched:
     figure_url: https://arxiv.org/html/2606.04391v1/x1.png
     authors:
@@ -12090,6 +12413,49 @@
       conditioned on the evolving webpage states. To address these, SGDR combines
       sliding-window skill extraction with a text-code skill representation, and state-grounded
       dynamic retrieval with reranking. Figure ˜ 3 illustrates the overall pipeline.'
+    affiliations:
+    - Jiaxi Li<sup></sup>, Ke Deng<sup></sup>, Yun Wang<sup></sup>, Jingyuan Huang<sup></sup>,
+      Yucheng Shi<sup></sup>, Qiaoyu Tan<sup></sup>, Jin Lu<sup></sup>, Ninghao Liu<sup></sup>
+      <sup></sup>University of Georgia <sup></sup>Tencent America <sup></sup>New York
+      University <sup></sup>The Hong Kong Polytechnic University
+  tldr: Proposes State-Grounded Dynamic Retrieval (SGDR) for stepwise skill reuse
+    in web agents, outperforming baselines on WebArena.
+  reasoning: Strengths include a novel dynamic retrieval mechanism that adapts to
+    webpage state, with empirical gains on WebArena. Weaknesses are limited to web
+    agents and simulated benchmarks, lacking real-world validation or broader GUI/OS
+    applicability.
+  analysis:
+    innovations:
+    - State-grounded dynamic retrieval that matches skills to both task goal and current
+      webpage state for stepwise skill reuse
+    - Sliding-window extraction process that turns completed trajectories into reusable
+      sub-procedures invokable at intermediate execution states
+    - Dual text-code representation that connects skill retrieval with executable
+      action
+    methodology: SGDR is an online skill learning method for web agents that extracts
+      skills from previous trajectories via sliding windows, represents them with
+      dual text-code, and dynamically retrieves skills at each step based on task
+      goal and current webpage state. It is evaluated on WebArena across five domains
+      using GPT-4.1 and Qwen3-4B.
+    key_results: SGDR achieves average success rates of 37.5% with GPT-4.1 and 24.3%
+      with Qwen3-4B, corresponding to relative gains of 10.6% and 10.0% over the strongest
+      baseline.
+    limitations: []
+  tldr_cn: 提出状态接地动态检索（SGDR）用于Web代理的逐步技能复用，在WebArena上优于基线。
+  analysis_cn:
+    innovations:
+    - 状态接地动态检索，将技能同时匹配任务目标和当前网页状态，实现逐步技能复用
+    - 滑动窗口提取过程，将完成的轨迹转化为可在中间执行状态调用的可复用子程序
+    - 双文本-代码表示，将技能检索与可执行动作连接
+    methodology: SGDR是一种面向Web代理的在线技能学习方法，通过滑动窗口从先前轨迹中提取技能，以双文本-代码表示，并基于任务目标和当前网页状态在每一步动态检索技能。在WebArena的五个领域上使用GPT-4.1和Qwen3-4B进行评估。
+    key_results: SGDR在使用GPT-4.1时达到37.5%的平均成功率，使用Qwen3-4B时达到24.3%，分别比最强基线相对提升10.6%和10.0%。
+    limitations: []
+    tech_stack:
+    - GPT-4.1
+    - Qwen3-4B
+    - WebArena
+    - Python
+    - SGDR
 - id: openwebrl-demystifying-online-multi-turn-reinforcement-lear-2026
   title: 'OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual
     Web Agents'
@@ -12908,6 +13274,10 @@
     - GRPO
     - ALL
     - VLM
+    affiliations:
+    - <sup></sup>HyperAI Team, Xiaomi Corporation <sup></sup>Zhongnan University of
+      Economics and Law <sup></sup>Jilin University <sup></sup>The Chinese University
+      of Hong Kong, Shenzhen
 - id: phoneharness-harnessing-phone-use-agents-through-mixed-gui-2026
   title: 'PhoneHarness: Harnessing Phone-Use Agents through Mixed GUI, CLI, and Tool
     Actions'
@@ -13455,6 +13825,20 @@
     - OOD
     - FAIL
     - NeurIPS
+  title_cn: 'PreAct: 在重复任务上速度更快的计算机操作代理'
+  abstract_cn: 计算机操作代理通过屏幕驱动真实软件——点击和打字——但它们从头解决每个任务：当要求重复一个任务时，代理重新读取屏幕，重新推理每次点击，并再次付出全部代价。我们提出PreAct，它让这样的代理在之前完成过的任务上变得更快。第一次成功时，PreAct将运行编译成一个小的状态机程序——检查屏幕的状态，执行动作的转换——并在后续运行中直接重放它，而不是调用代理，速度提升8.5-13倍，且无需每步的语言模型调用。重放并非盲目：在每一步，PreAct在行动前检查屏幕是否与程序预期匹配，一旦出现偏差就将控制权交还给代理。PreAct在决定保留什么时也应用同样的原则：一个新编译的程序只有在独立评估者从干净状态重新运行确认它解决了任务时才会被存入存储——这捕获了那些重放到最后一步却未完成任务的程序。在移动、桌面和网络基准测试中，这种存储时检查将重复运行中因错误程序积累而退化的运行与改进的运行区分开来，每个基准测试带来1.75-2.6个任务，三个基准测试方向一致；当没有程序匹配时，重新探索的回退机制使PreAct与强大的记录-重放基线持平。我们还报告了哪些因素不重要：提示措辞、运行时护栏，以及是语言模型还是普通嵌入检索器选择要重用的程序。
+  tldr_cn: PreAct将成功的计算机操作代理运行编译成状态机程序以实现快速重放，在重复任务上实现8.5-13倍加速。
+  analysis_cn:
+    innovations:
+    - 将成功的代理运行编译成检查屏幕状态并执行动作的状态机程序，实现无需每步语言模型调用的重放。
+    - 重放时的运行时屏幕检查：在每一步，PreAct验证屏幕是否与预期状态匹配，并在不匹配时回退到代理。
+    - 存储时验证：只有独立评估者从干净状态重新运行确认程序解决了任务时，才保留编译的程序，防止错误程序积累。
+    - 当没有存储程序匹配时重新探索的回退机制，与强大的记录-重放基线性能持平。
+    methodology: PreAct将成功的代理运行编译成一个带有屏幕检查状态和动作转换的状态机程序。在后续运行中，它直接重放该程序，在每一步检查屏幕是否匹配，并在不匹配时将控制权交还给代理。程序只有在通过独立评估者从干净状态重新运行后才被存储。该方法在移动、桌面和网络基准测试中与记录-重放基线进行评估，并对存储时检查和回退进行消融实验。
+    key_results: PreAct重放任务的速度比原始代理快8.5-13倍，且无需每步语言模型调用。存储时检查通过防止错误程序积累，每个基准测试多完成1.75-2.6个任务，回退机制与强大的记录-重放基线持平。提示措辞、运行时护栏和检索器类型（语言模型
+      vs. 嵌入）不影响结果。
+    limitations: []
+    tech_stack: []
 - id: procua-sft-technical-report-2026
   title: ProCUA-SFT Technical Report
   authors:
@@ -14248,6 +14632,22 @@
     - GPT
     - RunAgent
     - WaitOrTimeout
+  title_cn: 'RunAgent SuperBrowser: 基于人类浏览行为的自主网页导航理论'
+  abstract_cn: 我们提出SUPERBROWSER，一个自主网页导航代理，其设计遵循一个核心假设：网页代理应像人类一样浏览。人类阅读页面时不会记住看到的每一个像素；他们会观察少数候选目标，决定一个，并只记住维持目标所需的信息。我们将这一感知-认知-行动三元组操作化为三个耦合机制。首先，一个视觉优先的边界框管道在每个截图上标记候选交互区域，并通过异步预取将其输入语言模型，使“眼睛”先于“手”。其次，一个三角色大脑——一个负责分类和路由的编排器、一个每隔几步评估进度的规划器，以及一个发出每步动作的执行器——将战略推理与操作推理分离。第三，一个结构化的账本只存储人类会记住的内容：目标、最近三个动作、少量事实和死胡同、以及少数检查点；一个六阶段驱逐循环系统性地从实时上下文中丢弃过时的截图、状态块和推理痕迹。动作执行采用三级点击级联（Chrome
+    DevTools Protocol到Puppeteer再到脚本化），并带有拟人化的贝塞尔运动，以及一个感知V形箭头的边界框捕捉器，解决“大标签旁的小箭头”歧义。在Mind2Web
+    Hard基准测试（66个任务）上，SUPERBROWSER取得了89.47%的成功率，总体排名第三，并以较大优势领先所有已发表的开源/研究浏览器代理基线。我们认为，这一提升并非来自任何单一技巧，而是整个系统中认知契约的一致应用。
+  tldr_cn: 一个模仿人类浏览的网页导航代理，采用视觉优先边界框、三角色大脑和结构化记忆，在Mind2Web Hard上达到89.47%成功率。
+  analysis_cn:
+    innovations:
+    - 视觉优先的边界框管道，带有向语言模型的异步预取
+    - 三角色大脑架构（编排器、规划器、执行器），分离战略与操作推理
+    - 结构化账本与六阶段驱逐循环，模拟人类记忆保留
+    - 通过三级点击级联和感知V形箭头的边界框捕捉器实现拟人化动作执行
+    methodology: SUPERBROWSER基于感知-认知-行动三元组构建：视觉优先管道标记交互区域并输入语言模型，三角色大脑进行路由和规划，结构化账本仅保留必要信息。在Mind2Web
+      Hard基准测试（66个任务）上使用成功率进行评估，并与已发表的开源/研究浏览器代理基线进行比较。
+    key_results: SUPERBROWSER在Mind2Web Hard上取得89.47%的成功率，排名第三，并以较大优势超越所有已发表的开源/研究浏览器代理基线。
+    limitations: []
+    tech_stack: []
 - id: signal-driven-observation-for-long-horizon-web-agents-2026
   title: Signal-Driven Observation for Long-Horizon Web Agents
   authors:
@@ -16063,7 +16463,7 @@
     status: planned
     run_status: planned
     report: resource/uncertainty-quantification-for-computer-use-agents-a-benchm-2026/research.md
-    queued_at: '2026-07-04T16:25:18Z'
+    queued_at: '2026-07-06T02:44:45Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.25760v1/x1.png
     section_headers:
@@ -16356,7 +16756,7 @@
     status: planned
     run_status: planned
     report: resource/visualskill-multimodal-skills-for-computer-use-agents-2026/research.md
-    queued_at: '2026-07-04T16:25:18Z'
+    queued_at: '2026-07-06T02:44:45Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.18448v1/figures/motivation.png
     authors:
@@ -18974,6 +19374,8 @@
     - Zhu, Jian
     - Luan, Jian
     - Zou, Cong
+    affiliations:
+    - '?? Homepage: https://seerray-lab.github.io/Xiaomi-GUI-/'
 - id: iosworld-a-benchmark-for-personally-intelligent-phone-agent-2026
   title: 'iOSWorld: A Benchmark for Personally Intelligent Phone Agents'
   authors:
@@ -19251,3 +19653,1581 @@
     - TeamChat
     - NeurIPS
     - MCP
+    affiliations:
+    - 'iOSWorld: A Benchmark for Personally Intelligent Phone Agents'
+    - Carnegie Mellon University
+- id: autogui-scaling-gui-grounding-with-automatic-functionality-2026
+  title: 'AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations
+    from LLMs'
+  authors: []
+  abstract: ''
+  year: 2026
+  venue: arXiv
+  paper_type:
+  - method
+  tags: []
+  links:
+    paper: https://openreview.net/forum?id=wl4c9jvcyY
+  preview: /assets/placeholder.svg
+  sources:
+  - repo: unified-sources
+  arxiv_id: title:3c24941480a317ba
+  seed_expanded: false
+  score:
+    read_first_score: 26.4
+    components:
+      topical_relevance:
+        value: 9.5
+        available: true
+        confidence: low
+        explanation: Matches configured research keywords against title, abstract,
+          tags, and analysis text.
+        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        evidence:
+        - source: awesome.yaml
+          field: research.keywords
+          detail: matched=2
+      citation_impact:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      graph_prestige:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No local citation edges were available, so graph prestige is
+          excluded.
+        explanation_zh: 没有可用的局部引用边，因此不纳入图谱声望评分。
+        evidence: []
+      citation_velocity:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      methodology_quality:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: Screens visible abstract and analysis fields for experiment,
+          dataset, baseline, metric, and limitation evidence.
+        explanation_zh: 检查可见的摘要与分析字段，寻找实验、数据集、基线、指标和局限性等方法证据。
+        evidence:
+        - source: papers.yaml
+          field: abstract/analysis
+          detail: markers=none
+      reproducibility:
+        value: 30
+        available: true
+        confidence: low
+        explanation: Screens links and visible text for paper, code, dataset, artifact,
+          and repository signals.
+        explanation_zh: 检查链接和可见文本中的论文、代码、数据集、工件与仓库信号。
+        evidence:
+        - source: papers.yaml
+          field: links
+          detail: pdf=True; code=False; dataset=False; markers=none
+      recency:
+        value: 100.0
+        available: true
+        confidence: medium
+        explanation: Uses a gentle age decay so recent papers surface without erasing
+          older foundations.
+        explanation_zh: 使用温和的时间衰减，让近期论文更容易浮现，同时保留较早基础工作的价值。
+        evidence:
+        - source: papers.yaml
+          field: year
+          detail: '2026'
+    applied_weights:
+      topical_relevance: 0.555556
+      reproducibility: 0.333333
+      recency: 0.111111
+    ranking_profile: paper_rank_lite_v1
+    field_roles:
+    - frontier
+    warnings: []
+    rank_sensitivity:
+      stability: sensitive
+      rank_range: 3
+      profiles:
+        balanced:
+          rank: 75
+          score: 26.4
+        citation_heavy:
+          rank: 74
+          score: 28.0
+        method_repro_heavy:
+          rank: 74
+          score: 35.3
+        frontier_heavy:
+          rank: 72
+          score: 49.8
+        topic_heavy:
+          rank: 75
+          score: 19.6
+  grade: skip
+  taxonomy:
+    primary: method
+    secondary:
+    - benchmark
+    - survey
+    - system
+    confidence: 0.36
+    evidence: method
+  generation_notes:
+  - generated_fallback_teaser
+  - warning_unresolved_teaser_fallback
+- id: ferret-ui-2-mastering-universal-user-interface-understandin-2024
+  title: 'Ferret-UI 2: Mastering Universal User Interface Understanding Across Platforms'
+  authors: []
+  abstract: ''
+  year: 2024
+  venue: arXiv
+  paper_type:
+  - method
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2410.18967
+  preview: https://arxiv.org/html/x2.png
+  sources:
+  - repo: unified-sources
+  arxiv_id: '2410.18967'
+  seed_expanded: false
+  enriched:
+    figure_url: https://arxiv.org/html/x2.png
+    authors:
+    - 'Zhangheng Li22footnotemark:'
+    section_headers:
+    - Introduction
+    - Related Work
+    - Ferret-UI 2
+    - Dataset Construction
+    - Model Architecture
+    - Experiments
+    - Experiment Setup
+    - Experiment Results
+    - Ablation Study
+    - Conclusions
+    - Ethics Statement
+    - Acknowledgements
+    - References
+    - Appendix A Detailed Results on Elementary and Advanced Tasks
+    - Appendix B Grounding Performance on ScreenSpot Benchmark
+    - Appendix C Detailed GPT-4o Prompts for Generating Advanced Task Data
+    - Appendix D Advanced Task Examples
+    - Appendix E Dataset Comparison
+    - Appendix F Resolution Statistics
+    - Appendix G Label Statistics and Mapping Results of Original Data across Platforms
+    - Appendix H Additional Inference Examples
+    captions:
+    - 'Figure 2: Illustration of the Core-set data generation pipeline.'
+    - 'Table 1: A summary of datasets across various platforms used to train Ferret-UI
+      2. The screenshot resolution statistics are shown in Appendix F.'
+    - 'Figure 3: Example of set-of-mark visual prompting (Yang et al., 2023) (left)
+      and one of its generated advanced task training examples (right).'
+    - 'Figure 4: Overview of the Ferret-UI 2 model architecture, which allows for
+      seamless UI understanding and user-centered single-step interactions with high-resolution
+      support.'
+    - Algorithm 1  Adaptive N𝑁Nitalic_N-gridding
+    - 'Table 3: Zero-shot performance of Ferret-UI 2 on the GUI-World benchmark (Chen
+      et al., 2024a).'
+    - 'Table 4: Zero-shot cross-platform transfer results of Ferret-UI 2. For simplicity,
+      we train and test the model only using data corresponding to the elementary
+      tasks.'
+    - 'Table 6: The performance breakdown of Ferret-UI 2 with Llama-3-8B backbone.
+      Note that we only report GPT-4o evaluation scores and omit the multi-IoU scores
+      for advanced tasks for simplicity.'
+    method_names:
+    - GPT
+    - AppleTV
+    - IoU
+    - GUI
+    - GUIDE
+    - OCR
+    - SoM
+    - ScreenSpot
+    - SeeClick
+    - CogAgent
+    affiliations:
+    - zoharli@utexas.edu, yinfeiy,zhe.gan@apple.com
+  score:
+    read_first_score: 23.6
+    components:
+      topical_relevance:
+        value: 9.5
+        available: true
+        confidence: low
+        explanation: Matches configured research keywords against title, abstract,
+          tags, and analysis text.
+        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        evidence:
+        - source: awesome.yaml
+          field: research.keywords
+          detail: matched=2
+      citation_impact:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      graph_prestige:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No local citation edges were available, so graph prestige is
+          excluded.
+        explanation_zh: 没有可用的局部引用边，因此不纳入图谱声望评分。
+        evidence: []
+      citation_velocity:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      methodology_quality:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: Screens visible abstract and analysis fields for experiment,
+          dataset, baseline, metric, and limitation evidence.
+        explanation_zh: 检查可见的摘要与分析字段，寻找实验、数据集、基线、指标和局限性等方法证据。
+        evidence:
+        - source: papers.yaml
+          field: abstract/analysis
+          detail: markers=none
+      reproducibility:
+        value: 30
+        available: true
+        confidence: low
+        explanation: Screens links and visible text for paper, code, dataset, artifact,
+          and repository signals.
+        explanation_zh: 检查链接和可见文本中的论文、代码、数据集、工件与仓库信号。
+        evidence:
+        - source: papers.yaml
+          field: links
+          detail: pdf=True; code=False; dataset=False; markers=none
+      recency:
+        value: 75.1
+        available: true
+        confidence: medium
+        explanation: Uses a gentle age decay so recent papers surface without erasing
+          older foundations.
+        explanation_zh: 使用温和的时间衰减，让近期论文更容易浮现，同时保留较早基础工作的价值。
+        evidence:
+        - source: papers.yaml
+          field: year
+          detail: '2024'
+    applied_weights:
+      topical_relevance: 0.555556
+      reproducibility: 0.333333
+      recency: 0.111111
+    ranking_profile: paper_rank_lite_v1
+    field_roles:
+    - candidate
+    warnings: []
+    rank_sensitivity:
+      stability: stable
+      rank_range: 0
+      profiles:
+        balanced:
+          rank: 79
+          score: 23.6
+        citation_heavy:
+          rank: 79
+          score: 23.9
+        method_repro_heavy:
+          rank: 79
+          score: 30.7
+        frontier_heavy:
+          rank: 79
+          score: 39.8
+        topic_heavy:
+          rank: 79
+          score: 17.7
+  grade: skip
+  taxonomy:
+    primary: system
+    secondary:
+    - benchmark
+    - survey
+    - theory
+    confidence: 0.36
+    evidence: system
+- id: ui-pro-a-hidden-recipe-for-building-vision-language-models-2026
+  title: 'UI-Pro: A Hidden Recipe for Building Vision-Language Models for GUI Grounding'
+  authors: []
+  abstract: ''
+  year: 2026
+  venue: arXiv
+  paper_type:
+  - method
+  tags: []
+  links:
+    paper: https://openreview.net/forum?id=5wmAfwDBoi
+  preview: /assets/placeholder.svg
+  sources:
+  - repo: unified-sources
+  techniques:
+  - grounding
+  - screenshot perception
+  - training
+  inputs:
+  - screenshots
+  - natural-language instructions
+  outputs:
+  - clicks
+  - typing
+  arxiv_id: title:3bf32a4571ca5596
+  seed_expanded: false
+  score:
+    read_first_score: 26.4
+    components:
+      topical_relevance:
+        value: 9.5
+        available: true
+        confidence: low
+        explanation: Matches configured research keywords against title, abstract,
+          tags, and analysis text.
+        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        evidence:
+        - source: awesome.yaml
+          field: research.keywords
+          detail: matched=2
+      citation_impact:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      graph_prestige:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No local citation edges were available, so graph prestige is
+          excluded.
+        explanation_zh: 没有可用的局部引用边，因此不纳入图谱声望评分。
+        evidence: []
+      citation_velocity:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      methodology_quality:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: Screens visible abstract and analysis fields for experiment,
+          dataset, baseline, metric, and limitation evidence.
+        explanation_zh: 检查可见的摘要与分析字段，寻找实验、数据集、基线、指标和局限性等方法证据。
+        evidence:
+        - source: papers.yaml
+          field: abstract/analysis
+          detail: markers=none
+      reproducibility:
+        value: 30
+        available: true
+        confidence: low
+        explanation: Screens links and visible text for paper, code, dataset, artifact,
+          and repository signals.
+        explanation_zh: 检查链接和可见文本中的论文、代码、数据集、工件与仓库信号。
+        evidence:
+        - source: papers.yaml
+          field: links
+          detail: pdf=True; code=False; dataset=False; markers=none
+      recency:
+        value: 100.0
+        available: true
+        confidence: medium
+        explanation: Uses a gentle age decay so recent papers surface without erasing
+          older foundations.
+        explanation_zh: 使用温和的时间衰减，让近期论文更容易浮现，同时保留较早基础工作的价值。
+        evidence:
+        - source: papers.yaml
+          field: year
+          detail: '2026'
+    applied_weights:
+      topical_relevance: 0.555556
+      reproducibility: 0.333333
+      recency: 0.111111
+    ranking_profile: paper_rank_lite_v1
+    field_roles:
+    - frontier
+    warnings: []
+    rank_sensitivity:
+      stability: sensitive
+      rank_range: 2
+      profiles:
+        balanced:
+          rank: 76
+          score: 26.4
+        citation_heavy:
+          rank: 75
+          score: 28.0
+        method_repro_heavy:
+          rank: 75
+          score: 35.3
+        frontier_heavy:
+          rank: 74
+          score: 49.8
+        topic_heavy:
+          rank: 76
+          score: 19.6
+  grade: skip
+  taxonomy:
+    primary: method
+    secondary:
+    - survey
+    - theory
+    - benchmark
+    confidence: 0.36
+    evidence: method
+  generation_notes:
+  - generated_fallback_teaser
+  - warning_unresolved_teaser_fallback
+- id: test-time-reinforcement-learning-for-gui-grounding-via-regio-2025
+  title: Test-Time Reinforcement Learning for GUI Grounding via Region Consistency
+  authors: []
+  abstract: ''
+  year: 2025
+  venue: arXiv
+  paper_type:
+  - method
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2508.05615
+  preview: https://arxiv.org/html/x1.png
+  sources:
+  - repo: unified-sources
+  techniques:
+  - reinforcement learning
+  - grounding
+  - region consistency
+  inputs:
+  - screenshots
+  - natural-language instructions
+  outputs:
+  - clicks
+  - region selections
+  arxiv_id: '2508.05615'
+  seed_expanded: false
+  enriched:
+    figure_url: https://arxiv.org/html/x1.png
+    authors:
+    - Yong Du1,2,\equalcontrib
+    section_headers:
+    - ntroduction
+    - Related Works
+    - GUI Grounding
+    - Test-Time Scaling
+    - ethods
+    - Problem Formulation
+    - 'GUI-RC: Test-Time Scaling via Spatial Voting'
+    - 'GUI-RCPO: Test-Time Reinforcement Learning via Region Consistency'
+    - Experiments
+    - Experiment Setup
+    - ain Results
+    - Analysis
+    - Ablation Studies on Decoding Strategy of GUI-RC
+    - GUI-RCPO Enables Consistent Improvements during Test-time Training
+    - Applying GUI-RC after GUI-RCPO Leads to Further Improvements
+    - imitations
+    - onclusion
+    - Acknowledgments
+    - References
+    - Appendix
+    - A. Pseudo-code of Region Consistency Reward Function
+    - B. Case Studies on How GUI-RC Mitigates Hallucinations in GUI Grounding
+    - Evaluation Details
+    captions:
+    - 'Table 1: Performance (%) of the proposed test-time scaling method GUI-RC across
+      GUI-Grounding benchmarks. Icons refer to output styles: Point (), Bounding-box
+      ().'
+    - 'Table 2: Performance (%) of the proposed test-time reinforcement learning method
+      GUI-RCPO across GUI-Grounding benchmarks. Icons refer to output styles: Point
+      (), Bounding-box ().'
+    - 'Figure 2: Ablation study results on ScreenSpot-v2 with varying temperature,
+      sampling number, and hyperparameter α\alpha.'
+    - 'Figure 3: Accuracy (%) across training steps of Qwen2.5-VL-3B-Instruct and
+      Qwen2.5-VL-7B-Instruct throughout GUI-RCPO.'
+    - 'Table 3: Performance of applying GUI-RC to bbox-style prediction models after
+      GUI-RCPO on ScreenSpot-v2 and ScreenSpot-Pro benchmarks. In this table, GUI-RC
+      is performed with temperature = 1.0.'
+    - 'Listing 1: The pseudo-code of the region consistency reward function.'
+    - '(a) ScreenSpot-v2: “check shoes under 50 dollars in ‘shop deals in fashion’
+      part” (Greedy)'
+    - '(b) ScreenSpot-v2: “check shoes under 50 dollars in ‘shop deals in fashion’
+      part” (GUI-RC)'
+    method_names:
+    - GUI
+    - RCPO
+    - ScreenSpot
+    - TARS
+    - TTRL
+    - VLM
+    - LLM
+    - InfiGUI
+    - MobileGUI
+    - SFT
+    method_summary: We first formalize the GUI grounding task and identify the key
+      challenges in applying test-time scaling to this domain. We then present GUI-RC,
+      our test-time scaling approach that leverages spatial consistency across multiple
+      predictions to improve grounding accuracy. Finally, we introduce GUI-RCPO, which
+      extends region consistency to reward signals for test-time reinforcement learning
+      on unlabeled GUI data. Figure 1 provides an overview of both methods.
+    affiliations:
+    - <sup></sup>Central South University, <sup></sup>Zhejiang University of Science
+      and Technology, <sup></sup>SF Technology
+  score:
+    read_first_score: 24.9
+    components:
+      topical_relevance:
+        value: 9.5
+        available: true
+        confidence: low
+        explanation: Matches configured research keywords against title, abstract,
+          tags, and analysis text.
+        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        evidence:
+        - source: awesome.yaml
+          field: research.keywords
+          detail: matched=2
+      citation_impact:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      graph_prestige:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No local citation edges were available, so graph prestige is
+          excluded.
+        explanation_zh: 没有可用的局部引用边，因此不纳入图谱声望评分。
+        evidence: []
+      citation_velocity:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      methodology_quality:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: Screens visible abstract and analysis fields for experiment,
+          dataset, baseline, metric, and limitation evidence.
+        explanation_zh: 检查可见的摘要与分析字段，寻找实验、数据集、基线、指标和局限性等方法证据。
+        evidence:
+        - source: papers.yaml
+          field: abstract/analysis
+          detail: markers=none
+      reproducibility:
+        value: 30
+        available: true
+        confidence: low
+        explanation: Screens links and visible text for paper, code, dataset, artifact,
+          and repository signals.
+        explanation_zh: 检查链接和可见文本中的论文、代码、数据集、工件与仓库信号。
+        evidence:
+        - source: papers.yaml
+          field: links
+          detail: pdf=True; code=False; dataset=False; markers=none
+      recency:
+        value: 86.7
+        available: true
+        confidence: medium
+        explanation: Uses a gentle age decay so recent papers surface without erasing
+          older foundations.
+        explanation_zh: 使用温和的时间衰减，让近期论文更容易浮现，同时保留较早基础工作的价值。
+        evidence:
+        - source: papers.yaml
+          field: year
+          detail: '2025'
+    applied_weights:
+      topical_relevance: 0.555556
+      reproducibility: 0.333333
+      recency: 0.111111
+    ranking_profile: paper_rank_lite_v1
+    field_roles:
+    - frontier
+    warnings: []
+    rank_sensitivity:
+      stability: stable
+      rank_range: 1
+      profiles:
+        balanced:
+          rank: 77
+          score: 24.9
+        citation_heavy:
+          rank: 77
+          score: 25.8
+        method_repro_heavy:
+          rank: 76
+          score: 32.9
+        frontier_heavy:
+          rank: 76
+          score: 44.5
+        topic_heavy:
+          rank: 77
+          score: 18.6
+  grade: skip
+  taxonomy:
+    primary: method
+    secondary:
+    - survey
+    - theory
+    - benchmark
+    confidence: 0.36
+    evidence: method
+- id: agent-e-from-autonomous-web-navigation-to-foundational-desi-2024
+  title: 'Agent-E: From Autonomous Web Navigation to Foundational Design Principles
+    in Agentic Systems'
+  authors: []
+  abstract: ''
+  year: 2024
+  venue: arXiv
+  paper_type:
+  - system
+  - application
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2407.13032
+  preview: https://arxiv.org/html/extracted/5738750/General_Web_automation_diagram.png
+  sources:
+  - repo: unified-sources
+  techniques:
+  - screenshot perception
+  - grounding
+  - planning
+  - memory
+  - tool use
+  - reflection
+  inputs:
+  - screenshots
+  - DOM/accessibility trees
+  - natural-language instructions
+  outputs:
+  - clicks
+  - typing
+  - browser actions
+  - code
+  arxiv_id: '2407.13032'
+  seed_expanded: false
+  enriched:
+    figure_url: https://arxiv.org/html/extracted/5738750/General_Web_automation_diagram.png
+    authors:
+    - "Tamer Abuelsaad,\nDeepak Akkil,\nPrasenjit Dey,\nAshish Jagmohan, \nAditya\
+      \ Vempaty,\nRavi Kokku"
+    section_headers:
+    - Introduction
+    - Contributions
+    - 'Agent-E: System Description'
+    - Skills Design for Browser Navigation Agent
+    - Evaluation
+    - Introduction to WebVoyager
+    - Evaluation Setup
+    - Measures
+    - 'Result: Quantitative'
+    - 'Result: Qualitative'
+    - Discussion
+    - Agent Design Principles
+    - Related Work
+    - Conclusion
+    - References
+    captions:
+    - 'Figure 1: Simplified anatomy of web agents'
+    - 'Figure 2: A high level architecture of Agent-E'
+    - 'Figure 3: Conceptual flow diagram of Agent-E. Individual blocks represent functions;
+      In Agent-E, a single LLM call is used to perform multiple functions.'
+    - 'Figure 4: Skills registered to the Browser Navigation Agent for sensing and
+      acting on the web page.'
+    - 'Figure 7: WebVoyager Websites'
+    - 'Table 1: Example tasks from WebVoyager benchmark.'
+    - 'Table 2: Evaluation of Agent-E on WebVoyager.'
+    - 'Table 3: Evaluation of Agent-E on WebVoyager (Contd.)'
+    method_names:
+    - LLM
+    - DOM
+    - WebVoyager
+    - TCT
+    - HTML
+    - WolframAlpha
+    - API
+    - WiFi
+    - ESPN
+    - URL
+    affiliations:
+    - 'Agent-E: From Autonomous Web Navigation to Foundational Design Principles in
+      Agentic Systems'
+  score:
+    read_first_score: 23.6
+    components:
+      topical_relevance:
+        value: 9.5
+        available: true
+        confidence: low
+        explanation: Matches configured research keywords against title, abstract,
+          tags, and analysis text.
+        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        evidence:
+        - source: awesome.yaml
+          field: research.keywords
+          detail: matched=2
+      citation_impact:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      graph_prestige:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No local citation edges were available, so graph prestige is
+          excluded.
+        explanation_zh: 没有可用的局部引用边，因此不纳入图谱声望评分。
+        evidence: []
+      citation_velocity:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      methodology_quality:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: Screens visible abstract and analysis fields for experiment,
+          dataset, baseline, metric, and limitation evidence.
+        explanation_zh: 检查可见的摘要与分析字段，寻找实验、数据集、基线、指标和局限性等方法证据。
+        evidence:
+        - source: papers.yaml
+          field: abstract/analysis
+          detail: markers=none
+      reproducibility:
+        value: 30
+        available: true
+        confidence: low
+        explanation: Screens links and visible text for paper, code, dataset, artifact,
+          and repository signals.
+        explanation_zh: 检查链接和可见文本中的论文、代码、数据集、工件与仓库信号。
+        evidence:
+        - source: papers.yaml
+          field: links
+          detail: pdf=True; code=False; dataset=False; markers=none
+      recency:
+        value: 75.1
+        available: true
+        confidence: medium
+        explanation: Uses a gentle age decay so recent papers surface without erasing
+          older foundations.
+        explanation_zh: 使用温和的时间衰减，让近期论文更容易浮现，同时保留较早基础工作的价值。
+        evidence:
+        - source: papers.yaml
+          field: year
+          detail: '2024'
+    applied_weights:
+      topical_relevance: 0.555556
+      reproducibility: 0.333333
+      recency: 0.111111
+    ranking_profile: paper_rank_lite_v1
+    field_roles:
+    - candidate
+    warnings: []
+    rank_sensitivity:
+      stability: stable
+      rank_range: 0
+      profiles:
+        balanced:
+          rank: 78
+          score: 23.6
+        citation_heavy:
+          rank: 78
+          score: 23.9
+        method_repro_heavy:
+          rank: 78
+          score: 30.7
+        frontier_heavy:
+          rank: 78
+          score: 39.8
+        topic_heavy:
+          rank: 78
+          score: 17.7
+  grade: skip
+  taxonomy:
+    primary: system
+    secondary:
+    - method
+    - benchmark
+    - application
+    confidence: 0.66
+    evidence: system
+- id: web-agents-with-world-models-learning-and-leveraging-enviro-2024
+  title: 'Web Agents with World Models: Learning and Leveraging Environment Dynamics
+    in Web Navigation'
+  authors: []
+  abstract: ''
+  year: 2024
+  venue: arXiv
+  paper_type:
+  - method
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2410.13232
+  preview: https://arxiv.org/html/x3.png
+  sources:
+  - repo: unified-sources
+  techniques:
+  - world model
+  - environment dynamics learning
+  - planning
+  inputs:
+  - screenshots
+  - DOM/accessibility trees
+  - natural-language instructions
+  outputs:
+  - clicks
+  - typing
+  - browser actions
+  arxiv_id: '2410.13232'
+  seed_expanded: false
+  enriched:
+    figure_url: https://arxiv.org/html/x3.png
+    authors:
+    - 'Hyungjoo Chae
+
+       Namyoung Kim'
+    section_headers:
+    - Introduction
+    - Related Work
+    - 'Preliminary Analyses: Are Current LLMs Aware of Environment Dynamics in Web
+      Navigation?'
+    - Preliminary Analysis I - LLMs Struggle with Predicting the Next States Caused
+      by Their Actions
+    - Insights from Preliminary Analyses
+    - World-Model-Augmented Web Agents
+    - World Model Training
+    - Inference-time Policy Optimization with the World Model
+    - Experiments
+    - Setups and Implementation Details
+    - Main Results
+    - Analyses of Time and Cost Efficiency
+    - Ablation Studies
+    - Further Analyses
+    - Combining Self-refine with Our World Models
+    - Types of Errors in World Models’ Predictions
+    - Conclusions
+    - Acknowledgments
+    - References
+    - Appendix
+    - Appendix A Further Analyses
+    - Appendix B Experimental Details of Preliminary analyses
+    - B.1 Preliminary analysis I
+    - B.2 Preliminary analysis II
+    - Appendix C Implementation details
+    captions:
+    - 'Figure 1: LLMs’ performance in next state prediction.'
+    - 'Figure 2: LLMs’ performance in action selection (w/ and w/o next states).'
+    - 'Figure 3: Framework overview. We first collect training data for world models
+      (top).
+
+      After training, we perform policy optimization by selecting the action leading
+      to an optimal next state (bottom).'
+    - 'Figure 4: Sequence length distribution of different observation representations.'
+    - 'Figure 5: The overview of transition-focused observation abstraction.'
+    - 'Table 1: Agent performance in WebArena. ΔΔ\Deltaroman_Δ: relative performance
+      gains from policy optimization.'
+    - 'Table 2: Domain-specific performance of agents using GPT-4o-mini as policy
+      models'
+    - 'Table 3: Success rate on Mind2Web tests using GPT-3.5-Turbo as policy models.
+      EA = element accuracy; EF = element filtering; AF1 = action F1; * = results
+      from the original paper.'
+    method_names:
+    - WebArena
+    - WMA
+    - GPT
+    - LLM
+    - TaO
+    - AWM
+    - CoT
+    - HTML
+    - URL
+    - SOTA
+    affiliations:
+    - Yonsei University
+  score:
+    read_first_score: 21.0
+    components:
+      topical_relevance:
+        value: 4.8
+        available: true
+        confidence: low
+        explanation: Matches configured research keywords against title, abstract,
+          tags, and analysis text.
+        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        evidence:
+        - source: awesome.yaml
+          field: research.keywords
+          detail: matched=1
+      citation_impact:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      graph_prestige:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No local citation edges were available, so graph prestige is
+          excluded.
+        explanation_zh: 没有可用的局部引用边，因此不纳入图谱声望评分。
+        evidence: []
+      citation_velocity:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      methodology_quality:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: Screens visible abstract and analysis fields for experiment,
+          dataset, baseline, metric, and limitation evidence.
+        explanation_zh: 检查可见的摘要与分析字段，寻找实验、数据集、基线、指标和局限性等方法证据。
+        evidence:
+        - source: papers.yaml
+          field: abstract/analysis
+          detail: markers=none
+      reproducibility:
+        value: 30
+        available: true
+        confidence: low
+        explanation: Screens links and visible text for paper, code, dataset, artifact,
+          and repository signals.
+        explanation_zh: 检查链接和可见文本中的论文、代码、数据集、工件与仓库信号。
+        evidence:
+        - source: papers.yaml
+          field: links
+          detail: pdf=True; code=False; dataset=False; markers=none
+      recency:
+        value: 75.1
+        available: true
+        confidence: medium
+        explanation: Uses a gentle age decay so recent papers surface without erasing
+          older foundations.
+        explanation_zh: 使用温和的时间衰减，让近期论文更容易浮现，同时保留较早基础工作的价值。
+        evidence:
+        - source: papers.yaml
+          field: year
+          detail: '2024'
+    applied_weights:
+      topical_relevance: 0.555556
+      reproducibility: 0.333333
+      recency: 0.111111
+    ranking_profile: paper_rank_lite_v1
+    field_roles:
+    - candidate
+    warnings: []
+    rank_sensitivity:
+      stability: stable
+      rank_range: 0
+      profiles:
+        balanced:
+          rank: 80
+          score: 21.0
+        citation_heavy:
+          rank: 80
+          score: 20.7
+        method_repro_heavy:
+          rank: 80
+          score: 29.0
+        frontier_heavy:
+          rank: 80
+          score: 38.0
+        topic_heavy:
+          rank: 80
+          score: 14.1
+  grade: skip
+  taxonomy:
+    primary: method
+    secondary:
+    - benchmark
+    - application
+    - survey
+    confidence: 0.36
+    evidence: method
+- id: ai-agents-for-computer-use-a-review-of-instruction-based-co-2025
+  title: 'AI Agents for Computer Use: A Review of Instruction-based Computer Control,
+    GUI Automation, and Operator Assistants'
+  authors: []
+  abstract: ''
+  year: 2025
+  venue: arXiv
+  paper_type:
+  - survey
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2501.16150
+  preview: /assets/papers/ai-agents-for-computer-use-a-review-of-instruction-based-co-2025/teaser.png
+  sources:
+  - repo: unified-sources
+  techniques:
+  - screenshot perception
+  - grounding
+  - planning
+  - memory
+  - tool use
+  - reflection
+  inputs:
+  - screenshots
+  - DOM/accessibility trees
+  - natural-language instructions
+  - trajectories
+  outputs:
+  - clicks
+  - typing
+  - browser actions
+  - app commands
+  - tool calls
+  arxiv_id: '2501.16150'
+  seed_expanded: false
+  enriched:
+    figure_url: https://arxiv.org/html/2501.16150v3/figures/ACU_example.png
+    authors:
+    - Pascal J. Sager
+    - Benjamin Meyer
+    - Peng Yan
+    - Rebekka von Wartburg-Kottler
+    - Layan Etaiwi
+    - Aref Enayati
+    - Gabriel Nobel
+    - Ahmed Abdulkadir
+    - Benjamin F. Grewe
+    - Thilo Stadelmann
+    affiliations:
+    - Zurich University of Applied Sciences
+    - Winterthur
+    - Switzerland
+    - University of Zurich
+    - Zurich
+    - Switzerland
+    - ETH AI Center
+    - Zurich
+    - Switzerland
+    - Zurich University of Applied Sciences
+    - Winterthur
+    - Switzerland
+    - University of Zurich
+    - Zurich
+    - Switzerland
+    - Zurich University of Applied Sciences
+    - Winterthur
+    - Switzerland
+    - University of Zurich
+    - Zurich
+    - Switzerland
+    - Zurich University of Applied Sciences
+    - Winterthur
+    - Switzerland
+    - Polytechnique Montreal
+    - Montreal
+    - Canada
+    - Zurich University of Applied Sciences
+    - Winterthur
+    - Switzerland
+    - University of Fribourg
+    - Fribourg
+    - Switzerland
+    - Zurich University of Applied Sciences
+    - Winterthur
+    - Switzerland
+    - Zurich University of Applied Sciences
+    - Winterthur
+    - Switzerland
+    - University of Zurich
+    - Zurich
+    - Switzerland
+    - ETH AI Center
+    - Zurich
+    - Switzerland
+    - AlpineAI AG
+    - Switzerland
+    - Zurich University of Applied Sciences
+    - Winterthur
+    - Switzerland
+    - European Centre for Living Technology
+    - Venice
+    - AlpineAI AG
+    - Switzerland
+    section_headers:
+    - Introduction
+    - Relation to Other Surveys
+    - Survey Methodology
+    - Survey Structure
+    - The Field of ACUs
+    - Definitions
+    - A Comprehensive Taxonomy
+    - Domain Perspective
+    - Recommendations
+    - Interaction Perspective (Agent ↔\leftrightarrow Environment)
+    - Observation Spaces
+    - Action Spaces
+    - Agent Perspective
+    - Policy – How to Act
+    - Learning Strategy - How to Learn to Act
+    - Computer Use Datasets
+    - Dataset Types
+    - Domains, Observation and Action Spaces
+    - Dataset Complexity
+    - Recommendations
+    - Agent Evaluation
+    - Task-Level Metrics
+    - Step-Level Metrics
+    - Other Metrics
+    - Recommendations
+    captions:
+    - (a) Example of a computer use task.
+    - (b) Proposed taxonomy.
+    - Figure 2. ACU publications over time. Boxes highlight seminal milestones. The
+      advent of ChatGPT marks a shift from RL-focused agents to those primarily relying
+      on foundation model reasoning.
+    - Figure 3. Visual overview of the survey methodology phases, detailing the selection
+      logic and synthesis process.
+    - Table 1. Our classification of observation types across the different domains,
+      along with relevant examples for each domain.
+    - Table 2. Our classification of action types across the different domains, along
+      with relevant examples for each domain.
+    - Figure 5. Common mouse and keyboard actions, highlighting coordinate prediction.
+    - Figure 6. Common direct UI access actions, referencing the HTML element by its
+      id attribute.
+    method_names:
+    - ACU
+    - HTML
+    - USA
+    - GUI
+    - API
+    - LLM
+    - ACL
+    - NeurIPS
+    - ISSN
+    - MiniWoB
+    method_summary: 'Initial collection Publication selection Selection Criteria Snowballing
+      Final Set Agents ( N = 87 N{=}87 ) Datasets ( N = 33 N{=}33 ) Data Analysis
+      and Synthesis Figure 3 . Visual overview of the survey methodology phases, detailing
+      the selection logic and synthesis process. A horizontal flowchart illustrating
+      the four-phase survey methodology. The process flows from left to right. It
+      begins with Phase 1: Initial Collection, which leads into Phase 2: Publication
+      Selection.'
+  score:
+    read_first_score: 32.9
+    components:
+      topical_relevance:
+        value: 23.8
+        available: true
+        confidence: low
+        explanation: Matches configured research keywords against title, abstract,
+          tags, and analysis text.
+        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        evidence:
+        - source: awesome.yaml
+          field: research.keywords
+          detail: matched=5
+      citation_impact:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      graph_prestige:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No local citation edges were available, so graph prestige is
+          excluded.
+        explanation_zh: 没有可用的局部引用边，因此不纳入图谱声望评分。
+        evidence: []
+      citation_velocity:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      methodology_quality:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: Screens visible abstract and analysis fields for experiment,
+          dataset, baseline, metric, and limitation evidence.
+        explanation_zh: 检查可见的摘要与分析字段，寻找实验、数据集、基线、指标和局限性等方法证据。
+        evidence:
+        - source: papers.yaml
+          field: abstract/analysis
+          detail: markers=none
+      reproducibility:
+        value: 30
+        available: true
+        confidence: low
+        explanation: Screens links and visible text for paper, code, dataset, artifact,
+          and repository signals.
+        explanation_zh: 检查链接和可见文本中的论文、代码、数据集、工件与仓库信号。
+        evidence:
+        - source: papers.yaml
+          field: links
+          detail: pdf=True; code=False; dataset=False; markers=none
+      recency:
+        value: 86.7
+        available: true
+        confidence: medium
+        explanation: Uses a gentle age decay so recent papers surface without erasing
+          older foundations.
+        explanation_zh: 使用温和的时间衰减，让近期论文更容易浮现，同时保留较早基础工作的价值。
+        evidence:
+        - source: papers.yaml
+          field: year
+          detail: '2025'
+    applied_weights:
+      topical_relevance: 0.555556
+      reproducibility: 0.333333
+      recency: 0.111111
+    ranking_profile: paper_rank_lite_v1
+    field_roles:
+    - frontier
+    warnings: []
+    rank_sensitivity:
+      stability: stable
+      rank_range: 1
+      profiles:
+        balanced:
+          rank: 72
+          score: 32.9
+        citation_heavy:
+          rank: 71
+          score: 35.3
+        method_repro_heavy:
+          rank: 72
+          score: 38.1
+        frontier_heavy:
+          rank: 71
+          score: 50.2
+        topic_heavy:
+          rank: 71
+          score: 29.6
+  grade: skip
+  taxonomy:
+    primary: benchmark
+    secondary:
+    - survey
+    - system
+    - theory
+    confidence: 0.36
+    evidence: benchmark
+- id: opendevin-an-open-platform-for-ai-software-developers-as-ge-2024
+  title: "OpenDevin: An Open Platform for AI Software Developers as Generalist\n \
+    \ Agents"
+  authors:
+  - Xingyao Wang
+  - Boxuan Li
+  - Yufan Song
+  - Frank F. Xu
+  - Xiangru Tang
+  - Mingchen Zhuge
+  - Jiayi Pan
+  - Yueqi Song
+  - Bowen Li
+  - Jaskirat Singh
+  - Hoang H. Tran
+  - Fuqiang Li
+  - Ren Ma
+  - Mingzhang Zheng
+  - Bill Qian
+  - Yanjun Shao
+  - Niklas Muennighoff
+  - Yizhe Zhang
+  - Binyuan Hui
+  - Junyang Lin
+  - Robert Brennan
+  - Hao Peng
+  - Heng Ji
+  - Graham Neubig
+  abstract: 'Software is one of the most powerful tools that we humans have at our
+
+    disposal; it allows a skilled programmer to interact with the world in complex
+
+    and profound ways. At the same time, thanks to improvements in large language
+
+    models (LLMs), there has also been a rapid development in AI agents that
+
+    interact with and affect change in their surrounding environments. In this
+
+    paper, we introduce OpenDevin, a platform for the development of powerful and
+
+    flexible AI agents that interact with the world in similar ways to those of a
+
+    human developer: by writing code, interacting with a command line, and browsing
+
+    the web. We describe how the platform allows for the implementation of new
+
+    agents, safe interaction with sandboxed environments for code execution,
+
+    coordination between multiple agents, and incorporation of evaluation
+
+    benchmarks. Based on our currently incorporated benchmarks, we perform an
+
+    evaluation of agents over 15 challenging tasks, including software engineering
+
+    (e.g., SWE-Bench) and web browsing (e.g., WebArena), among others. Released
+
+    under the permissive MIT license, OpenDevin is a community project spanning
+
+    academia and industry with more than 1.3K contributions from over 160
+
+    contributors and will improve going forward.'
+  year: 2024
+  venue: arXiv
+  paper_type:
+  - system
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2407.16741
+  preview: https://arxiv.org/html/x2.png
+  sources:
+  - repo: unified-sources
+  techniques:
+  - tool use
+  - code generation
+  - multi-agent coordination
+  inputs:
+  - natural-language instructions
+  outputs:
+  - code
+  - browser actions
+  - tool calls
+  arxiv_id: '2407.16741'
+  seed_expanded: false
+  enriched:
+    figure_url: https://arxiv.org/html/x2.png
+    authors:
+    - Xingyao Wang1,10
+    section_headers:
+    - Introduction
+    - OpenHands Architecture
+    - Agent Definition and Implementation
+    - 'Agent Runtime: How Execution of Actions Results in Observations'
+    - 'Agent Skills: The Extensible Agent-Computer Interface'
+    - 'Agent Delegation: Cooperative Multi-agent Interaction'
+    - 'AgentHub: A Hub of Community-Contributed Agents'
+    - Evaluation
+    - Result Overview
+    - Software Engineering
+    - Web Browsing
+    - Miscellaneous Assistance
+    - Conclusion
+    - References
+    - Author Contributions
+    - Appendix A Limitations and Future Work
+    - Appendix B Ethics Statement
+    - Appendix C Related Work
+    - Appendix D Graphical User Interface
+    - 'Appendix E Quality Control: Integration Tests for Agents'
+    - Appendix F How OpenHands Runtime work
+    - F.1 Workflow
+    - F.2 How OpenHands builds and maintains runtime images
+    - Appendix G Additional Results For GPQA Benchmark
+    - Appendix H In-context Demonstration for CodeActSWEAgent
+    captions:
+    - "Figure 1: \nOpenHands User Interface (UI, §D) allows users to view files, check\
+      \ executed bash commands/Python code, observe the agent’s browser activity,\
+      \ and directly interact with the agent."
+    - 'Figure 3: Minimal example of implementing an agent in OpenHands.'
+    - 'Table 2: Evaluation benchmarks in OpenHands.'
+    - 'Table 3: Selected evaluation results for OpenHands agents (§4).
+
+      See Tab. 4 (software), Tab. 5 (web), Tab. 6 (miscellaneous assistance) for full
+      results across benchmarks.'
+    - 'Table 4: OpenHands Software Engineering evaluation results (§4.2).'
+    - 'Table 5: OpenHands Web Browsing Evaluation Results (§4.3).'
+    - 'Table 6: OpenHands miscellaneous assistance evaluation results (§4.4).'
+    - 'Figure 4: OpenHands runtime workflow.'
+    method_names:
+    - OpenHands
+    - CodeActAgent
+    - SWE
+    - URL
+    - API
+    - WebArena
+    - LLM
+    - GPT
+    - BrowserGym
+    - OpenAI
+    affiliations:
+    - Xingyao Wang<sup>,</sup>, Boxuan Li<sup></sup>, Yufan Song<sup></sup>, Frank
+      F. Xu<sup></sup>, Xiangru Tang<sup></sup>, Mingchen Zhuge<sup></sup>, Jiayi
+      Pan<sup></sup>, Yueqi Song<sup></sup>, Bowen Li, Jaskirat Singh<sup></sup>,
+      Hoang H. Tran<sup></sup>, Fuqiang Li, Ren Ma, Mingzhang Zheng, Bill Qian<sup></sup>,
+      Yanjun Shao<sup></sup>, Niklas Muennighoff<sup></sup>, Yizhe Zhang, Binyuan
+      Hui<sup></sup>, Junyang Lin<sup></sup>, Robert Brennan<sup></sup>, Hao Peng<sup></sup>,
+      Heng Ji<sup></sup>, Graham Neubig<sup>,</sup> <sup></sup>UIUC <sup></sup>CMU
+      <sup></sup>Yale <sup></sup>UC Berkeley <sup></sup>Contextual AI <sup></sup>KAUST
+      <sup></sup>ANU <sup></sup>HCMUT <sup></sup>Alibaba <sup></sup>All Hands AI xingyao@illinois.edu,
+      gneubig@cs.cmu.edu
+  score:
+    read_first_score: 28.7
+    components:
+      topical_relevance:
+        value: 7.1
+        available: true
+        confidence: medium
+        explanation: Matches configured research keywords against title, abstract,
+          tags, and analysis text.
+        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        evidence:
+        - source: awesome.yaml
+          field: research.keywords
+          detail: matched=2
+      citation_impact:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      graph_prestige:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No local citation edges were available, so graph prestige is
+          excluded.
+        explanation_zh: 没有可用的局部引用边，因此不纳入图谱声望评分。
+        evidence: []
+      citation_velocity:
+        value: 0.0
+        available: false
+        confidence: low
+        explanation: No OpenAlex identifier was available for this paper.
+        explanation_zh: 该论文没有可用的 OpenAlex 标识符。
+        evidence: []
+      methodology_quality:
+        value: 40
+        available: true
+        confidence: medium
+        explanation: Screens visible abstract and analysis fields for experiment,
+          dataset, baseline, metric, and limitation evidence.
+        explanation_zh: 检查可见的摘要与分析字段，寻找实验、数据集、基线、指标和局限性等方法证据。
+        evidence:
+        - source: papers.yaml
+          field: abstract/analysis
+          detail: markers=benchmark,evaluation
+      reproducibility:
+        value: 38
+        available: true
+        confidence: low
+        explanation: Screens links and visible text for paper, code, dataset, artifact,
+          and repository signals.
+        explanation_zh: 检查链接和可见文本中的论文、代码、数据集、工件与仓库信号。
+        evidence:
+        - source: papers.yaml
+          field: links
+          detail: pdf=True; code=False; dataset=False; markers=code
+      recency:
+        value: 75.1
+        available: true
+        confidence: medium
+        explanation: Uses a gentle age decay so recent papers surface without erasing
+          older foundations.
+        explanation_zh: 使用温和的时间衰减，让近期论文更容易浮现，同时保留较早基础工作的价值。
+        evidence:
+        - source: papers.yaml
+          field: year
+          detail: '2024'
+    applied_weights:
+      topical_relevance: 0.416667
+      methodology_quality: 0.25
+      reproducibility: 0.25
+      recency: 0.083333
+    ranking_profile: paper_rank_lite_v1
+    field_roles:
+    - candidate
+    warnings: []
+    rank_sensitivity:
+      stability: volatile
+      rank_range: 4
+      profiles:
+        balanced:
+          rank: 73
+          score: 28.7
+        citation_heavy:
+          rank: 76
+          score: 27.7
+        method_repro_heavy:
+          rank: 73
+          score: 35.8
+        frontier_heavy:
+          rank: 77
+          score: 40.4
+        topic_heavy:
+          rank: 74
+          score: 21.4
+    keyword_scores:
+      GUI agent: 2
+      graphical user interface agent: 2
+      computer use agent: 4
+      computer control agent: 4
+      visual GUI automation: 1
+      web agent: 7
+      mobile agent: 1
+      OS agent: 3
+      screen grounding: 1
+      UI grounding: 1
+      browser agent: 6
+    total: 32
+  tldr: OpenDevin is an open platform for building AI agents that interact like human
+    developers via code, command line, and web browsing, with evaluations on software
+    engineering and web tasks.
+  reasoning: The paper presents a well-designed open platform with strong community
+    support and evaluations on relevant benchmarks. However, its focus is on software
+    development agents rather than GUI or screen-based interaction, limiting direct
+    relevance to GUI-specific keywords.
+  has_real_world: true
+  analysis:
+    innovations:
+    - 'Open platform for AI agents that interact like human developers: writing code,
+      using command line, and browsing the web.'
+    - Support for safe sandboxed code execution, multi-agent coordination, and integration
+      of evaluation benchmarks.
+    methodology: We introduce OpenDevin, a platform that enables agents to interact
+      with environments via code, command line, and web browsing, with sandboxed execution
+      and multi-agent support. We evaluated agents on 15 tasks from benchmarks including
+      SWE-Bench and WebArena.
+    key_results: Agents were evaluated across 15 challenging tasks covering software
+      engineering and web browsing, demonstrating the platform's versatility, though
+      specific performance metrics are not provided in the abstract.
+    limitations: []
+  grade: worth_reading
+  taxonomy:
+    primary: benchmark
+    secondary:
+    - theory
+    - method
+    - application
+    confidence: 0.69
+    evidence: benchmark
