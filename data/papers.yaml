@@ -160,19 +160,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 12
+      rank_range: 14
       profiles:
         balanced:
-          rank: 10
+          rank: 11
           score: 66.9
         citation_heavy:
           rank: 6
           score: 73.5
         method_repro_heavy:
-          rank: 18
+          rank: 20
           score: 66.4
         frontier_heavy:
-          rank: 11
+          rank: 12
           score: 76.8
         topic_heavy:
           rank: 7
@@ -420,22 +420,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 24
+      rank_range: 25
       profiles:
         balanced:
-          rank: 38
+          rank: 40
           score: 59.2
         citation_heavy:
-          rank: 31
+          rank: 32
           score: 65.3
         method_repro_heavy:
-          rank: 52
+          rank: 54
           score: 57.8
         frontier_heavy:
-          rank: 37
+          rank: 38
           score: 70.2
         topic_heavy:
-          rank: 28
+          rank: 29
           score: 63.9
   analysis:
     innovations:
@@ -692,22 +692,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 20
+      rank_range: 24
       profiles:
         balanced:
-          rank: 55
+          rank: 59
           score: 53.8
         citation_heavy:
-          rank: 55
+          rank: 59
           score: 56.4
         method_repro_heavy:
-          rank: 39
+          rank: 40
           score: 60.2
         frontier_heavy:
-          rank: 55
+          rank: 59
           score: 66.8
         topic_heavy:
-          rank: 59
+          rank: 64
           score: 49.9
   analysis:
     innovations:
@@ -1000,22 +1000,22 @@
     warnings: []
     rank_sensitivity:
       stability: sensitive
-      rank_range: 3
+      rank_range: 2
       profiles:
         balanced:
-          rank: 54
+          rank: 58
           score: 54.2
         citation_heavy:
-          rank: 53
+          rank: 56
           score: 58.8
         method_repro_heavy:
-          rank: 56
+          rank: 58
           score: 57.1
         frontier_heavy:
-          rank: 53
+          rank: 56
           score: 66.9
         topic_heavy:
-          rank: 54
+          rank: 58
           score: 54.4
   analysis:
     innovations:
@@ -1276,22 +1276,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 7
+      rank_range: 10
       profiles:
         balanced:
-          rank: 56
+          rank: 60
           score: 51.8
         citation_heavy:
-          rank: 58
+          rank: 63
           score: 55.4
         method_repro_heavy:
-          rank: 53
+          rank: 55
           score: 57.8
         frontier_heavy:
-          rank: 56
+          rank: 60
           score: 65.6
         topic_heavy:
-          rank: 60
+          rank: 65
           score: 48.9
   analysis:
     innovations:
@@ -1406,19 +1406,20 @@
   abstract_cn: 使用多步强化学习训练视觉语言网页代理计算密集，存在两种主要的低效形式：同步强化学习中的GPU空闲，以及轨迹使用了比必要更多的步数和令牌。我们提出AsyncWebRL，它同时解决了这两个问题。在系统方面，异步设计将轨迹生成、梯度更新和策略刷新跨迭代重叠，并结合两种针对网页代理的特定适配，即永久轨迹池和轻量级截图处理，共同实现了相比此前最快的开源同步流水线（WebGym）高达2.9倍的端到端训练吞吐量加速。在算法方面，我们识别出多步GRPO中的每轨迹归一化因子1/|τ_i|是轨迹级和令牌级低效的根本原因：由于失败轨迹系统性地比成功轨迹更长，它降低了失败令牌上负梯度的权重，导致策略持续生成冗长的记忆模式。将1/|τ_i|替换为常数1/k打破了这种耦合，在保持总体成功率的同时缩短了轨迹。这些贡献共同在WebGym的分布外测试集上设立了新的开源最优水平（相对此前最佳42.9%提升5.8%），在更难的子集上提升最大（中等难度相对提升42%，困难难度相对提升48%）。
   grade: must_read
   score:
-    read_first_score: 27.8
+    read_first_score: 50.8
     components:
       topical_relevance:
-        value: 16.7
+        value: 60.0
         available: true
-        confidence: medium
-        explanation: Matches configured research keywords against title, abstract,
-          tags, and analysis text.
-        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        confidence: high
+        explanation: Uses existing LLM keyword relevance scores normalized to 0-100.
+        explanation_zh: 使用现有 LLM 关键词相关性评分，并归一化到 0-100。
         evidence:
-        - source: awesome.yaml
-          field: research.keywords
-          detail: matched=4
+        - source: papers.yaml
+          field: score.keyword_scores
+          detail: GUI agent,graphical user interface agent,computer use agent,computer
+            control agent,visual GUI automation,web agent,mobile agent,OS agent,screen
+            grounding,UI grounding,browser agent
       citation_impact:
         value: 0.0
         available: false
@@ -1442,7 +1443,7 @@
         explanation_zh: 该论文没有可用的 OpenAlex 标识符。
         evidence: []
       methodology_quality:
-        value: 20
+        value: 40
         available: true
         confidence: medium
         explanation: Screens visible abstract and analysis fields for experiment,
@@ -1485,23 +1486,23 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 4
+      rank_range: 12
       profiles:
         balanced:
-          rank: 74
-          score: 27.8
+          rank: 64
+          score: 50.8
         citation_heavy:
-          rank: 73
-          score: 29.6
+          rank: 60
+          score: 56.2
         method_repro_heavy:
-          rank: 77
-          score: 31.6
+          rank: 67
+          score: 48.8
         frontier_heavy:
-          rank: 75
-          score: 45.1
+          rank: 65
+          score: 63.1
         topic_heavy:
-          rank: 73
-          score: 24.2
+          rank: 55
+          score: 55.0
     keyword_scores:
       GUI agent: 8
       graphical user interface agent: 7
@@ -1760,19 +1761,19 @@
       rank_range: 17
       profiles:
         balanced:
-          rank: 34
+          rank: 36
           score: 59.9
         citation_heavy:
-          rank: 33
+          rank: 34
           score: 64.7
         method_repro_heavy:
-          rank: 24
+          rank: 26
           score: 64.5
         frontier_heavy:
-          rank: 28
+          rank: 29
           score: 72.1
         topic_heavy:
-          rank: 41
+          rank: 43
           score: 59.2
   analysis:
     innovations:
@@ -2035,10 +2036,10 @@
           rank: 8
           score: 73.3
         method_repro_heavy:
-          rank: 3
+          rank: 4
           score: 75.9
         frontier_heavy:
-          rank: 3
+          rank: 4
           score: 79.8
         topic_heavy:
           rank: 8
@@ -2090,7 +2091,7 @@
     status: planned
     run_status: planned
     report: resource/benchmarking-living-screen-native-gui-agents-on-short-video-2026/research.md
-    queued_at: '2026-07-06T02:44:45Z'
+    queued_at: '2026-07-07T02:33:41Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.04701v1/assets/intro.png
     authors:
@@ -2320,19 +2321,19 @@
       rank_range: 11
       profiles:
         balanced:
-          rank: 32
+          rank: 34
           score: 60.6
         citation_heavy:
-          rank: 26
+          rank: 27
           score: 66.5
         method_repro_heavy:
-          rank: 36
+          rank: 37
           score: 60.7
         frontier_heavy:
-          rank: 30
+          rank: 31
           score: 71.7
         topic_heavy:
-          rank: 25
+          rank: 26
           score: 64.1
   analysis:
     innovations:
@@ -2595,22 +2596,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 21
+      rank_range: 24
       profiles:
         balanced:
-          rank: 47
+          rank: 50
           score: 57.2
         citation_heavy:
-          rank: 49
+          rank: 51
           score: 60.4
         method_repro_heavy:
-          rank: 31
+          rank: 32
           score: 62.1
         frontier_heavy:
-          rank: 41
+          rank: 44
           score: 69.4
         topic_heavy:
-          rank: 52
+          rank: 56
           score: 55.0
   analysis:
     innovations:
@@ -2818,19 +2819,20 @@
   abstract_cn: 视频理解是多模态智能的基础能力，近年来多模态大语言模型（MLLMs）在视频问答（VideoQA）基准测试中取得了显著性能。然而，现有基准主要评估模型能否感知浅层视觉线索，很少检验MLLMs能否从视频教程中学习更深层的知识或程序性技能，并将其泛化到下游长周期智能体任务中。为填补这一空白，我们引入了VG-GUIBench（视频引导的GUI基准），这是一个新基准，旨在评估基于MLLM的GUI智能体能否跟随视频教程完成相应的GUI交互任务。此外，我们观察到模型在视频问答和视频引导的智能体任务上的性能关键取决于有效的关键帧提取。基于这一观察，我们提出了TASKER（任务驱动与场景感知的关键帧搜索器），一种联合考虑任务相关性和场景动态以识别信息帧的关键帧提取算法。实验结果表明，TASKER在视频问答和视频引导的智能体任务基准上均取得了显著的性能提升，在EgoSchema完整集上比最佳基线高出2.0%，在NExT-QA数据集上高出1.8%。这些结果进一步凸显了通用关键帧提取方法在视频理解任务中的潜力。我们的代码和数据可在https://github.com/VG-GUI-TASKER/VG-GUI-TASKER获取。
   grade: must_read
   score:
-    read_first_score: 50.0
+    read_first_score: 73.7
     components:
       topical_relevance:
-        value: 7.1
+        value: 51.8
         available: true
-        confidence: medium
-        explanation: Matches configured research keywords against title, abstract,
-          tags, and analysis text.
-        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        confidence: high
+        explanation: Uses existing LLM keyword relevance scores normalized to 0-100.
+        explanation_zh: 使用现有 LLM 关键词相关性评分，并归一化到 0-100。
         evidence:
-        - source: awesome.yaml
-          field: research.keywords
-          detail: matched=2
+        - source: papers.yaml
+          field: score.keyword_scores
+          detail: GUI agent,graphical user interface agent,computer use agent,computer
+            control agent,visual GUI automation,web agent,mobile agent,OS agent,screen
+            grounding,UI grounding,browser agent
       citation_impact:
         value: 0.0
         available: false
@@ -2854,7 +2856,7 @@
         explanation_zh: 该论文没有可用的 OpenAlex 标识符。
         evidence: []
       methodology_quality:
-        value: 70
+        value: 90
         available: true
         confidence: medium
         explanation: Screens visible abstract and analysis fields for experiment,
@@ -2899,23 +2901,23 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 38
+      rank_range: 17
       profiles:
         balanced:
-          rank: 62
-          score: 50.0
+          rank: 4
+          score: 73.7
         citation_heavy:
-          rank: 64
-          score: 44.2
+          rank: 11
+          score: 71.5
         method_repro_heavy:
-          rank: 29
-          score: 63.1
+          rank: 2
+          score: 80.7
         frontier_heavy:
-          rank: 61
-          score: 62.2
+          rank: 2
+          score: 80.6
         topic_heavy:
-          rank: 67
-          score: 34.4
+          rank: 19
+          score: 66.1
     keyword_scores:
       GUI agent: 9
       graphical user interface agent: 8
@@ -2970,6 +2972,11 @@
     - MLLM
     - GUI Agent
     - TASKER
+  deep_research:
+    status: planned
+    run_status: planned
+    report: resource/bridging-videoqa-and-video-guided-agentic-tasks-via-generali-2026/research.md
+    queued_at: '2026-07-07T02:33:41Z'
 - id: caped-context-aware-privacy-exposure-defense-for-mobile-gui-2026
   title: 'CAPED: Context-Aware Privacy Exposure Defense for Mobile GUI Agents'
   authors:
@@ -3023,19 +3030,20 @@
   - typing
   - gestures
   score:
-    read_first_score: 40.2
+    read_first_score: 58.3
     components:
       topical_relevance:
-        value: 34.5
+        value: 60.0
         available: true
-        confidence: medium
-        explanation: Matches configured research keywords against title, abstract,
-          tags, and analysis text.
-        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        confidence: high
+        explanation: Uses existing LLM keyword relevance scores normalized to 0-100.
+        explanation_zh: 使用现有 LLM 关键词相关性评分，并归一化到 0-100。
         evidence:
-        - source: awesome.yaml
-          field: research.keywords
-          detail: matched=9
+        - source: papers.yaml
+          field: score.keyword_scores
+          detail: GUI agent,graphical user interface agent,computer use agent,computer
+            control agent,visual GUI automation,web agent,mobile agent,OS agent,screen
+            grounding,UI grounding,browser agent
       citation_impact:
         value: 0.0
         available: false
@@ -3059,7 +3067,7 @@
         explanation_zh: 该论文没有可用的 OpenAlex 标识符。
         evidence: []
       methodology_quality:
-        value: 40
+        value: 70
         available: true
         confidence: medium
         explanation: Screens visible abstract and analysis fields for experiment,
@@ -3099,26 +3107,27 @@
     ranking_profile: paper_rank_lite_v1
     field_roles:
     - frontier
+    - methodology_anchor
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 6
+      rank_range: 11
       profiles:
         balanced:
-          rank: 68
-          score: 40.2
+          rank: 44
+          score: 58.3
         citation_heavy:
-          rank: 66
-          score: 43.5
+          rank: 38
+          score: 63.8
         method_repro_heavy:
-          rank: 70
-          score: 42.8
+          rank: 45
+          score: 59.4
         frontier_heavy:
-          rank: 68
-          score: 55.2
+          rank: 39
+          score: 70.0
         topic_heavy:
-          rank: 64
-          score: 39.1
+          rank: 34
+          score: 60.6
     keyword_scores:
       GUI agent: 9
       graphical user interface agent: 8
@@ -3386,19 +3395,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 29
+      rank_range: 31
       profiles:
         balanced:
-          rank: 26
+          rank: 27
           score: 61.9
         citation_heavy:
-          rank: 21
+          rank: 22
           score: 68.5
         method_repro_heavy:
-          rank: 44
+          rank: 46
           score: 59.3
         frontier_heavy:
-          rank: 27
+          rank: 28
           score: 72.2
         topic_heavy:
           rank: 15
@@ -3666,19 +3675,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 11
+      rank_range: 13
       profiles:
         balanced:
-          rank: 21
+          rank: 22
           score: 63.7
         citation_heavy:
-          rank: 19
+          rank: 20
           score: 68.8
         method_repro_heavy:
-          rank: 27
+          rank: 29
           score: 63.7
         frontier_heavy:
-          rank: 22
+          rank: 23
           score: 73.8
         topic_heavy:
           rank: 16
@@ -3833,19 +3842,20 @@
   - code
   - tool calls
   score:
-    read_first_score: 41.2
+    read_first_score: 37.3
     components:
       topical_relevance:
-        value: 25.0
+        value: 15.5
         available: true
-        confidence: medium
-        explanation: Matches configured research keywords against title, abstract,
-          tags, and analysis text.
-        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        confidence: high
+        explanation: Uses existing LLM keyword relevance scores normalized to 0-100.
+        explanation_zh: 使用现有 LLM 关键词相关性评分，并归一化到 0-100。
         evidence:
-        - source: awesome.yaml
-          field: research.keywords
-          detail: matched=7
+        - source: papers.yaml
+          field: score.keyword_scores
+          detail: GUI agent,graphical user interface agent,computer use agent,computer
+            control agent,visual GUI automation,web agent,mobile agent,OS agent,screen
+            grounding,UI grounding,browser agent
       citation_impact:
         value: 0.0
         available: false
@@ -3912,24 +3922,24 @@
     - bridge
     warnings: []
     rank_sensitivity:
-      stability: stable
-      rank_range: 1
+      stability: sensitive
+      rank_range: 2
       profiles:
         balanced:
-          rank: 66
-          score: 41.2
+          rank: 72
+          score: 37.3
         citation_heavy:
-          rank: 65
-          score: 43.8
+          rank: 72
+          score: 39.0
         method_repro_heavy:
-          rank: 65
-          score: 47.6
+          rank: 71
+          score: 45.4
         frontier_heavy:
-          rank: 65
-          score: 56.9
+          rank: 71
+          score: 54.0
         topic_heavy:
-          rank: 65
-          score: 36.9
+          rank: 73
+          score: 30.9
     keyword_scores:
       GUI agent: 2
       graphical user interface agent: 2
@@ -4188,22 +4198,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 28
+      rank_range: 29
       profiles:
         balanced:
-          rank: 35
+          rank: 37
           score: 59.7
         citation_heavy:
-          rank: 38
+          rank: 40
           score: 62.9
         method_repro_heavy:
-          rank: 19
+          rank: 21
           score: 65.6
         frontier_heavy:
-          rank: 31
+          rank: 32
           score: 71.7
         topic_heavy:
-          rank: 47
+          rank: 50
           score: 56.9
   analysis:
     innovations:
@@ -4475,22 +4485,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 44
+      rank_range: 46
       profiles:
         balanced:
-          rank: 15
+          rank: 16
           score: 65.6
         citation_heavy:
-          rank: 37
+          rank: 39
           score: 63.1
         method_repro_heavy:
-          rank: 4
+          rank: 5
           score: 73.4
         frontier_heavy:
-          rank: 20
+          rank: 21
           score: 74.3
         topic_heavy:
-          rank: 48
+          rank: 51
           score: 56.9
   analysis:
     innovations:
@@ -4744,16 +4754,16 @@
       rank_range: 4
       profiles:
         balanced:
-          rank: 12
+          rank: 13
           score: 65.9
         citation_heavy:
-          rank: 14
+          rank: 15
           score: 70.9
         method_repro_heavy:
-          rank: 16
+          rank: 17
           score: 67.0
         frontier_heavy:
-          rank: 14
+          rank: 15
           score: 75.8
         topic_heavy:
           rank: 13
@@ -5002,19 +5012,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 9
+      rank_range: 10
       profiles:
         balanced:
-          rank: 6
+          rank: 7
           score: 70.4
         citation_heavy:
           rank: 2
           score: 76.3
         method_repro_heavy:
-          rank: 11
+          rank: 12
           score: 69.6
         frontier_heavy:
-          rank: 5
+          rank: 6
           score: 79.1
         topic_heavy:
           rank: 2
@@ -5062,7 +5072,7 @@
     status: planned
     run_status: planned
     report: resource/dragon-a-benchmark-and-dataset-for-drag-based-gui-interacti-2026/research.md
-    queued_at: '2026-07-06T02:44:45Z'
+    queued_at: '2026-07-07T02:33:41Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.06322v1/figures/text_highlight_001870fc_cropped.jpg
     authors:
@@ -5278,22 +5288,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 24
+      rank_range: 25
       profiles:
         balanced:
-          rank: 44
+          rank: 47
           score: 58.1
         citation_heavy:
-          rank: 36
+          rank: 37
           score: 64.0
         method_repro_heavy:
-          rank: 55
+          rank: 57
           score: 57.2
         frontier_heavy:
-          rank: 42
+          rank: 45
           score: 69.4
         topic_heavy:
-          rank: 31
+          rank: 32
           score: 62.2
   analysis:
     innovations:
@@ -5559,22 +5569,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 8
+      rank_range: 10
       profiles:
         balanced:
-          rank: 52
+          rank: 55
           score: 55.8
         citation_heavy:
-          rank: 52
+          rank: 55
           score: 59.3
         method_repro_heavy:
-          rank: 45
+          rank: 47
           score: 59.2
         frontier_heavy:
-          rank: 52
+          rank: 55
           score: 67.9
         topic_heavy:
-          rank: 53
+          rank: 57
           score: 54.8
   analysis:
     innovations:
@@ -5831,22 +5841,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 14
+      rank_range: 13
       profiles:
         balanced:
-          rank: 53
+          rank: 57
           score: 54.7
         citation_heavy:
-          rank: 50
+          rank: 53
           score: 59.9
         method_repro_heavy:
-          rank: 59
+          rank: 61
           score: 55.2
         frontier_heavy:
-          rank: 54
+          rank: 57
           score: 66.9
         topic_heavy:
-          rank: 45
+          rank: 48
           score: 57.1
   analysis:
     innovations:
@@ -6075,19 +6085,19 @@
       rank_range: 24
       profiles:
         balanced:
-          rank: 11
+          rank: 12
           score: 66.8
         citation_heavy:
-          rank: 17
+          rank: 18
           score: 69.6
         method_repro_heavy:
-          rank: 5
+          rank: 6
           score: 73.0
         frontier_heavy:
-          rank: 9
+          rank: 10
           score: 77.1
         topic_heavy:
-          rank: 29
+          rank: 30
           score: 63.7
   analysis:
     innovations:
@@ -6334,19 +6344,19 @@
       rank_range: 21
       profiles:
         balanced:
-          rank: 17
+          rank: 18
           score: 65.2
         citation_heavy:
-          rank: 18
+          rank: 19
           score: 69.0
         method_repro_heavy:
-          rank: 9
+          rank: 10
           score: 70.8
         frontier_heavy:
-          rank: 13
+          rank: 14
           score: 76.2
         topic_heavy:
-          rank: 30
+          rank: 31
           score: 63.2
   analysis:
     innovations:
@@ -6595,19 +6605,19 @@
       rank_range: 11
       profiles:
         balanced:
-          rank: 33
+          rank: 35
           score: 60.6
         citation_heavy:
-          rank: 27
+          rank: 28
           score: 66.5
         method_repro_heavy:
-          rank: 37
+          rank: 38
           score: 60.7
         frontier_heavy:
-          rank: 32
+          rank: 33
           score: 71.7
         topic_heavy:
-          rank: 26
+          rank: 27
           score: 64.1
   analysis:
     innovations:
@@ -6854,19 +6864,19 @@
       rank_range: 10
       profiles:
         balanced:
-          rank: 45
+          rank: 48
           score: 57.8
         citation_heavy:
-          rank: 44
+          rank: 46
           score: 62.2
         method_repro_heavy:
-          rank: 50
+          rank: 52
           score: 58.2
         frontier_heavy:
-          rank: 48
+          rank: 51
           score: 68.9
         topic_heavy:
-          rank: 40
+          rank: 42
           score: 59.8
   analysis:
     innovations:
@@ -7198,16 +7208,16 @@
       rank_range: 7
       profiles:
         balanced:
-          rank: 4
+          rank: 5
           score: 71.6
         citation_heavy:
-          rank: 11
+          rank: 12
           score: 71.3
         method_repro_heavy:
-          rank: 6
+          rank: 7
           score: 72.6
         frontier_heavy:
-          rank: 8
+          rank: 9
           score: 77.8
         topic_heavy:
           rank: 10
@@ -7252,7 +7262,7 @@
     status: planned
     run_status: planned
     report: resource/guicrafter-weakly-supervised-gui-agent-leveraging-massive-u-2026/research.md
-    queued_at: '2026-07-06T02:44:45Z'
+    queued_at: '2026-07-07T02:33:41Z'
 - id: hansel-extracting-breadcrumbs-from-web-agent-trajectories-f-2026
   title: 'HANSEL: Extracting Breadcrumbs from Web Agent Trajectories for Interactive
     Verification'
@@ -7451,23 +7461,23 @@
     - frontier
     warnings: []
     rank_sensitivity:
-      stability: volatile
-      rank_range: 4
+      stability: sensitive
+      rank_range: 2
       profiles:
         balanced:
-          rank: 58
+          rank: 62
           score: 51.7
         citation_heavy:
-          rank: 56
+          rank: 61
           score: 56.2
         method_repro_heavy:
-          rank: 60
+          rank: 63
           score: 53.5
         frontier_heavy:
-          rank: 57
+          rank: 61
           score: 64.6
         topic_heavy:
-          rank: 56
+          rank: 61
           score: 52.5
   analysis:
     innovations:
@@ -7660,22 +7670,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 19
+      rank_range: 24
       profiles:
         balanced:
-          rank: 59
+          rank: 63
           score: 51.2
         citation_heavy:
-          rank: 62
+          rank: 67
           score: 46.5
         method_repro_heavy:
-          rank: 43
+          rank: 44
           score: 59.5
         frontier_heavy:
-          rank: 62
+          rank: 66
           score: 62.1
         topic_heavy:
-          rank: 62
+          rank: 68
           score: 39.9
   title_cn: ISE：一种基于执行的多轮操作系统智能体轨迹生成方法
   abstract_cn: 训练有能力的操作系统智能体需要同时捕捉结构化用户意图、多轮任务委派和基于执行的工具使用——这些属性在现有数据集中都不存在。我们提出ISE（意图-模拟-执行），一种三阶段合成范式，共同解决这些缺口。第一阶段通过一个4D框架（角色×领域×任务×复杂度）构建约50000个结构化意图；去重后，池中包含43956个独特意图，并在mpnet-base-v2嵌入（余弦核，q=1）上对整个池获得61.57的Vendi分数。第二阶段通过一个角色锁定的用户模拟器驱动多轮用户-智能体交互，该模拟器将每一轮用户交互基于实际执行结果，生成23132条完整轨迹，平均每个轨迹包含8.12个用户轮次和68.24个总对话轮次。第三阶段在实时、隔离的操作系统工作空间中执行每个工具调用，生成真实的故障恢复动态，而非模拟响应。在ISETrace上进行微调，使用标准协议在Qwen3-8B上，将ClawEval
@@ -7870,22 +7880,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 14
+      rank_range: 16
       profiles:
         balanced:
-          rank: 49
+          rank: 52
           score: 57.0
         citation_heavy:
-          rank: 47
+          rank: 49
           score: 61.7
         method_repro_heavy:
-          rank: 35
+          rank: 36
           score: 60.8
         frontier_heavy:
-          rank: 40
+          rank: 43
           score: 69.5
         topic_heavy:
-          rank: 49
+          rank: 52
           score: 56.8
   analysis:
     innovations:
@@ -8161,19 +8171,19 @@
       rank_range: 23
       profiles:
         balanced:
-          rank: 50
+          rank: 53
           score: 57.0
         citation_heavy:
-          rank: 41
+          rank: 43
           score: 62.6
         method_repro_heavy:
-          rank: 57
+          rank: 59
           score: 56.5
         frontier_heavy:
-          rank: 50
+          rank: 53
           score: 68.5
         topic_heavy:
-          rank: 34
+          rank: 36
           score: 60.4
   analysis:
     innovations:
@@ -8435,22 +8445,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 5
+      rank_range: 4
       profiles:
         balanced:
-          rank: 22
+          rank: 23
           score: 63.3
         citation_heavy:
-          rank: 20
+          rank: 21
           score: 68.8
         method_repro_heavy:
-          rank: 17
+          rank: 19
           score: 66.5
         frontier_heavy:
-          rank: 18
+          rank: 19
           score: 74.6
         topic_heavy:
-          rank: 22
+          rank: 23
           score: 64.4
   analysis:
     innovations:
@@ -8788,22 +8798,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 5
+      rank_range: 6
       profiles:
         balanced:
-          rank: 40
+          rank: 42
           score: 58.5
         citation_heavy:
-          rank: 42
+          rank: 44
           score: 62.5
         method_repro_heavy:
-          rank: 38
+          rank: 39
           score: 60.7
         frontier_heavy:
-          rank: 39
+          rank: 42
           score: 69.8
         topic_heavy:
-          rank: 43
+          rank: 45
           score: 58.8
   analysis:
     innovations:
@@ -9006,19 +9016,19 @@
       rank_range: 12
       profiles:
         balanced:
-          rank: 42
+          rank: 45
           score: 58.2
         citation_heavy:
-          rank: 39
+          rank: 41
           score: 62.7
         method_repro_heavy:
-          rank: 48
+          rank: 50
           score: 58.4
         frontier_heavy:
-          rank: 44
+          rank: 47
           score: 69.2
         topic_heavy:
-          rank: 36
+          rank: 38
           score: 60.3
   analysis:
     innovations:
@@ -9168,19 +9178,20 @@
   sources:
   - repo: unified-sources
   score:
-    read_first_score: 33.7
+    read_first_score: 55.7
     components:
       topical_relevance:
-        value: 20.2
+        value: 60.9
         available: true
-        confidence: medium
-        explanation: Matches configured research keywords against title, abstract,
-          tags, and analysis text.
-        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        confidence: high
+        explanation: Uses existing LLM keyword relevance scores normalized to 0-100.
+        explanation_zh: 使用现有 LLM 关键词相关性评分，并归一化到 0-100。
         evidence:
-        - source: awesome.yaml
-          field: research.keywords
-          detail: matched=5
+        - source: papers.yaml
+          field: score.keyword_scores
+          detail: GUI agent,graphical user interface agent,computer use agent,computer
+            control agent,visual GUI automation,web agent,mobile agent,OS agent,screen
+            grounding,UI grounding,browser agent
       citation_impact:
         value: 0.0
         available: false
@@ -9204,7 +9215,7 @@
         explanation_zh: 该论文没有可用的 OpenAlex 标识符。
         evidence: []
       methodology_quality:
-        value: 30
+        value: 50
         available: true
         confidence: medium
         explanation: Screens visible abstract and analysis fields for experiment,
@@ -9247,24 +9258,24 @@
     - bridge
     warnings: []
     rank_sensitivity:
-      stability: sensitive
-      rank_range: 2
+      stability: volatile
+      rank_range: 15
       profiles:
         balanced:
-          rank: 71
-          score: 33.8
+          rank: 56
+          score: 55.7
         citation_heavy:
-          rank: 72
-          score: 34.9
+          rank: 52
+          score: 60.2
         method_repro_heavy:
-          rank: 71
-          score: 38.3
+          rank: 62
+          score: 54.9
         frontier_heavy:
-          rank: 73
-          score: 49.8
+          rank: 58
+          score: 66.9
         topic_heavy:
-          rank: 72
-          score: 29.2
+          rank: 47
+          score: 58.4
     keyword_scores:
       GUI agent: 8
       graphical user interface agent: 8
@@ -9605,7 +9616,7 @@
     status: planned
     run_status: planned
     report: resource/macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026/research.md
-    queued_at: '2026-07-06T02:44:45Z'
+    queued_at: '2026-07-07T02:33:41Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.22557v1/x3.png
     authors:
@@ -9818,19 +9829,19 @@
       rank_range: 19
       profiles:
         balanced:
-          rank: 51
+          rank: 54
           score: 56.6
         citation_heavy:
-          rank: 45
+          rank: 47
           score: 62.1
         method_repro_heavy:
-          rank: 58
+          rank: 60
           score: 56.3
         frontier_heavy:
-          rank: 51
+          rank: 54
           score: 68.2
         topic_heavy:
-          rank: 39
+          rank: 41
           score: 59.9
   analysis:
     innovations:
@@ -10082,19 +10093,19 @@
       rank_range: 10
       profiles:
         balanced:
-          rank: 39
+          rank: 41
           score: 59.1
         citation_heavy:
-          rank: 34
+          rank: 35
           score: 64.7
         method_repro_heavy:
-          rank: 42
+          rank: 43
           score: 59.8
         frontier_heavy:
-          rank: 34
+          rank: 35
           score: 70.6
         topic_heavy:
-          rank: 32
+          rank: 33
           score: 61.7
   analysis:
     innovations:
@@ -10372,20 +10383,20 @@
     - methodology_anchor
     warnings: []
     rank_sensitivity:
-      stability: sensitive
-      rank_range: 3
+      stability: volatile
+      rank_range: 4
       profiles:
         balanced:
-          rank: 7
+          rank: 8
           score: 70.4
         citation_heavy:
           rank: 5
           score: 74.2
         method_repro_heavy:
-          rank: 8
+          rank: 9
           score: 71.4
         frontier_heavy:
-          rank: 6
+          rank: 7
           score: 78.7
         topic_heavy:
           rank: 6
@@ -10435,7 +10446,7 @@
     status: planned
     run_status: planned
     report: resource/memgui-agent-an-end-to-end-long-horizon-mobile-gui-agent-wi-2026/research.md
-    queued_at: '2026-07-06T02:44:45Z'
+    queued_at: '2026-07-07T02:33:41Z'
   enriched:
     authors:
     - Liu, Guangyi
@@ -10604,22 +10615,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 8
+      rank_range: 6
       profiles:
         balanced:
-          rank: 60
+          rank: 65
           score: 50.7
         citation_heavy:
-          rank: 57
+          rank: 62
           score: 55.5
         method_repro_heavy:
-          rank: 63
+          rank: 66
           score: 50.8
         frontier_heavy:
-          rank: 59
+          rank: 63
           score: 63.4
         topic_heavy:
-          rank: 55
+          rank: 60
           score: 52.9
   analysis:
     innovations:
@@ -10950,19 +10961,19 @@
       rank_range: 21
       profiles:
         balanced:
-          rank: 41
+          rank: 43
           score: 58.5
         citation_heavy:
-          rank: 46
+          rank: 48
           score: 62.1
         method_repro_heavy:
-          rank: 54
+          rank: 56
           score: 57.7
         frontier_heavy:
-          rank: 49
+          rank: 52
           score: 68.7
         topic_heavy:
-          rank: 33
+          rank: 35
           score: 60.6
   analysis:
     innovations:
@@ -11157,19 +11168,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 16
+      rank_range: 17
       profiles:
         balanced:
-          rank: 25
+          rank: 26
           score: 62.1
         citation_heavy:
-          rank: 22
+          rank: 23
           score: 68.3
         method_repro_heavy:
-          rank: 33
+          rank: 34
           score: 61.6
         frontier_heavy:
-          rank: 24
+          rank: 25
           score: 72.8
         topic_heavy:
           rank: 17
@@ -11446,19 +11457,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 23
+      rank_range: 25
       profiles:
         balanced:
-          rank: 13
+          rank: 14
           score: 65.9
         citation_heavy:
           rank: 9
           score: 72.8
         method_repro_heavy:
-          rank: 28
+          rank: 30
           score: 63.7
         frontier_heavy:
-          rank: 16
+          rank: 17
           score: 75.6
         topic_heavy:
           rank: 5
@@ -11712,19 +11723,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 10
+      rank_range: 12
       profiles:
         balanced:
-          rank: 16
+          rank: 17
           score: 65.4
         citation_heavy:
           rank: 10
           score: 71.7
         method_repro_heavy:
-          rank: 20
+          rank: 22
           score: 65.5
         frontier_heavy:
-          rank: 15
+          rank: 16
           score: 75.7
         topic_heavy:
           rank: 11
@@ -11997,19 +12008,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 14
+      rank_range: 16
       profiles:
         balanced:
-          rank: 18
+          rank: 19
           score: 64.9
         citation_heavy:
-          rank: 15
+          rank: 16
           score: 70.2
         method_repro_heavy:
-          rank: 26
+          rank: 28
           score: 64.3
         frontier_heavy:
-          rank: 19
+          rank: 20
           score: 74.6
         topic_heavy:
           rank: 12
@@ -12229,19 +12240,20 @@
   abstract_cn: 语言智能体越来越依赖可复用技能来改进跨相关任务的多步Web自动化。越来越多的研究关注在线技能学习，即智能体从先前的任务轨迹中持续归纳技能，并在未来任务中动态复用。然而，现有方法主要在任务级别复用技能：基于初始任务指令检索一组固定技能，并在执行过程中保持不变。这种静态策略与Web执行场景不匹配，因为合适的下一步动作不仅取决于任务目标，还取决于当前网页状态，而网页状态常常会过渡到初始技能无法覆盖的情况。为解决这一问题，我们提出状态引导的动态检索（SGDR），一种在线技能学习方法，使Web智能体能够逐步复用技能。SGDR包含三个组件：滑动窗口提取过程，将已完成轨迹转化为可在中间执行状态调用的可复用子程序；双文本-代码表示，连接技能检索与可执行动作；以及状态引导的动态检索机制，将技能与任务目标和当前网页状态相匹配。在WebArena五个领域的实验表明，SGDR持续优于强基线，使用GPT-4.1时平均成功率为37.5%，使用Qwen3-4B时为24.3%，分别比最强基线相对提升10.6%和10.0%。代码开源在https://github.com/plusnli/skill-dynamic-retrieval。
   grade: must_read
   score:
-    read_first_score: 43.5
+    read_first_score: 61.0
     components:
       topical_relevance:
-        value: 11.9
+        value: 41.8
         available: true
-        confidence: medium
-        explanation: Matches configured research keywords against title, abstract,
-          tags, and analysis text.
-        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        confidence: high
+        explanation: Uses existing LLM keyword relevance scores normalized to 0-100.
+        explanation_zh: 使用现有 LLM 关键词相关性评分，并归一化到 0-100。
         evidence:
-        - source: awesome.yaml
-          field: research.keywords
-          detail: matched=3
+        - source: papers.yaml
+          field: score.keyword_scores
+          detail: GUI agent,graphical user interface agent,computer use agent,computer
+            control agent,visual GUI automation,web agent,mobile agent,OS agent,screen
+            grounding,UI grounding,browser agent
       citation_impact:
         value: 0.0
         available: false
@@ -12265,7 +12277,7 @@
         explanation_zh: 该论文没有可用的 OpenAlex 标识符。
         evidence: []
       methodology_quality:
-        value: 40
+        value: 60
         available: true
         confidence: medium
         explanation: Screens visible abstract and analysis fields for experiment,
@@ -12309,23 +12321,23 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 8
+      rank_range: 41
       profiles:
         balanced:
-          rank: 64
-          score: 43.5
+          rank: 29
+          score: 61.0
         citation_heavy:
-          rank: 70
-          score: 38.6
+          rank: 58
+          score: 58.5
         method_repro_heavy:
-          rank: 62
-          score: 52.5
+          rank: 18
+          score: 66.6
         frontier_heavy:
-          rank: 67
-          score: 56.1
+          rank: 40
+          score: 69.9
         topic_heavy:
-          rank: 70
-          score: 31.3
+          rank: 59
+          score: 53.8
     keyword_scores:
       GUI agent: 7
       graphical user interface agent: 7
@@ -12703,19 +12715,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 5
+      rank_range: 4
       profiles:
         balanced:
-          rank: 9
+          rank: 10
           score: 67.1
         citation_heavy:
-          rank: 13
+          rank: 14
           score: 71.0
         method_repro_heavy:
-          rank: 13
+          rank: 14
           score: 68.9
         frontier_heavy:
-          rank: 12
+          rank: 13
           score: 76.5
         topic_heavy:
           rank: 14
@@ -12911,22 +12923,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 7
+      rank_range: 8
       profiles:
         balanced:
-          rank: 46
+          rank: 49
           score: 57.3
         citation_heavy:
-          rank: 48
+          rank: 50
           score: 61.1
         method_repro_heavy:
-          rank: 41
+          rank: 42
           score: 60.0
         frontier_heavy:
-          rank: 47
+          rank: 50
           score: 69.0
         topic_heavy:
-          rank: 46
+          rank: 49
           score: 57.1
   analysis:
     innovations:
@@ -13194,19 +13206,19 @@
       rank_range: 1
       profiles:
         balanced:
-          rank: 70
+          rank: 73
           score: 36.7
         citation_heavy:
-          rank: 69
+          rank: 73
           score: 38.8
         method_repro_heavy:
-          rank: 69
+          rank: 73
           score: 42.9
         frontier_heavy:
-          rank: 70
+          rank: 73
           score: 53.1
         topic_heavy:
-          rank: 69
+          rank: 72
           score: 31.9
   title_cn: 感知先于推理：面向高效可靠主动移动代理的预推理感知框架
   abstract_cn: 多模态大语言模型（MLLMs）显著推动了移动代理的发展，但主动移动辅助仍然具有挑战性，因为代理必须在决定*如何*协助之前先判断*何时*干预。现有系统通常将这两个决策统一在一个基于MLLM的流水线中，导致保守的干预过滤与全面的辅助生成之间的目标不一致，以及在代理应保持沉默时的冗余推理。为了解决这些限制，我们提出了**预推理感知框架（PRPF）**，这是一个基于感知先于推理的两阶段框架。PRPF引入了一个轻量级的多模态主动感知器（MPP）用于干预门控和上下文压缩，并仅在需要干预时激活主动代理推理器（PAR）。在ProactiveMobile基准上的实验表明，与ProactiveMobile基线相比，PRPF显著降低了误触发率（FTR），同时提高了成功率（SR）和推理效率。
@@ -13448,23 +13460,23 @@
     - frontier
     warnings: []
     rank_sensitivity:
-      stability: sensitive
-      rank_range: 3
+      stability: volatile
+      rank_range: 4
       profiles:
         balanced:
-          rank: 61
+          rank: 66
           score: 50.2
         citation_heavy:
-          rank: 59
+          rank: 64
           score: 54.4
         method_repro_heavy:
-          rank: 61
+          rank: 64
           score: 52.7
         frontier_heavy:
-          rank: 58
+          rank: 62
           score: 63.5
         topic_heavy:
-          rank: 58
+          rank: 63
           score: 50.2
   analysis:
     innovations:
@@ -13715,19 +13727,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 13
+      rank_range: 14
       profiles:
         balanced:
-          rank: 8
+          rank: 9
           score: 69.2
         citation_heavy:
           rank: 3
           score: 76.2
         method_repro_heavy:
-          rank: 14
+          rank: 15
           score: 67.6
         frontier_heavy:
-          rank: 7
+          rank: 8
           score: 78.5
         topic_heavy:
           rank: 1
@@ -14002,22 +14014,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 19
+      rank_range: 20
       profiles:
         balanced:
-          rank: 29
+          rank: 31
           score: 60.8
         citation_heavy:
-          rank: 32
+          rank: 33
           score: 64.8
         method_repro_heavy:
-          rank: 46
+          rank: 48
           score: 59.0
         frontier_heavy:
-          rank: 36
+          rank: 37
           score: 70.4
         topic_heavy:
-          rank: 27
+          rank: 28
           score: 64.0
   analysis:
     innovations:
@@ -14274,19 +14286,19 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 8
+      rank_range: 7
       profiles:
         balanced:
-          rank: 14
+          rank: 15
           score: 65.8
         citation_heavy:
-          rank: 12
+          rank: 13
           score: 71.2
         method_repro_heavy:
-          rank: 10
+          rank: 11
           score: 70.0
         frontier_heavy:
-          rank: 10
+          rank: 11
           score: 76.9
         topic_heavy:
           rank: 18
@@ -14539,19 +14551,19 @@
       rank_range: 12
       profiles:
         balanced:
-          rank: 43
+          rank: 46
           score: 58.2
         citation_heavy:
-          rank: 40
+          rank: 42
           score: 62.7
         method_repro_heavy:
-          rank: 49
+          rank: 51
           score: 58.4
         frontier_heavy:
-          rank: 45
+          rank: 48
           score: 69.2
         topic_heavy:
-          rank: 37
+          rank: 39
           score: 60.3
   analysis:
     innovations:
@@ -14791,22 +14803,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 32
+      rank_range: 33
       profiles:
         balanced:
-          rank: 23
+          rank: 24
           score: 62.2
         citation_heavy:
-          rank: 30
+          rank: 31
           score: 65.4
         method_repro_heavy:
-          rank: 12
+          rank: 13
           score: 69.2
         frontier_heavy:
-          rank: 21
+          rank: 22
           score: 74.0
         topic_heavy:
-          rank: 44
+          rank: 46
           score: 58.8
   analysis:
     innovations:
@@ -15053,22 +15065,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 9
+      rank_range: 7
       profiles:
         balanced:
-          rank: 63
+          rank: 67
           score: 47.8
         citation_heavy:
-          rank: 60
+          rank: 65
           score: 52.6
         method_repro_heavy:
-          rank: 66
+          rank: 69
           score: 47.1
         frontier_heavy:
-          rank: 63
+          rank: 67
           score: 60.8
         topic_heavy:
-          rank: 57
+          rank: 62
           score: 50.4
   analysis:
     innovations:
@@ -15324,23 +15336,23 @@
     - bridge
     warnings: []
     rank_sensitivity:
-      stability: sensitive
-      rank_range: 2
+      stability: stable
+      rank_range: 1
       profiles:
         balanced:
-          rank: 65
+          rank: 69
           score: 43.0
         citation_heavy:
-          rank: 63
+          rank: 69
           score: 45.8
         method_repro_heavy:
-          rank: 64
+          rank: 68
           score: 48.6
         frontier_heavy:
-          rank: 64
+          rank: 68
           score: 58.2
         topic_heavy:
-          rank: 63
+          rank: 69
           score: 39.4
   analysis:
     innovations:
@@ -15601,19 +15613,19 @@
       rank_range: 1
       profiles:
         balanced:
-          rank: 69
+          rank: 71
           score: 37.8
         citation_heavy:
-          rank: 68
+          rank: 71
           score: 40.1
         method_repro_heavy:
-          rank: 68
+          rank: 72
           score: 43.6
         frontier_heavy:
-          rank: 69
+          rank: 72
           score: 53.9
         topic_heavy:
-          rank: 68
+          rank: 71
           score: 33.6
   title_cn: 'SlimSearcher: 通过自适应奖励门控训练效率感知的网络代理'
   abstract_cn: 深度研究代理在复杂信息搜索任务中展现了卓越的能力，但这种能力伴随着高昂的计算成本。受以准确性为导向的训练范式驱动，当前模型采用蛮力策略，其特征是盲目依赖工具和表演性推理——生成长而冗余的轨迹，这些轨迹远非解决这些任务所必需，导致浪费的工具调用和过多的令牌消耗。为了克服这一效率陷阱，我们提出了SlimSearcher，一个原则性框架，它在监督微调（SFT）和强化学习（RL）两个阶段推动了准确性与计算成本之间的帕累托前沿。在SFT阶段，SlimSearcher采用帕累托高效过滤来提炼既成功又经济的轨迹，引导模型走向内在效率感知的搜索行为。在RL阶段，我们引入了自适应奖励门控，一种动态奖励塑造机制，它在采样队列中评估相对工具和令牌效率。通过将这些自适应效率指标与严格正确性门控级联，我们的方法有效避免了与绝对惩罚相关的简洁性偏差，并缓解了奖励黑客攻击。在包括GAIA、BrowseComp和XBenchDeepSearch在内的长时域基准上的大量实验表明，SlimSearcher将平均工具调用轮次减少了17%-58%，同时保持或提高了准确性。
@@ -15857,22 +15869,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 28
+      rank_range: 29
       profiles:
         balanced:
-          rank: 27
+          rank: 28
           score: 61.5
         citation_heavy:
-          rank: 51
+          rank: 54
           score: 59.7
         method_repro_heavy:
-          rank: 23
+          rank: 25
           score: 64.8
         frontier_heavy:
-          rank: 38
+          rank: 41
           score: 69.9
         topic_heavy:
-          rank: 50
+          rank: 53
           score: 56.4
   analysis:
     innovations:
@@ -16145,19 +16157,19 @@
       rank_range: 13
       profiles:
         balanced:
-          rank: 28
+          rank: 30
           score: 61.0
         citation_heavy:
-          rank: 24
+          rank: 25
           score: 67.0
         method_repro_heavy:
-          rank: 34
+          rank: 35
           score: 60.9
         frontier_heavy:
-          rank: 29
+          rank: 30
           score: 72.0
         topic_heavy:
-          rank: 21
+          rank: 22
           score: 64.6
   analysis:
     innovations:
@@ -16379,20 +16391,20 @@
     - methodology_anchor
     warnings: []
     rank_sensitivity:
-      stability: sensitive
-      rank_range: 3
+      stability: volatile
+      rank_range: 4
       profiles:
         balanced:
-          rank: 5
+          rank: 6
           score: 70.6
         citation_heavy:
           rank: 4
           score: 76.1
         method_repro_heavy:
-          rank: 7
+          rank: 8
           score: 71.8
         frontier_heavy:
-          rank: 4
+          rank: 5
           score: 79.8
         topic_heavy:
           rank: 4
@@ -16463,7 +16475,7 @@
     status: planned
     run_status: planned
     report: resource/uncertainty-quantification-for-computer-use-agents-a-benchm-2026/research.md
-    queued_at: '2026-07-06T02:44:45Z'
+    queued_at: '2026-07-07T02:33:41Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.25760v1/x1.png
     section_headers:
@@ -16698,10 +16710,10 @@
           rank: 7
           score: 73.4
         method_repro_heavy:
-          rank: 2
+          rank: 3
           score: 76.9
         frontier_heavy:
-          rank: 2
+          rank: 3
           score: 80.2
         topic_heavy:
           rank: 9
@@ -16756,7 +16768,7 @@
     status: planned
     run_status: planned
     report: resource/visualskill-multimodal-skills-for-computer-use-agents-2026/research.md
-    queued_at: '2026-07-06T02:44:45Z'
+    queued_at: '2026-07-07T02:33:41Z'
   enriched:
     figure_url: https://arxiv.org/html/2606.18448v1/figures/motivation.png
     authors:
@@ -17019,22 +17031,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 6
+      rank_range: 7
       profiles:
         balanced:
-          rank: 48
+          rank: 51
           score: 57.2
         citation_heavy:
-          rank: 43
+          rank: 45
           score: 62.4
         method_repro_heavy:
-          rank: 47
+          rank: 49
           score: 58.8
         frontier_heavy:
-          rank: 46
+          rank: 49
           score: 69.2
         topic_heavy:
-          rank: 42
+          rank: 44
           score: 58.9
   analysis:
     innovations:
@@ -17242,19 +17254,19 @@
       rank_range: 3
       profiles:
         balanced:
-          rank: 20
+          rank: 21
           score: 64.2
         citation_heavy:
-          rank: 23
+          rank: 24
           score: 68.0
         method_repro_heavy:
-          rank: 21
+          rank: 23
           score: 65.2
         frontier_heavy:
-          rank: 23
+          rank: 24
           score: 73.8
         topic_heavy:
-          rank: 20
+          rank: 21
           score: 65.4
   analysis:
     innovations:
@@ -17519,22 +17531,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 29
+      rank_range: 30
       profiles:
         balanced:
-          rank: 30
+          rank: 32
           score: 60.8
         citation_heavy:
-          rank: 54
+          rank: 57
           score: 58.8
         method_repro_heavy:
-          rank: 25
+          rank: 27
           score: 64.4
         frontier_heavy:
-          rank: 43
+          rank: 46
           score: 69.3
         topic_heavy:
-          rank: 51
+          rank: 54
           score: 55.3
   analysis:
     innovations:
@@ -17797,19 +17809,19 @@
       rank_range: 13
       profiles:
         balanced:
-          rank: 31
+          rank: 33
           score: 60.7
         citation_heavy:
-          rank: 29
+          rank: 30
           score: 65.5
         method_repro_heavy:
-          rank: 22
+          rank: 24
           score: 65.0
         frontier_heavy:
-          rank: 25
+          rank: 26
           score: 72.6
         topic_heavy:
-          rank: 35
+          rank: 37
           score: 60.4
   analysis:
     innovations:
@@ -18129,22 +18141,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 6
+      rank_range: 7
       profiles:
         balanced:
-          rank: 37
+          rank: 39
           score: 59.3
         citation_heavy:
-          rank: 35
+          rank: 36
           score: 64.5
         method_repro_heavy:
-          rank: 32
+          rank: 33
           score: 62.1
         frontier_heavy:
-          rank: 33
+          rank: 34
           score: 71.2
         topic_heavy:
-          rank: 38
+          rank: 40
           score: 60.2
   analysis:
     innovations:
@@ -18353,19 +18365,19 @@
       rank_range: 1
       profiles:
         balanced:
-          rank: 67
+          rank: 70
           score: 40.3
         citation_heavy:
-          rank: 67
+          rank: 70
           score: 42.6
         method_repro_heavy:
-          rank: 67
+          rank: 70
           score: 47.1
         frontier_heavy:
-          rank: 66
+          rank: 69
           score: 56.2
         topic_heavy:
-          rank: 66
+          rank: 70
           score: 35.4
   title_cn: 当Web代理完成但仍失败：并行Web探索的可复现触发因素与轨迹诊断
   abstract_cn: 长周期Web代理常常以最终答案评估所隐藏的方式失败：它们可能访问有用的页面，生成格式良好的答案，并自信地终止，但仍然遗漏字段、过度包含无依据的项目或依赖过时的证据。我们通过Parallel
@@ -18595,22 +18607,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 21
+      rank_range: 25
       profiles:
         balanced:
-          rank: 57
+          rank: 61
           score: 51.8
         citation_heavy:
-          rank: 61
+          rank: 66
           score: 48.9
         method_repro_heavy:
-          rank: 40
+          rank: 41
           score: 60.2
         frontier_heavy:
-          rank: 60
+          rank: 64
           score: 63.4
         topic_heavy:
-          rank: 61
+          rank: 66
           score: 41.9
   title_cn: 谁付出代价？面向真实Web智能体的利益相关者中心提示注入基准测试
   abstract_cn: 由大型语言模型驱动的Web智能体越来越多地部署在真实环境中，它们在不可信的Web内容上操作并执行具有直接后果的动作。这使得它们容易受到提示注入攻击，其中看似良性的内容嵌入了操纵智能体行为的对抗性指令。现有的安全基准采用以攻击为中心的视角，关注注入的技术可行性，而忽视了由此产生的危害的细微分布。然而，在实践中，提示注入风险是依赖于受害者的：一次单一的利用可能对不同利益相关者产生不对称的后果，并且相同的攻击模式可能根据其目标对象而表现出显著不同的有效性。为了捕捉这些特性，我们引入了StakeBench，一个以利益相关者为中心的基准，用于系统性地分类和归因真实Web智能体系统中的危害。它区分受影响的实体（例如，用户、卖家、平台），将攻击分解为具体目标，并使用互补的结果级和过程级指标评估每个案例。我们的结果揭示了显著且异构的漏洞：当前智能体无法可靠地抵抗任何一个攻击目标，并且失败分布在性质不同的模式中，从隐蔽寄生（攻击成功且不干扰用户委托的任务）到失调干扰（任务被干扰但攻击未成功）以及复合失败（对抗性目标和任务完整性同时被违反）。这些模式被传统评估所忽略，突显了在真实部署中对基于LLM的智能体进行利益相关者感知评估的必要性。基准可在https://github.com/StakeBench/SBC获取。
@@ -19033,19 +19045,19 @@
       rank_range: 4
       profiles:
         balanced:
-          rank: 19
+          rank: 20
           score: 64.5
         citation_heavy:
-          rank: 16
+          rank: 17
           score: 70.1
         method_repro_heavy:
-          rank: 15
+          rank: 16
           score: 67.1
         frontier_heavy:
-          rank: 17
+          rank: 18
           score: 75.4
         topic_heavy:
-          rank: 19
+          rank: 20
           score: 66.1
   analysis:
     innovations:
@@ -19279,22 +19291,22 @@
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 28
+      rank_range: 29
       profiles:
         balanced:
-          rank: 36
+          rank: 38
           score: 59.6
         citation_heavy:
-          rank: 28
+          rank: 29
           score: 65.8
         method_repro_heavy:
-          rank: 51
+          rank: 53
           score: 58.0
         frontier_heavy:
-          rank: 35
+          rank: 36
           score: 70.5
         topic_heavy:
-          rank: 23
+          rank: 24
           score: 64.4
   analysis:
     innovations:
@@ -19531,19 +19543,19 @@
       rank_range: 6
       profiles:
         balanced:
-          rank: 24
+          rank: 25
           score: 62.2
         citation_heavy:
-          rank: 25
+          rank: 26
           score: 67.0
         method_repro_heavy:
-          rank: 30
+          rank: 31
           score: 62.8
         frontier_heavy:
-          rank: 26
+          rank: 27
           score: 72.6
         topic_heavy:
-          rank: 24
+          rank: 25
           score: 64.4
   analysis:
     innovations:
@@ -19751,20 +19763,20 @@
     - frontier
     warnings: []
     rank_sensitivity:
-      stability: sensitive
-      rank_range: 3
+      stability: stable
+      rank_range: 0
       profiles:
         balanced:
           rank: 75
           score: 26.4
         citation_heavy:
-          rank: 74
+          rank: 75
           score: 28.0
         method_repro_heavy:
-          rank: 74
+          rank: 75
           score: 35.3
         frontier_heavy:
-          rank: 72
+          rank: 75
           score: 49.8
         topic_heavy:
           rank: 75
@@ -20063,20 +20075,20 @@
     - frontier
     warnings: []
     rank_sensitivity:
-      stability: sensitive
-      rank_range: 2
+      stability: stable
+      rank_range: 0
       profiles:
         balanced:
           rank: 76
           score: 26.4
         citation_heavy:
-          rank: 75
+          rank: 76
           score: 28.0
         method_repro_heavy:
-          rank: 75
+          rank: 76
           score: 35.3
         frontier_heavy:
-          rank: 74
+          rank: 76
           score: 49.8
         topic_heavy:
           rank: 76
@@ -20265,7 +20277,7 @@
     warnings: []
     rank_sensitivity:
       stability: stable
-      rank_range: 1
+      rank_range: 0
       profiles:
         balanced:
           rank: 77
@@ -20274,10 +20286,10 @@
           rank: 77
           score: 25.8
         method_repro_heavy:
-          rank: 76
+          rank: 77
           score: 32.9
         frontier_heavy:
-          rank: 76
+          rank: 77
           score: 44.5
         topic_heavy:
           rank: 77
@@ -20915,22 +20927,22 @@
     warnings: []
     rank_sensitivity:
       stability: stable
-      rank_range: 1
+      rank_range: 0
       profiles:
         balanced:
-          rank: 72
+          rank: 74
           score: 32.9
         citation_heavy:
-          rank: 71
+          rank: 74
           score: 35.3
         method_repro_heavy:
-          rank: 72
+          rank: 74
           score: 38.1
         frontier_heavy:
-          rank: 71
+          rank: 74
           score: 50.2
         topic_heavy:
-          rank: 71
+          rank: 74
           score: 29.6
   grade: skip
   taxonomy:
@@ -21091,19 +21103,20 @@
       <sup></sup>ANU <sup></sup>HCMUT <sup></sup>Alibaba <sup></sup>All Hands AI xingyao@illinois.edu,
       gneubig@cs.cmu.edu
   score:
-    read_first_score: 28.7
+    read_first_score: 45.4
     components:
       topical_relevance:
-        value: 7.1
+        value: 29.1
         available: true
-        confidence: medium
-        explanation: Matches configured research keywords against title, abstract,
-          tags, and analysis text.
-        explanation_zh: 将配置的研究关键词与标题、摘要、标签和分析文本进行匹配。
+        confidence: high
+        explanation: Uses existing LLM keyword relevance scores normalized to 0-100.
+        explanation_zh: 使用现有 LLM 关键词相关性评分，并归一化到 0-100。
         evidence:
-        - source: awesome.yaml
-          field: research.keywords
-          detail: matched=2
+        - source: papers.yaml
+          field: score.keyword_scores
+          detail: GUI agent,graphical user interface agent,computer use agent,computer
+            control agent,visual GUI automation,web agent,mobile agent,OS agent,screen
+            grounding,UI grounding,browser agent
       citation_impact:
         value: 0.0
         available: false
@@ -21127,7 +21140,7 @@
         explanation_zh: 该论文没有可用的 OpenAlex 标识符。
         evidence: []
       methodology_quality:
-        value: 40
+        value: 70
         available: true
         confidence: medium
         explanation: Screens visible abstract and analysis fields for experiment,
@@ -21136,7 +21149,7 @@
         evidence:
         - source: papers.yaml
           field: abstract/analysis
-          detail: markers=benchmark,evaluation
+          detail: markers=benchmark,evaluation,metric
       reproducibility:
         value: 38
         available: true
@@ -21166,27 +21179,27 @@
       recency: 0.083333
     ranking_profile: paper_rank_lite_v1
     field_roles:
-    - candidate
+    - methodology_anchor
     warnings: []
     rank_sensitivity:
       stability: volatile
-      rank_range: 4
+      rank_range: 5
       profiles:
         balanced:
-          rank: 73
-          score: 28.7
+          rank: 68
+          score: 45.4
         citation_heavy:
-          rank: 76
-          score: 27.7
+          rank: 68
+          score: 46.2
         method_repro_heavy:
-          rank: 73
-          score: 35.8
+          rank: 65
+          score: 51.6
         frontier_heavy:
-          rank: 77
-          score: 40.4
+          rank: 70
+          score: 54.1
         topic_heavy:
-          rank: 74
-          score: 21.4
+          rank: 67
+          score: 40.8
     keyword_scores:
       GUI agent: 2
       graphical user interface agent: 2
@@ -21231,3 +21244,14 @@
     - application
     confidence: 0.69
     evidence: benchmark
+  title_cn: OpenDevin：面向通用型AI软件开发者的开放平台
+  abstract_cn: 软件是人类拥有的最强大的工具之一；它允许熟练的程序员以复杂而深刻的方式与世界互动。同时，得益于大型语言模型（LLMs）的改进，能够与其周围环境交互并产生影响的AI智能体也迅速发展。在本文中，我们介绍了OpenDevin，一个用于开发强大且灵活的AI智能体的平台，这些智能体以类似于人类开发者的方式与世界交互：编写代码、与命令行交互以及浏览网页。我们描述了该平台如何支持新智能体的实现、与沙盒环境的安全交互以执行代码、多个智能体之间的协调以及评估基准的整合。基于我们目前整合的基准，我们在15个具有挑战性的任务上对智能体进行了评估，包括软件工程（例如SWE-Bench）和网页浏览（例如WebArena）等。OpenDevin在宽松的MIT许可下发布，是一个跨越学术界和工业界的社区项目，拥有来自160多位贡献者的超过1300次贡献，并将持续改进。
+  tldr_cn: OpenDevin：开放平台，构建通过代码、命令行和网页浏览交互的AI智能体，评估软件工程和网页任务。
+  analysis_cn:
+    innovations:
+    - 用于AI智能体的开放平台，这些智能体像人类开发者一样交互：编写代码、使用命令行和浏览网页。
+    - 支持安全的沙盒代码执行、多智能体协调以及评估基准的整合。
+    methodology: 我们介绍了OpenDevin，一个使智能体能够通过代码、命令行和网页浏览与环境交互的平台，具有沙盒执行和多智能体支持。我们在来自SWE-Bench和WebArena等基准的15个任务上评估了智能体。
+    key_results: 智能体在涵盖软件工程和网页浏览的15个具有挑战性的任务上进行了评估，展示了该平台的多功能性，但摘要中未提供具体的性能指标。
+    limitations: []
+    tech_stack: []

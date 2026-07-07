@@ -1,17 +1,17 @@
-# VISUALSKILL: Multimodal Skills for Computer-Use Agents
+# Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction
 
 - Status: planned
 - Generated at: 2026-07-07T02:33:41Z
-- Read-first score: 74.4
-- Paper: https://arxiv.org/abs/2606.18448v1
-- Code: https://github.com/XMHZZ2018/VisualSkills.
+- Read-first score: 73.7
+- Paper: https://arxiv.org/abs/2606.29445v1
+- Code: https://github.com/VG-GUI-TASKER/VG-GUI-TASKER.
 
 ## Score Signals
 
 - recency: 100.0 - Uses a gentle age decay so recent papers surface without erasing older foundations.
+- methodology_quality: 90 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
 - reproducibility: 85 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
-- methodology_quality: 70 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
-- topical_relevance: 65.5 - Uses existing LLM keyword relevance scores normalized to 0-100.
+- topical_relevance: 51.8 - Uses existing LLM keyword relevance scores normalized to 0-100.
 - citation_impact: 0.0 - No OpenAlex identifier was available for this paper.
 - graph_prestige: 0.0 - No local citation edges were available, so graph prestige is excluded.
 - citation_velocity: 0.0 - No OpenAlex identifier was available for this paper.
