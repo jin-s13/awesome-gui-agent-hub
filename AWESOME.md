@@ -81,6 +81,7 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 37.8 | method | [SlimSearcher: Training Efficiency-Aware Web Agents via Adaptive Reward Gating](https://arxiv.org/abs/2606.07074v1) | SlimSearcher trains efficiency-aware web agents using Pareto-efficient filtration and adaptive reward gating to reduce tool calls while maintaining accuracy. |
 | 2026 | 37.3 | method, benchmark | [ComAct: Reframing Professional Software Manipulation via COM-as-Action Paradigm](https://arxiv.org/abs/2606.13239v2) | Proposes COM-as-Action paradigm for professional software manipulation using Component Object Model, introduces ComCADBench benchmark, and develops ComActor agent. |
 | 2026 | 36.7 | method, system | [Perceive Before Reasoning: A Pre-Reasoning Perception Framework for Efficient and Reliable Proactive Mobile Agents](https://arxiv.org/abs/2606.03236v1) | Proposes a two-stage framework (PRPF) with a lightweight perceptor for intervention gating and a reasoner for proactive mobile agents, reducing false triggers and improving effici... |
+| 2026 | 35.3 | method, benchmark | [UI-MOPD: Multi-Platform On-Policy Distillation for Continual GUI Agent Learning](https://arxiv.org/abs/2607.04425) | Proposes UI-MOPD, a multi-teacher on-policy distillation method for continual learning of GUI agents across platforms, achieving improved task success on OSWorld and MobileWorld. |
 | 2026 | 26.4 | method | [AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations from LLMs](https://openreview.net/forum?id=wl4c9jvcyY) |  |
 | 2026 | 26.4 | method | [UI-Pro: A Hidden Recipe for Building Vision-Language Models for GUI Grounding](https://openreview.net/forum?id=5wmAfwDBoi) |  |
 | 2025 | 32.9 | survey | [AI Agents for Computer Use: A Review of Instruction-based Computer Control, GUI Automation, and Operator Assistants](https://arxiv.org/abs/2501.16150) |  |
@@ -93,4 +94,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **80**.
+Total papers: **81**.
