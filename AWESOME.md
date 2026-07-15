@@ -78,12 +78,14 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 50.7 | method | [MemVenom: Triggered Poisoning of Multimodal Memories in Web Agents](https://arxiv.org/abs/2606.10742v1) | MemVenom poisons multimodal memories in web agents via trigger-conditioned retrieval and adversarial perturbations, achieving high attack success. |
 | 2026 | 50.6 | method | [Untrusted Content Masking for Web Agents with Security Guarantees](https://arxiv.org/abs/2607.05277v1) | A method to restore trust boundaries in web agents by masking untrusted content in the DOM before agent processing. |
 | 2026 | 50.2 | benchmark, system | [PhoneHarness: Harnessing Phone-Use Agents through Mixed GUI, CLI, and Tool Actions](https://arxiv.org/abs/2606.14832v1) | PhoneHarness is a mixed-action benchmark and harness for phone agents combining GUI, CLI, and tool actions with verifiable execution traces. |
+| 2026 | 48.5 | method, system | [SCALECUA: Scaling Computer Use Agents with Verifiable Task Synthesis and Efficient Online RL](https://arxiv.org/abs/2607.11185v1) | ScaleCUA scales online RL for computer use agents via verifiable task synthesis and efficient training, achieving SOTA on OSWorld and ScienceBoard. |
 | 2026 | 47.8 | method | [Skill-Guided Continuation Distillation for GUI Agents](https://arxiv.org/abs/2606.18890v1) | SGCD improves GUI agents by using skill-guided continuation to supervise off-trajectory states, boosting success rates on OSWorld-Verified from ~30% to >50%. |
 | 2026 | 43 | method, system | [SkillHarness: Harnessing Safe Skills for Computer-Use Agents](https://arxiv.org/abs/2606.20636v1) | SkillHarness proposes a framework for safe skill learning in dynamic environments for Computer-Use Agents, using skill boundaries and selective reuse to reduce unsafe rates by 57.... |
 | 2026 | 40.3 | method, benchmark | [When Web Agents Finish but Still Fail: Reproducible Triggers and Trace Diagnostics for Parallel Web Exploration](https://arxiv.org/abs/2606.20724v2) | Study of hidden failures in long-horizon web agents, introducing Parallel WebBench benchmark and GRPO training, identifying persistent failure modes. |
 | 2026 | 37.8 | method | [SlimSearcher: Training Efficiency-Aware Web Agents via Adaptive Reward Gating](https://arxiv.org/abs/2606.07074v1) | SlimSearcher trains efficiency-aware web agents using Pareto-efficient filtration and adaptive reward gating to reduce tool calls while maintaining accuracy. |
 | 2026 | 37.3 | method, benchmark | [ComAct: Reframing Professional Software Manipulation via COM-as-Action Paradigm](https://arxiv.org/abs/2606.13239v2) | Proposes COM-as-Action paradigm for professional software manipulation using Component Object Model, introduces ComCADBench benchmark, and develops ComActor agent. |
 | 2026 | 36.7 | method, system | [Perceive Before Reasoning: A Pre-Reasoning Perception Framework for Efficient and Reliable Proactive Mobile Agents](https://arxiv.org/abs/2606.03236v1) | Proposes a two-stage framework (PRPF) with a lightweight perceptor for intervention gating and a reasoner for proactive mobile agents, reducing false triggers and improving effici... |
+| 2026 | 33.3 | method, theory | [A Learning-Rate-Gated Failure of GRPO in a Small Language and Vision-Language Model Web Agent: A Controlled Null and Its Mechanism](https://arxiv.org/abs/2607.12640v1) | GRPO fails to improve a small web agent on mastered tasks; only helps when there is headroom, with learning rate gating failure. |
 | 2026 | 26.4 | method | [AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations from LLMs](https://openreview.net/forum?id=wl4c9jvcyY) |  |
 | 2026 | 26.4 | method | [UI-Pro: A Hidden Recipe for Building Vision-Language Models for GUI Grounding](https://openreview.net/forum?id=5wmAfwDBoi) |  |
 | 2025 | 32.9 | survey | [AI Agents for Computer Use: A Review of Instruction-based Computer Control, GUI Automation, and Operator Assistants](https://arxiv.org/abs/2501.16150) |  |
@@ -96,4 +98,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **83**.
+Total papers: **85**.

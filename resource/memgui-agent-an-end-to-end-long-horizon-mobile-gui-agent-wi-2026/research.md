@@ -1,7 +1,7 @@
 # MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management
 
 - Status: planned
-- Generated at: 2026-07-14T01:55:56Z
+- Generated at: 2026-07-15T01:52:44Z
 - Read-first score: 70.4
 - Paper: https://arxiv.org/abs/2606.19926v1
 - Code: 
