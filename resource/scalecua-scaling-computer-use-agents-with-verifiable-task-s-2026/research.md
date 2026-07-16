@@ -1,25 +1,25 @@
-# VISUALSKILL: Multimodal Skills for Computer-Use Agents
+# SCALECUA: Scaling Computer Use Agents with Verifiable Task Synthesis and Efficient Online RL
 
 - Status: planned
 - Generated at: 2026-07-16T02:03:06Z
-- Read-first score: 74.4
-- Paper: https://arxiv.org/abs/2606.18448v1
-- Code: https://github.com/XMHZZ2018/VisualSkills.
+- Read-first score: 73.0
+- Paper: https://arxiv.org/abs/2607.11185v1
+- Code: https://github.com/THUDM/SCALE-CUA.
 
 ## Score Signals
 
 - recency: 100.0 - Uses a gentle age decay so recent papers surface without erasing older foundations.
 - reproducibility: 85 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
-- methodology_quality: 70 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
-- topical_relevance: 65.5 - Uses existing LLM keyword relevance scores normalized to 0-100.
+- topical_relevance: 68.2 - Uses existing LLM keyword relevance scores normalized to 0-100.
+- methodology_quality: 60 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
 - citation_impact: 0.0 - No OpenAlex identifier was available for this paper.
 - graph_prestige: 0.0 - No local citation edges were available, so graph prestige is excluded.
 - citation_velocity: 0.0 - No OpenAlex identifier was available for this paper.
 
 ## Critique
 
-- Strength: Visible methodology or evaluation signals make it worth reading early.
 - Strength: Reproducibility signals suggest useful code, data, paper, or artifact paths.
+- Concern: Methodology details may be incomplete in the current metadata.
 - Concern: Ranking evidence is triage only; full text, metrics, baselines, and limitations still need inspection.
 
 ## Next Research Actions

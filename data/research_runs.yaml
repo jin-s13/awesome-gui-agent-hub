@@ -1,9 +1,9 @@
 schema_version: awesome-hub.researchRuns.v1
-generated_at: '2026-07-15T01:52:44Z'
+generated_at: '2026-07-16T02:03:06Z'
 runs:
-- run_id: deep_research:1e136eaead9728ff
+- run_id: deep_research:52a8153a49f85d4d
   workflow: deep_research
-  generated_at: '2026-07-15T01:52:44Z'
+  generated_at: '2026-07-16T02:03:06Z'
   status: planned
   research_jobs:
   - reading_paper_content
@@ -173,10 +173,49 @@ runs:
       acceptance_criteria:
       - Artifact URLs resolve and match the paper.
       - Missing artifacts are recorded as verification gaps, not negative evidence.
+  - id: scalecua-scaling-computer-use-agents-with-verifiable-task-s-2026
+    title: 'SCALECUA: Scaling Computer Use Agents with Verifiable Task Synthesis and
+      Efficient Online RL'
+    rank: 5
+    score: 73.0
+    year: 2026
+    url: https://arxiv.org/abs/2607.11185v1
+    verification:
+      state: not_checked
+      summary: Queued from local metadata; full text and code have not been verified.
+    critique:
+      verdict: read_first
+      strengths:
+      - Reproducibility signals suggest useful code, data, paper, or artifact paths.
+      concerns:
+      - Methodology details may be incomplete in the current metadata.
+      - Ranking evidence is triage only; full text, metrics, baselines, and limitations
+        still need inspection.
+      follow_up_questions:
+      - Read the full paper and extract central claims with source locations.
+      - Verify code, dataset, benchmark, metric, checkpoint, and artifact links before
+        describing them as available.
+      - Compare reported claims against baselines and limitations before using this
+        paper in a literature review.
+    next_actions:
+    - id: scalecua-scaling-computer-use-agents-with-verifiable-task-s-2026:verify-source-spans
+      type: read
+      priority: high
+      title: Extract claim-level source spans from the paper.
+      acceptance_criteria:
+      - Each central claim has a section, figure, table, or paragraph pointer.
+      - Method, dataset, baseline, metric, and limitation claims are separated.
+    - id: scalecua-scaling-computer-use-agents-with-verifiable-task-s-2026:check-artifacts
+      type: verify
+      priority: medium
+      title: Verify linked code, datasets, checkpoints, and benchmark artifacts.
+      acceptance_criteria:
+      - Artifact URLs resolve and match the paper.
+      - Missing artifacts are recorded as verification gaps, not negative evidence.
   - id: guicrafter-weakly-supervised-gui-agent-leveraging-massive-u-2026
     title: 'GUICrafter: Weakly-Supervised GUI Agent Leveraging Massive Unannotated
       Screenshots'
-    rank: 5
+    rank: 6
     score: 71.6
     year: 2026
     url: https://arxiv.org/abs/2606.29705v1
@@ -215,7 +254,7 @@ runs:
   - id: uncertainty-quantification-for-computer-use-agents-a-benchm-2026
     title: 'Uncertainty Quantification for Computer-Use Agents: A Benchmark across
       Vision-Language Models and GUI Grounding Datasets'
-    rank: 6
+    rank: 7
     score: 70.6
     year: 2026
     url: https://arxiv.org/abs/2606.25760v1
@@ -253,7 +292,7 @@ runs:
       - Missing artifacts are recorded as verification gaps, not negative evidence.
   - id: dragon-a-benchmark-and-dataset-for-drag-based-gui-interacti-2026
     title: 'DragOn: A Benchmark and Dataset for Drag-Based GUI Interactions'
-    rank: 7
+    rank: 8
     score: 70.4
     year: 2026
     url: https://arxiv.org/abs/2606.06322v1
@@ -293,7 +332,7 @@ runs:
   - id: memgui-agent-an-end-to-end-long-horizon-mobile-gui-agent-wi-2026
     title: 'MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive
       Context Management'
-    rank: 8
+    rank: 9
     score: 70.4
     year: 2026
     url: https://arxiv.org/abs/2606.19926v1
@@ -358,6 +397,13 @@ runs:
     primary: false
     format: markdown
   - kind: report
+    path: resource/scalecua-scaling-computer-use-agents-with-verifiable-task-s-2026/research.md
+    label: 'Deep research stub: SCALECUA: Scaling Computer Use Agents with Verifiable
+      Task Synthesis and Efficient Online RL'
+    role: planned deep research brief
+    primary: false
+    format: markdown
+  - kind: report
     path: resource/guicrafter-weakly-supervised-gui-agent-leveraging-massive-u-2026/research.md
     label: 'Deep research stub: GUICrafter: Weakly-Supervised GUI Agent Leveraging
       Massive Unannotated Screenshots'
@@ -394,6 +440,7 @@ runs:
     - resource/visualskill-multimodal-skills-for-computer-use-agents-2026/research.md
     - resource/benchmarking-living-screen-native-gui-agents-on-short-video-2026/research.md
     - resource/bridging-videoqa-and-video-guided-agentic-tasks-via-generali-2026/research.md
+    - resource/scalecua-scaling-computer-use-agents-with-verifiable-task-s-2026/research.md
     - resource/guicrafter-weakly-supervised-gui-agent-leveraging-massive-u-2026/research.md
     - resource/uncertainty-quantification-for-computer-use-agents-a-benchm-2026/research.md
     - resource/dragon-a-benchmark-and-dataset-for-drag-based-gui-interacti-2026/research.md
