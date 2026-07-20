@@ -92,6 +92,7 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 37.3 | method, benchmark | [ComAct: Reframing Professional Software Manipulation via COM-as-Action Paradigm](https://arxiv.org/abs/2606.13239v2) | Proposes COM-as-Action paradigm for professional software manipulation using Component Object Model, introduces ComCADBench benchmark, and develops ComActor agent. |
 | 2026 | 36.7 | method, system | [Perceive Before Reasoning: A Pre-Reasoning Perception Framework for Efficient and Reliable Proactive Mobile Agents](https://arxiv.org/abs/2606.03236v1) | Proposes a two-stage framework (PRPF) with a lightweight perceptor for intervention gating and a reasoner for proactive mobile agents, reducing false triggers and improving effici... |
 | 2026 | 35.9 | method | [OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis](https://arxiv.org/abs/2603.20278) | OpenResearcher is a reproducible pipeline for synthesizing long-horizon deep research trajectories using offline browser primitives over a 15M-document corpus. |
+| 2026 | 33.2 | method | [SeerGuard: A Safety Framework for Mobile GUI Agents via World Model Prediction](https://arxiv.org/abs/2607.15550v1) | SeerGuard is a proactive safety framework for mobile GUI agents that uses world model prediction to assess risks before execution. |
 | 2026 | 26.4 | method | [AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations from LLMs](https://openreview.net/forum?id=wl4c9jvcyY) |  |
 | 2026 | 26.4 | method | [UI-Pro: A Hidden Recipe for Building Vision-Language Models for GUI Grounding](https://openreview.net/forum?id=5wmAfwDBoi) |  |
 | 2025 | 32.9 | survey | [AI Agents for Computer Use: A Review of Instruction-based Computer Control, GUI Automation, and Operator Assistants](https://arxiv.org/abs/2501.16150) |  |
@@ -104,4 +105,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **91**.
+Total papers: **92**.
