@@ -96,6 +96,7 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 36.7 | method, system | [Perceive Before Reasoning: A Pre-Reasoning Perception Framework for Efficient and Reliable Proactive Mobile Agents](https://arxiv.org/abs/2606.03236v1) | Proposes a two-stage framework (PRPF) with a lightweight perceptor for intervention gating and a reasoner for proactive mobile agents, reducing false triggers and improving effici... |
 | 2026 | 35.9 | method | [OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis](https://arxiv.org/abs/2603.20278) | OpenResearcher is a reproducible pipeline for synthesizing long-horizon deep research trajectories using offline browser primitives over a 15M-document corpus. |
 | 2026 | 32.5 | method | [DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment](https://arxiv.org/abs/2607.07820) | Self-distillation framework for web agents using a verifiable environment with 420K multi-hop QA tasks, achieving competitive performance on benchmarks. |
+| 2026 | 28.3 | method | [DocOps: A Verifiable Benchmark for Autonomous Agents in Complex Document Operations](https://arxiv.org/abs/2607.19865) | DocOps is a verifiable benchmark for evaluating autonomous agents on complex document operations, revealing key failure modes. |
 | 2026 | 26.4 | method | [AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations from LLMs](https://openreview.net/forum?id=wl4c9jvcyY) |  |
 | 2026 | 26.4 | method | [UI-Pro: A Hidden Recipe for Building Vision-Language Models for GUI Grounding](https://openreview.net/forum?id=5wmAfwDBoi) |  |
 | 2025 | 32.9 | survey | [AI Agents for Computer Use: A Review of Instruction-based Computer Control, GUI Automation, and Operator Assistants](https://arxiv.org/abs/2501.16150) |  |
@@ -108,4 +109,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **95**.
+Total papers: **96**.
