@@ -91,12 +91,13 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 43.7 | method | [UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation](https://arxiv.org/abs/2607.06306) | Introduces UI2App, a benchmark evaluating how well models infer interactions from screenshots to generate executable web applications. |
 | 2026 | 43 | method, system | [SkillHarness: Harnessing Safe Skills for Computer-Use Agents](https://arxiv.org/abs/2606.20636v1) | SkillHarness proposes a framework for safe skill learning in dynamic environments for Computer-Use Agents, using skill boundaries and selective reuse to reduce unsafe rates by 57.... |
 | 2026 | 40.3 | method, benchmark | [When Web Agents Finish but Still Fail: Reproducible Triggers and Trace Diagnostics for Parallel Web Exploration](https://arxiv.org/abs/2606.20724v2) | Study of hidden failures in long-horizon web agents, introducing Parallel WebBench benchmark and GRPO training, identifying persistent failure modes. |
+| 2026 | 39.7 | method, system | [OpenForgeRL: Train Harness-native Agents in Any Environment](https://arxiv.org/abs/2607.21557) | OpenForgeRL is an open-source framework for training harness-based agents end-to-end across diverse environments, including GUI and computer-use tasks. |
 | 2026 | 37.8 | method | [SlimSearcher: Training Efficiency-Aware Web Agents via Adaptive Reward Gating](https://arxiv.org/abs/2606.07074v1) | SlimSearcher trains efficiency-aware web agents using Pareto-efficient filtration and adaptive reward gating to reduce tool calls while maintaining accuracy. |
 | 2026 | 37.3 | method, benchmark | [ComAct: Reframing Professional Software Manipulation via COM-as-Action Paradigm](https://arxiv.org/abs/2606.13239v2) | Proposes COM-as-Action paradigm for professional software manipulation using Component Object Model, introduces ComCADBench benchmark, and develops ComActor agent. |
 | 2026 | 36.7 | method, system | [Perceive Before Reasoning: A Pre-Reasoning Perception Framework for Efficient and Reliable Proactive Mobile Agents](https://arxiv.org/abs/2606.03236v1) | Proposes a two-stage framework (PRPF) with a lightweight perceptor for intervention gating and a reasoner for proactive mobile agents, reducing false triggers and improving effici... |
 | 2026 | 35.9 | method | [OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis](https://arxiv.org/abs/2603.20278) | OpenResearcher is a reproducible pipeline for synthesizing long-horizon deep research trajectories using offline browser primitives over a 15M-document corpus. |
 | 2026 | 32.5 | method | [DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment](https://arxiv.org/abs/2607.07820) | Self-distillation framework for web agents using a verifiable environment with 420K multi-hop QA tasks, achieving competitive performance on benchmarks. |
-| 2026 | 28.3 | method | [DocOps: A Verifiable Benchmark for Autonomous Agents in Complex Document Operations](https://arxiv.org/abs/2607.19865) | DocOps is a verifiable benchmark for evaluating autonomous agents on complex document operations, revealing key failure modes. |
+| 2026 | 31.4 | method | [DocOps: A Verifiable Benchmark for Autonomous Agents in Complex Document Operations](https://arxiv.org/abs/2607.19865) | DocOps is a verifiable benchmark for evaluating autonomous agents on complex document operations, revealing key failure modes. |
 | 2026 | 26.4 | method | [AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations from LLMs](https://openreview.net/forum?id=wl4c9jvcyY) |  |
 | 2026 | 26.4 | method | [UI-Pro: A Hidden Recipe for Building Vision-Language Models for GUI Grounding](https://openreview.net/forum?id=5wmAfwDBoi) |  |
 | 2025 | 32.9 | survey | [AI Agents for Computer Use: A Review of Instruction-based Computer Control, GUI Automation, and Operator Assistants](https://arxiv.org/abs/2501.16150) |  |
@@ -109,4 +110,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **96**.
+Total papers: **97**.
