@@ -1,5 +1,5 @@
 schema_version: awesome-hub.surveys.v1
-generated_at: '2026-07-27T02:17:20Z'
+generated_at: '2026-07-28T01:59:47Z'
 topics:
 - id: method
   label: method
@@ -7,7 +7,7 @@ topics:
   description: GUI agent models, planning, grounding, action prediction, training,
     or reasoning methods
   description_zh: ''
-  paper_count: 78
+  paper_count: 81
   top_tags:
   - AI
   - CL
@@ -21,10 +21,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 62.9
+    methodology_quality: 61.9
     recency: 98.9
-    reproducibility: 41.2
-    topical_relevance: 50.9
+    reproducibility: 40.9
+    topical_relevance: 49.8
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
@@ -72,119 +72,135 @@ topics:
     score: 70.4
     url: https://arxiv.org/abs/2606.19926v1
   related_work_outline:
-  - 'Mainstream direction: Developing more realistic, dynamic, and multi-modal benchmarks
-    for GUI agents while reducing data requirements through RL or weakly-supervised
-    training, improving long-horizon and complex interaction capabilities, and introducing
-    uncertainty quantification for safety.'
-  - 'Shared research pattern: All works ground agents in visual-language models, focus
-    on data efficiency or task generalization, but evaluation protocols and training
-    objectives remain unstandardized.'
-  - 'Key differences: Evaluation metrics (rule-based scoring, cost-accuracy, UQ),
-    training paradigms (online RL, weakly-supervised, keyframe selection), interaction
-    coverage (click, drag, observation control), and context management strategies
-    (passive vs. proactive) differ significantly.'
-  - 'Trend evolution: From 2024 to 2026, research rapidly shifts from static desktop
-    benchmarks to dynamic, long-horizon, multi-interaction real-world scenarios, while
-    increasingly emphasizing training efficiency and safety, reflecting a fast-iterating
-    frontier.'
-  - 'Open questions: How to integrate heterogeneous interaction modes, training objectives,
-    and evaluation metrics; generalization of UQ across models and tasks; bridging
-    the gap between benchmarks and real-world deployment.'
+  - 'Mainstream direction: building higher-fidelity GUI agent benchmarks (desktop,
+    mobile, short-video platforms) that capture real-world complexity, and developing
+    data-efficient training methods via weak supervision, verifiable task synthesis,
+    and online RL.'
+  - 'Shared research pattern: almost all works focus on improving visual grounding
+    and action prediction; they evaluate on multi-step task completion, often using
+    fine-grained metrics like sub-goal success or cost-accuracy to reveal model weaknesses
+    beyond pass rates.'
+  - 'Key differences: evaluation environments are fragmented (macOS desktop, browsing-based
+    short-video, mobile) with distinct action spaces (click, drag, GUI+CLI, dynamic
+    observation); training paradigms range from SFT with context management to online
+    RL with synthetic tasks, while uncertainty quantification addresses only single-step
+    grounding.'
+  - 'Trend evolution: the frontier (2024–2026) is shifting from static GUI screens
+    to dynamic, living-screen and video-guided tasks, from click-only to drag and
+    mixed-mode interaction, and from fully human-annotated data to weak supervision
+    and automated task generation pipelines.'
+  - 'Open questions: how to transfer uncertainty quantification from single-step to
+    multi-step agents, whether weak supervision generalizes to complex interaction
+    types like drag, how to design adaptive context management for open-ended long-horizon
+    tasks, and how to align evaluation across heterogeneous benchmarks.'
   related_work_outline_zh:
-  - 主流方向：构建更真实、动态、多模态的GUI代理基准，同时通过RL或弱监督训练降低数据需求，提升长时域和复杂交互能力，并引入不确定性量化以增强安全性。
-  - 研究共性：所有工作都将代理建立在视觉-语言模型上，关注数据效率或任务泛化，但评估协议和训练目标尚未统一。
-  - 关键差异：评估指标（规则评分、成本-准确性、UQ）、训练范式（在线RL、弱监督、关键帧选择）、交互覆盖（点击、拖拽、观察控制）和上下文管理策略（被动 vs
-    主动）存在显著差异。
-  - 趋势演进：从2024到2026年，研究从静态桌面基准快速转向动态、长时域、多交互的真实场景，同时越来越强调训练效率和安全性，反映了快速迭代的前沿趋势。
-  - 开放问题：如何整合异构交互模式、训练目标和评估指标；UQ在跨模型和跨任务中的泛化；弥合基准与真实世界部署之间的差距。
+  - 主流方向：构建更高保真度的GUI代理基准（桌面、移动、短视频平台），捕捉真实世界的复杂性，并通过弱监督、可验证任务合成和在线强化学习开发数据高效的训练方法。
+  - 研究共性：几乎所有工作都关注提升视觉定位和动作预测能力；它们评估多步任务完成情况，通常使用细粒度指标（如子目标成功率或成本-准确率）揭示模型在通过率之外的弱点。
+  - 关键差异：评估环境碎片化（macOS桌面、基于浏览器的短视频、移动端），动作空间各异（点击、拖拽、GUI+CLI、动态观察）；训练范式从带上下文管理的SFT到合成任务的在线RL，而不确定性量化仅处理单步基础。
+  - 趋势演进：前沿（2024–2026）正从静态GUI屏幕转向动态、实时屏幕和视频引导任务，从仅点击到拖拽和多模式交互，从完全人工标注数据到弱监督和自动化任务生成流程。
+  - 开放问题：如何将不确定性量化从单步迁移到多步代理，弱监督能否推广到拖拽等复杂交互类型，如何为开放式长周期任务设计自适应上下文管理，以及如何在不同的基准之间进行对齐评估。
   literature_review:
     line_of_work_matrix:
-    - line: GUI agent benchmarking and evaluation protocols
-      what_it_solves: Provides standardized environments, tasks, and metrics to measure
-        agent capabilities across diverse interactions and scenarios, including dynamic
-        content, drag, and long-horizon tasks.
-      what_remains_open: Metrics lack unification, making cross-benchmark comparison
-        difficult; real-world deployment dynamics and safety are not fully covered;
-        most benchmarks only cover partial interaction types.
-    - line: Training methods for GUI agents (data efficiency and task synthesis)
-      what_it_solves: Reduces reliance on expensive annotations through RL, weakly-supervised,
-        or curriculum learning, and improves performance with limited data by generating
-        synthetic tasks or leveraging unannotated data.
-      what_remains_open: Fair comparison between training paradigms (RL vs. SFT vs.
-        weakly-supervised) is missing; RL sample efficiency and safe exploration need
-        improvement; distribution shift between synthetic and real tasks is underexplored.
-    - line: Interaction and context management for long-horizon tasks
-      what_it_solves: Addresses context forgetting, observation control, and complex
-        interactions (drag, dynamic interfaces) in long sequences via proactive context
-        management, observation strategies, or keyframe extraction.
-      what_remains_open: Combining proactive context management with other methods
-        (e.g., RL) is unexplored; observation control is not optimized in training;
-        drag interactions are not integrated into existing training frameworks.
-    - line: Uncertainty quantification and safety in GUI grounding
-      what_it_solves: Quantifies prediction uncertainty of GUI agents, provides safe-calibrated
-        click regions for high-risk decisions, and evaluates cross-model transferability
-        of UQ methods.
-      what_remains_open: UQ is limited to single-step grounding, not multi-step trajectories;
-        cross-model and cross-interface transferability is weak, requiring target-specific
-        recalibration; safety constraints are not yet integrated into training objectives.
+    - line: Benchmark construction and evaluation design
+      what_it_solves: Provides standardized environments to measure GUI agent capabilities
+        across real desktop, dynamic short-video, and drag-based tasks, uncovering
+        failure modes like over- and under-observation.
+      what_remains_open: Cross-benchmark comparability and correlation with real-world
+        deployment performance remain weak; most benchmarks are limited to single-step
+        or short-horizon tasks, and evaluation protocols often ignore calibration
+        of model confidence.
+    - line: Training paradigm and data efficiency
+      what_it_solves: Reduces reliance on expensive human annotations through weak
+        supervision from unannotated screenshots, verifiable task synthesis, and online
+        RL with frontier sampling, achieving competitive performance with minimal
+        annotated data.
+      what_remains_open: Fair comparison across SFT, RL, and weak supervision is missing;
+        generalization to new platforms and interaction types (e.g., drag, dynamic
+        content) is not established beyond the reported settings.
+    - line: Interaction space and action grounding
+      what_it_solves: Expands agent action spaces to include drag, GUI+CLI hybrid,
+        and dynamic observation control, addressing the gap left by click-only agents
+        and enabling richer task execution.
+      what_remains_open: Model performance on these extended actions remains far below
+        human level; effective training strategies specifically for drag and dynamic
+        observation are not yet developed, and current benchmarks are not sufficient
+        to drive progress.
+    - line: Uncertainty quantification and safety
+      what_it_solves: Evaluates post-hoc UQ methods for single-step GUI grounding,
+        identifying stable UQ families and demonstrating that conformal click regions
+        can shrink safety radii with calibrated confidence.
+      what_remains_open: Limited to single-step grounding; not integrated into multi-step
+        agent trajectories. Cross-model UQ ranking transfer is weak, especially to
+        closed-source models, and conformal coverage degrades under distribution shift.
+    - line: Long-horizon context management
+      what_it_solves: Maintains critical information in long-horizon tasks by treating
+        context management as first-class actions (ConAct), avoiding context overflow
+        and performance degradation seen in passive history accumulation.
+      what_remains_open: Validation is limited to a mobile dataset; generalization
+        to open-domain tasks and dynamic environments is not tested, and the trade-off
+        between context compression and task fidelity needs further study.
     consensus:
-    - VLM-based agents are the dominant architecture for GUI grounding and task execution.
-    - Data efficiency and scalable training remain critical bottlenecks, with synthetic
-      task generation and unannotated data leveraged to reduce annotation cost.
-    - Existing agents struggle with dynamic, long-horizon, and diverse interaction
-      types (beyond click), revealing gaps in observation control and context management.
-    - Evaluation must move beyond simple task success to capture fine-grained, interaction-specific,
-      and safety-aware metrics.
+    - Current GUI agents suffer from poor observation control on dynamic interfaces,
+      leading to over-observation and under-observation as dominant failure modes.
+    - Data efficiency is a critical bottleneck; weak supervision, synthetic task generation,
+      and online RL are promising directions to reduce annotation cost.
+    - Fine-grained evaluation metrics (e.g., sub-goal completion, cost-accuracy) are
+      necessary to capture model differences that aggregate pass rates miss.
     disagreements:
-    - 'Evaluation metrics vary: rule-based pass@1 versus cost-accuracy versus UQ-calibrated
-      scores, leading to incomparable progress claims.'
-    - 'Training paradigms differ: online RL with task synthesis versus weakly-supervised
-      curriculum learning versus keyframe extraction for video-guided tasks, each
-      targeting a different data regime and interaction type.'
-    - 'Interaction coverage is fragmented: drag-based manipulation, dynamic content
-      observation, and proactive context management are addressed in isolation, with
-      no unified agent that handles all.'
-    - Uncertainty quantification is treated as a separate post-hoc benchmark rather
-      than integrated into training or decision-making, creating a gap between safety
-      research and agent design.
+    - 'Evaluation environments differ substantially: desktop (MacAgentBench), browser-based
+      short-video (LivingScreen), and mobile (MemGUI-Bench), making direct performance
+      comparison unreliable.'
+    - 'Action spaces are defined differently across works: some focus on click-only,
+      while others extend to drag, GUI+CLI, or dynamic observation, creating incomparable
+      task difficulty.'
+    - 'Training paradigms are heterogeneous: supervised fine-tuning, online RL with
+      frontier sampling, and two-stage weak supervision with curriculum learning,
+      without a consensus on which is most effective for generalization.'
+    - Uncertainty quantification is studied only for single-step grounding, while
+      other agent systems address multi-step planning and execution, leaving a gap
+      between safety analysis and practical agent deployment.
     open_questions:
-    - How can we design a unified evaluation framework that fairly compares agents
-      across heterogeneous interaction types and training objectives?
-    - Can uncertainty quantification be incorporated into the training loop of GUI
-      agents to improve both safety and task completion?
-    - What are the effective strategies to bridge the distribution gap between synthetic
-      training tasks and real-world user scenarios?
-    - How can observation control, drag interactions, and context management be jointly
-      optimized in an end-to-end agent architecture?
+    - How can uncertainty quantification be integrated into multi-step agent loops
+      to enable safe fallback or human intervention across diverse interfaces?
+    - Can weak supervision methods scale to complex interaction types like drag and
+      dynamic observation, which are not covered by current unannotated screenshot
+      approaches?
+    - What adaptive context management strategies allow long-horizon agents to maintain
+      performance across heterogeneous tasks and environments without hand-crafted
+      compression rules?
+    - Is it possible to build a unified evaluation framework that maps progress across
+      disparate GUI agent benchmarks and action spaces?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: GUI代理基准测试与评估协议
-      解决的问题: 提供标准化环境、任务和指标，衡量代理在多样化交互和场景下的能力，包括动态内容、拖拽和长时域任务。
-      尚未覆盖: 指标缺乏统一性，跨基准比较困难；真实世界部署的动态变化和安全性未完全覆盖；多数基准仅覆盖部分交互类型。
-    - 路线: GUI代理的训练方法（数据效率与任务合成）
-      解决的问题: 通过RL、弱监督或课程学习降低对昂贵标注的依赖，通过生成合成任务或利用未标注数据提升有限数据下的性能。
-      尚未覆盖: 不同训练范式（RL vs SFT vs 弱监督）间缺乏公平比较；RL的样本效率和安全探索需改进；合成任务与真实场景的分布偏移未充分研究。
-    - 路线: 长时域任务的交互与上下文管理
-      解决的问题: 通过主动上下文管理、观察策略或关键帧提取，解决长序列中的上下文遗忘、观察控制和复杂交互（拖拽、动态界面）问题。
-      尚未覆盖: 主动上下文管理与其他方法（如RL）的结合未探索；观察控制未在训练中优化；拖拽交互未集成到现有训练框架。
-    - 路线: GUI基础中的不确定性量化与安全
-      解决的问题: 量化GUI代理的预测不确定性，为高风险决策提供安全校准的点击区域，并评估UQ方法的跨模型迁移性。
-      尚未覆盖: UQ限于单步基础，未扩展到多步轨迹；跨模型和跨接口迁移性弱，需目标特定重新校准；安全约束尚未集成到训练目标。
+    - 路线: 基准构建与评估设计
+      解决的问题: 提供标准化环境，衡量GUI代理在真实桌面、动态短视频和拖拽任务中的能力，揭示过度观察和观察不足等失败模式。
+      尚未覆盖: 跨基准可比性及与真实部署性能的关联仍较弱；大多数基准限于单步或短周期任务，评估协议通常忽略模型置信度校准。
+    - 路线: 训练范式与数据效率
+      解决的问题: 通过未标注截图的弱监督、可验证任务合成和带前沿采样的在线强化学习，减少对昂贵人工标注的依赖，以最少标注数据取得竞争性性能。
+      尚未覆盖: 缺乏SFT、RL和弱监督之间的公平比较；在新平台和交互类型（如拖拽、动态内容）上的泛化未超出报告设置。
+    - 路线: 交互空间与动作基础
+      解决的问题: 将代理动作空间扩展到拖拽、GUI+CLI混合和动态观察控制，弥补仅点击代理的不足，使更丰富的任务执行成为可能。
+      尚未覆盖: 模型在这些扩展动作上的性能仍远低于人类；尚未开发专门针对拖拽和动态观察的有效训练策略，当前基准不足以推动进展。
+    - 路线: 不确定性量化与安全性
+      解决的问题: 评估单步GUI基础的后验UQ方法，识别稳定的UQ家族，并展示共形点击区域可通过校准置信度缩小安全半径。
+      尚未覆盖: 仅限于单步基础；未集成到多步代理轨迹中。跨模型UQ排名迁移较弱，尤其是到闭源模型，且共形覆盖在分布偏移下下降。
+    - 路线: 长周期上下文管理
+      解决的问题: 通过将上下文管理视为第一类动作（ConAct），在长周期任务中保持关键信息，避免被动历史累积导致的上下文溢出和性能下降。
+      尚未覆盖: 验证仅限于移动数据集；在开放域任务和动态环境中的泛化未经测试，上下文压缩与任务保真度之间的权衡需进一步研究。
     共识:
-    - 基于VLM的代理是GUI grounding和任务执行的主流架构。
-    - 数据效率和可扩展训练仍是关键瓶颈，通过合成任务生成和未标注数据来降低标注成本。
-    - 现有代理在动态、长时域和多样化交互类型（超越点击）上表现挣扎，暴露出观察控制和上下文管理的不足。
-    - 评估必须超越简单的任务成功，转向细粒度、交互特定和安全性感知的指标。
+    - 当前GUI代理在动态界面上普遍存在观察控制能力不足，导致过度观察和观察不足成为主要失败模式。
+    - 数据效率是一个关键瓶颈；弱监督、合成任务生成和在线强化学习是减少标注成本的有前景的方向。
+    - 细粒度评估指标（如子目标完成度、成本-准确率）对于捕捉聚合通过率遗漏的模型差异是必要的。
     分歧:
-    - 评估指标不同：基于规则的pass@1、成本-准确性指标和UQ校准分数，导致进展声明的不可比较。
-    - 训练范式不同：在线RL与任务合成、弱监督课程学习、视频引导任务的关键帧提取，各自针对不同的数据体制和交互类型。
-    - 交互覆盖碎片化：拖拽操作、动态内容观察和主动上下文管理被孤立处理，尚无统一代理能处理所有。
-    - 不确定性量化被视为独立的后验基准，而非集成到训练或决策中，造成安全研究与代理设计之间的鸿沟。
+    - 评估环境差异显著：桌面（MacAgentBench）、基于浏览器的短视频（LivingScreen）和移动端（MemGUI-Bench），使得直接性能比较不可靠。
+    - 动作空间定义不同：有些聚焦点击，而另一些扩展到拖拽、GUI+CLI或动态观察，造成任务难度不可比。
+    - 训练范式异构：有监督微调、带前沿采样的在线RL，以及带课程学习的两阶段弱监督，对于哪种范式最有利于泛化尚无共识。
+    - 不确定性量化仅针对单步基础研究，而其他代理系统处理多步规划和执行，导致安全分析与实际代理部署之间存在鸿沟。
     开放问题:
-    - 如何设计一个统一的评估框架，以公平比较异构交互类型和训练目标下的代理？
-    - 能否将不确定性量化融入到GUI代理的训练循环中，以同时提高安全性和任务完成度？
-    - 弥合合成训练任务与真实用户场景之间分布差距的有效策略是什么？
-    - 如何在端到端代理架构中联合优化观察控制、拖拽交互和上下文管理？
+    - 如何将不确定性量化集成到多步代理循环中，以便在多样界面中实现安全回退或人工干预？
+    - 弱监督方法能否扩展到拖拽和动态观察等复杂交互类型，这些类型未被当前未标注截图方法覆盖？
+    - 什么自适应上下文管理策略能让长周期代理在异构任务和环境中保持性能，而无需手工设计的压缩规则？
+    - 能否构建一个统一的评估框架，映射不同GUI代理基准和动作空间之间的进展？
   synthesis_status: llm
   generation_notes: []
 - id: benchmark
@@ -193,7 +209,7 @@ topics:
   description: GUI/web/mobile/OS automation datasets, environments, tasks, metrics,
     and benchmarks
   description_zh: ''
-  paper_count: 97
+  paper_count: 100
   top_tags:
   - AI
   - CL
@@ -207,10 +223,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 63.4
+    methodology_quality: 62.5
     recency: 98.7
-    reproducibility: 40.2
-    topical_relevance: 51.3
+    reproducibility: 40.0
+    topical_relevance: 50.5
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
@@ -257,120 +273,119 @@ topics:
     score: 70.4
     url: https://arxiv.org/abs/2606.06322v1
   related_work_outline:
-  - 'Mainstream direction: Building GUI/OS agent benchmarks that target real-world
-    application scenarios with multi-step, multi-application tasks and fine-grained
-    evaluation beyond simple success rates.'
-  - 'Shared research pattern: Benchmarks define task suites, automated evaluation
-    metrics, and multi-model comparisons while increasingly probing deeper agent capabilities
-    such as observation control, uncertainty, and interaction diversity.'
-  - 'Key differences: Interaction modes (click, drag, video-guided, CLI), platform
-    scope (macOS, web, short-video platforms), evaluation metrics (pass@1, cost-accuracy,
-    UQ calibration), and whether auxiliary components like skills or online RL are
-    introduced.'
-  - 'Trend evolution: Within the 2024–2026 frontier, the field is rapidly expanding
-    from static GUI tasks to dynamic video, drag-based interactions, and multimodal
-    skill augmentation, accompanied by finer-grained metrics and uncertainty quantification.'
-  - 'Open questions: How to evaluate observation control in dynamic environments,
-    whether cross-platform uncertainty quantification is reliable, and how well synthetic-data-trained
-    agents generalize to real-world benchmarks.'
+  - 'Mainstream direction: Building comprehensive GUI agent benchmarks that cover
+    diverse interaction modalities (click, drag, CLI, dynamic video) and incorporate
+    fine-grained metrics beyond task-level pass rates.'
+  - 'Shared research pattern: Using vision-language models as agents, evaluating task
+    completion, and shifting from aggregate scores to multi-dimensional assessments
+    (checkpoint-level, cost-accuracy, uncertainty).'
+  - 'Key differences: Benchmarks vary in action space (click-only vs. drag/dynamic),
+    evaluation metric (Pass@1 vs. cost-accuracy vs. uncertainty calibration), environment
+    fidelity (real desktop vs. simulated browser), and supervision for training data
+    (manual annotation vs. weak supervision vs. synthetic generation).'
+  - 'Trend evolution: Within the 2024–2026 frontier, the community moves from static
+    desktop benchmarks (MacAgentBench) to dynamic, multimodal, and multi-platform
+    settings (LivingScreen, video-guided tasks), and from pure evaluation to methods
+    that improve agent performance through skill libraries, online RL, and weak supervision.'
+  - 'Open questions: How well current benchmarks cover the full range of real-world
+    GUI interactions (e.g., drag, observation control), how to design robust metrics
+    that correlate with downstream user value, and how to ensure uncertainty quantification
+    and cross-model generalization without costly re-evaluation.'
   related_work_outline_zh:
-  - 主流方向：构建面向真实应用场景的GUI/OS智能体基准，强调多步骤、多应用任务和超越简单成功率的细粒度评估。
-  - 研究共性：基准均定义任务套件、自动化评估指标和多模型对比，并日益关注观察控制、不确定性和交互多样性等深层能力。
-  - 关键差异：交互模式（点击、拖拽、视频引导、CLI）、平台范围（macOS、网页、短视频）、评估指标（pass@1、成本-精度、不确定性校准）以及是否引入技能或在线RL等辅助组件。
-  - 趋势演进：在2024–2026前沿，领域从静态GUI任务快速扩展到动态视频、拖拽交互和多模态技能增强，伴随更细粒度指标和不确定性量化。
-  - 开放问题：如何评估动态环境中的观察控制，跨平台不确定性量化是否可靠，合成数据训练的智能体对真实基准的泛化能力如何。
+  - 主流方向：构建覆盖多种交互模态（点击、拖拽、命令行、动态视频）的全面 GUI 代理基准，并引入超越任务级通过率的细粒度评估指标。
+  - 研究共性：普遍采用视觉语言模型作为代理，评估任务完成情况，并从单一总分转向多维度评估（检查点级别、成本-准确性、不确定性量化）。
+  - 关键差异：基准在动作空间（仅点击 vs. 拖拽/动态）、评估指标（Pass@1 vs. 成本-准确性 vs. 不确定性校准）、环境保真度（真实桌面 vs.
+    模拟浏览器）和训练数据监督方式（人工标注 vs. 弱监督 vs. 合成生成）上存在分歧。
+  - 趋势演进：在 2024–2026 前沿内，领域从静态桌面基准（如 MacAgentBench）向动态、多模态、多平台设置（如 LivingScreen、视频引导任务）演进，并从纯评估转向通过技能库、在线强化学习和弱监督提升代理性能的方法。
+  - 开放问题：当前基准在多大程度上覆盖了真实 GUI 交互的完整范围（如拖拽、观察控制），如何设计与下游用户价值相关的稳健指标，以及如何在不进行昂贵重评估的情况下实现不确定性量化和跨模型泛化。
   literature_review:
     line_of_work_matrix:
-    - line: Comprehensive desktop/OS agent benchmarks
-      what_it_solves: Provides multi-application, multi-step realistic task suites
-        with fine-grained capability scoring to compare GUI agents systematically.
-      what_remains_open: Whether the task distribution covers all critical OS use
-        cases and whether benchmark conclusions remain stable across different agent
-        frameworks and compute budgets.
-    - line: Dynamic and video-guided GUI benchmarks
-      what_it_solves: Evaluates agents on time-varying interfaces and tasks requiring
-        video understanding, revealing gaps in observation control and information
-        efficiency.
-      what_remains_open: Limited coverage of dynamic interface types, missing observation
-        control metrics, and alignment between video-guided tasks and real user needs.
-    - line: Interaction-type expansion benchmarks
-      what_it_solves: Fills the evaluation gap for non-click interactions such as
-        drag, resize, and slider manipulation, broadening the scope of GUI agent assessment.
-      what_remains_open: Whether the diversity and complexity of drag-based tasks
-        capture the full range of real-world fine-grained manipulations.
-    - line: Uncertainty quantification and reliability benchmarks
-      what_it_solves: Probes how well an agent's confidence aligns with correctness,
-        enabling safer deployment through selective prediction and conformal calibration.
-      what_remains_open: Weak cross-model and cross-interface transfer of UQ rankings,
-        and integration of UQ into multi-step decision-making remains unexplored.
-    - line: Auxiliary skills and training methods evaluated on benchmarks
-      what_it_solves: Improves agent performance on existing benchmarks via multimodal
-        skill libraries, weakly-supervised learning, or online RL, demonstrating the
-        impact of external knowledge and adaptive training.
-      what_remains_open: Generalization of skills, biases from unannotated or synthetic
-        data, and safety of online RL in real environments.
+    - line: Benchmark task and dataset design
+      what_it_solves: Creating shared tasks and environments that enable systematic
+        comparison of GUI agents across diverse applications, interaction modalities
+        (click, drag, CLI, dynamic video), and platforms.
+      what_remains_open: Whether the benchmark task distribution fully captures the
+        action space and dynamic conditions where agents are expected to operate (e.g.,
+        long-horizon workflows, observation control, and drag-based manipulations).
+    - line: Metric and stress-test design
+      what_it_solves: Probing agent capabilities beyond aggregate pass rates through
+        fine-grained scoring (multi-checkpoint, cost-accuracy) and uncertainty quantification,
+        revealing hidden failure modes such as over- and under-observation.
+      what_remains_open: Alignment between these proxy metrics and the actual downstream
+        decision quality users care about, and whether the metric rankings remain
+        stable across model tiers and deployment interfaces.
+    - line: Comparable baselines and training-efficiency methods
+      what_it_solves: Providing reproducible baselines and training recipes (weak
+        supervision, online RL, skill libraries) that improve agent performance on
+        established benchmarks, enabling fair comparison.
+      what_remains_open: Whether the conclusions from synthetic or weakly-supervised
+        training generalize to real-world variability, and whether benchmark gains
+        translate to robust real-world deployment without overfitting to the synthetic
+        task distribution.
     consensus:
-    - Realistic, open-ended task scenarios are necessary for meaningful GUI agent
-      evaluation.
-    - Single success-rate metrics are insufficient; fine-grained, multi-dimensional
-      evaluation is needed.
-    - Current models exhibit significant weaknesses in complex interactions, motivating
-      continuous benchmark innovation.
-    - Standardization and reproducibility of benchmarks are essential for fair comparison
-      across approaches.
+    - GUI agents must handle a wide range of interaction modalities (click, drag,
+      CLI, dynamic content) and are predominantly built on vision-language models.
+    - Aggregate task success is insufficient for diagnosis; fine-grained evaluation
+      metrics (e.g., sub-goal completion, observation cost, uncertainty estimates)
+      are necessary to expose capability gaps.
+    - Current state-of-the-art agents still struggle with dynamic or observation-heavy
+      interfaces, showing a need for better observation control and action grounding.
+    - Task and data diversity (real-world desktop, short-video, drag operations) is
+      crucial to prevent overfitting to narrow interaction patterns.
     disagreements:
-    - The choice of interaction modes to evaluate, ranging from click-only to drag,
-      video, and CLI combinations.
-    - Whether to augment agents with external multimodal skills or rely solely on
-      end-to-end model capabilities.
-    - The inclusion of uncertainty quantification as a core evaluation dimension versus
-      a separate concern.
-    - Underlying platform and task distribution vary significantly, leading to different
-      conclusions about model capabilities.
-    - 'Supervision signals differ: human annotations, weakly-supervised from unlabeled
-      screenshots, or synthetically generated tasks.'
+    - 'Evaluation metric design: some benchmarks use Pass@1 with deterministic rules
+      (MacAgentBench), others use cost-accuracy trade-offs (LivingScreen), and yet
+      others use uncertainty calibration (Argus), reflecting different priorities
+      for agent success.'
+    - 'Interaction modality coverage: while most benchmarks include click-based interactions,
+      DragOn argues for dedicated drag-based tasks, and LivingScreen focuses on dynamic
+      video interfaces, leaving unclear whether a single benchmark can cover all modalities.'
+    - 'Supervision source for training data: methods like GUICrafter rely on weak
+      supervision from unannotated screenshots, SCALECUA uses synthetic task generation,
+      and VISUALSKILL employs authored documentation plus live UI exploration, indicating
+      no consensus on the best way to acquire training signals.'
+    - 'Deployment environment: real desktop (MacAgent) versus simulated browser (LivingScreen)
+      versus Docker-based environments (SCALECUA) affect the realism and reproducibility
+      of results, and the field lacks a standard for environment fidelity.'
     open_questions:
-    - How can observation control be quantified and evaluated in dynamic, living-screen
-      environments?
-    - To what extent do uncertainty quantification rankings transfer across platforms,
-      interfaces, and model families?
-    - What is the generalization boundary of agents trained on synthetic or weakly-supervised
-      data when deployed on real-world benchmarks?
-    - How can drag-based and video-guided benchmarks be scaled to cover the full diversity
-      of real user workflows?
+    - How can we design benchmarks that systematically cover dynamic interfaces where
+      content changes between actions, and evaluate agents' observation control capabilities?
+    - To what extent do fine-grained metrics (e.g., cost-accuracy, UQ) transfer across
+      different model families and deployment settings, and what calibration is needed
+      for reliable cross-model comparison?
+    - What is the minimal annotation budget required to train a competitive GUI agent,
+      and can synthetic or weakly-supervised data fully replace human-annotated trajectories?
+    - How can we ensure that advances in benchmark scores (e.g., on OSWorld or ScienceBoard)
+      translate to measurable improvements in real-world desktop automation, given
+      the gap between curated tasks and open-ended user workflows?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 综合性桌面/OS智能体基准
-      解决的问题: 提供多应用、多步骤的真实任务集和细粒度能力评分，以系统比较GUI智能体。
-      尚未覆盖: 任务分布是否覆盖所有关键OS用例，以及基准结论在不同智能体框架和算力预算下是否稳定。
-    - 路线: 动态与视频引导的GUI基准
-      解决的问题: 评估智能体在时变界面和需要视频理解的任务上的表现，揭示观察控制和信息效率的不足。
-      尚未覆盖: 动态界面类型覆盖有限，缺少观察控制指标，视频引导任务与实际用户需求的一致性。
-    - 路线: 交互类型扩展基准
-      解决的问题: 填补拖拽、调整大小、滑块操作等非点击交互的评估空白，拓宽GUI智能体评估范围。
-      尚未覆盖: 拖拽任务的多样性和复杂度是否捕捉了真实世界中精细操作的全部范围。
-    - 路线: 不确定性量化与可靠性基准
-      解决的问题: 探测智能体置信度与正确性的一致性，通过选择性预测和共形校准实现更安全的部署。
-      尚未覆盖: 跨模型和接口的UQ排名迁移性弱，且UQ在多步决策中的集成尚未探索。
-    - 路线: 在基准上评估的辅助技能与训练方法
-      解决的问题: 通过多模态技能库、弱监督学习或在线RL提升智能体在现有基准上的表现，展示外部知识和自适应训练的影响。
-      尚未覆盖: 技能的泛化性、未标注或合成数据引入的偏差，以及在线RL在真实环境中的安全性。
+    - 路线: 基准任务与数据集设计
+      解决的问题: 构建共享任务和环境，使 GUI 代理能够在多样化应用、交互模态（点击、拖拽、命令行、动态视频）和平台之间进行系统比较。
+      尚未覆盖: 基准任务分布是否充分覆盖了代理预期操作的动作空间和动态条件（例如长时程工作流、观察控制和拖拽操作）仍然未知。
+    - 路线: 指标与压力测试设计
+      解决的问题: 通过细粒度评分（多检查点、成本-准确性）和不确定性量化，超越总体通过率来探测代理能力，揭示隐藏的失败模式（如过度观察或观察不足）。
+      尚未覆盖: 这些代理指标与用户真正关心的下游决策质量之间的一致性，以及指标排名在不同模型层级和部署接口之间是否保持稳定。
+    - 路线: 可比基线与训练效率方法
+      解决的问题: 提供可复现的基线和方法（弱监督、在线强化学习、技能库），在现有基准上提升代理性能，实现公平比较。
+      尚未覆盖: 合成或弱监督训练得出的结论能否推广到真实世界的多样性，基准分数提升能否转化为稳健的真实部署，而不会过拟合到合成任务分布。
     共识:
-    - 真实、开放式的任务场景对于有意义的GUI智能体评估是必要的。
-    - 单一成功率指标不足，需要细粒度、多维度的评估。
-    - 当前模型在复杂交互中表现出显著不足，推动了基准的持续创新。
-    - 基准的标准化和可复现性对于公平比较不同方法至关重要。
+    - GUI 代理必须处理广泛的交互模态（点击、拖拽、命令行、动态内容），且主要基于视觉语言模型构建。
+    - 仅靠总体任务成功不足以进行诊断；细粒度评估指标（如子目标完成度、观察成本、不确定性估计）对于暴露能力差距是必要的。
+    - 当前最先进的代理在动态或观察密集的界面上仍然存在困难，表明需要更好的观察控制和动作定位能力。
+    - 任务和数据的多样性（真实桌面、短视频、拖拽操作）对于防止过拟合到狭窄的交互模式至关重要。
     分歧:
-    - 评估的交互模式选择不同，从纯点击到拖拽、视频和CLI组合。
-    - 是否用外部多模态技能增强智能体，还是仅依赖端到端模型能力。
-    - 是否将不确定性量化作为核心评估维度，还是独立关注。
-    - 底层平台和任务分布差异显著，导致对模型能力的不同结论。
-    - 监督信号不同：人工标注、从无标签截图的弱监督、或合成生成的任务。
+    - 评估指标设计：一些基准使用确定性规则下的 Pass@1（如 MacAgentBench），另一些使用成本-准确性权衡（如 LivingScreen），还有的采用不确定性校准（如
+      Argus），反映了对代理成功标准的不同侧重。
+    - 交互模态覆盖：多数基准包含点击交互，但 DragOn 强调需要专门的拖拽任务，LivingScreen 聚焦于动态视频界面，这留下了一个悬而未决的问题：单个基准能否覆盖所有模态。
+    - 训练数据的监督来源：像 GUICrafter 依赖未标注截图的弱监督，SCALECUA 使用合成任务生成，VISUALSKILL 采用编写文档加实时 UI
+      探索，表明在获取训练信号的最佳方式上尚未达成共识。
+    - 部署环境：真实桌面（MacAgent）与模拟浏览器（LivingScreen）与基于 Docker 的环境（SCALECUA）影响结果的实际性和可复现性，领域缺乏环境保真度的标准。
     开放问题:
-    - 如何在动态、实时屏幕环境中量化和评估观察控制？
-    - 不确定性量化排名在不同平台、接口和模型家族间的迁移程度如何？
-    - 在合成或弱监督数据上训练的智能体部署到真实基准时的泛化边界是什么？
-    - 如何扩展拖拽和视频引导基准，以覆盖真实用户工作流的全部多样性？
+    - 如何设计系统性地覆盖动态界面的基准，其中内容在动作之间变化，并评估代理的观察控制能力？
+    - 细粒度指标（如成本-准确性、不确定性量化）在不同模型家族和部署场景中的迁移程度如何，需要进行何种校准才能实现可靠的跨模型比较？
+    - 训练一个具有竞争力的 GUI 代理所需的最低标注预算是多少，合成或弱监督数据能否完全替代人工标注的轨迹？
+    - 如何确保在 OSWorld 或 ScienceBoard 等基准上的分数提升，能够转化为真实桌面自动化中可衡量的改进，考虑到精心策划的任务与开放式用户工作流之间的差距？
   synthesis_status: llm
   generation_notes: []
 - id: system
@@ -379,7 +394,7 @@ topics:
   description: Runnable GUI agent systems, frameworks, sandboxes, tool-use platforms,
     or orchestration layers
   description_zh: ''
-  paper_count: 53
+  paper_count: 55
   top_tags:
   - AI
   - LG
@@ -393,10 +408,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 60.6
-    recency: 98.8
-    reproducibility: 39.9
-    topical_relevance: 50.3
+    methodology_quality: 59.6
+    recency: 98.9
+    reproducibility: 39.7
+    topical_relevance: 49.2
   top_papers:
   - id: visualskill-multimodal-skills-for-computer-use-agents-2026
     title: 'VISUALSKILL: Multimodal Skills for Computer-Use Agents'
@@ -444,105 +459,115 @@ topics:
     score: 64.9
     url: https://arxiv.org/abs/2606.29537v1
   related_work_outline:
-  - 'Mainstream direction: building end-to-end, open-source training and deployment
-    frameworks that enable online reinforcement learning of GUI agents on real websites
-    or operating systems.'
-  - 'Shared research pattern: moving agents from static evaluation to live, interactive
-    environments, using multimodal inputs and multi-step task execution, with a focus
-    on scalable infrastructure.'
-  - 'Key differences: whether agent augmentation comes from external multimodal skill
-    libraries versus end-to-end policy training; whether safety evaluation targets
-    browser tasks or coding agents, and whether attacks are hand-crafted or RL-optimized.'
-  - 'Trend evolution: early frameworks (2024–2025) established training pipelines;
-    2026 works push toward long-horizon, real-world benchmarks, safety auditing, and
-    memory-augmented agent architectures.'
-  - 'Open questions: how to handle constraint following, error recovery, and hidden
-    state reasoning in tasks lasting over an hour; whether safety hardening generalizes
-    across application domains; and how to reproduce security results when attack
-    strings are not released.'
+  - 'Mainstream direction: Building end-to-end training and deployment frameworks
+    for GUI agents, integrating online RL, weakly-supervised learning, and structured
+    skill/memory libraries to improve real-world task completion.'
+  - 'Shared research pattern: Systems rely on multimodal visual inputs, evaluate on
+    task success rates in simulated or real interactive environments, and aim to close
+    the gap between short-term benchmarks and long-horizon, safety-critical workflows.'
+  - 'Key differences: Training paradigms diverge between offline weakly-supervised
+    learning from unlabeled screenshots and online RL from live interactions; memory
+    representation splits between full-image snapshots and action-grounded crops;
+    safety evaluation reveals domain-conditioned vulnerabilities that are absent in
+    browser tasks but severe in coding tasks.'
+  - 'Trend evolution: The field is moving from static, short-horizon benchmarks toward
+    online, long-horizon, and safety-audited evaluations, with a growing emphasis
+    on open-source, reproducible frameworks that can train agents across diverse harnesses
+    and environments.'
+  - 'Open questions: How to unify training across differentially hard harnesses, generalize
+    domain-conditioned safety to all computer-use surfaces, maintain constraints in
+    long-horizon tasks, and automate skill construction without extensive manual authoring.'
   related_work_outline_zh:
-  - 主流方向：构建端到端、开源的训练与部署框架，支持在真实网站或操作系统上对GUI智能体进行在线强化学习。
-  - 研究共性：将智能体从静态评估推向在线交互环境，使用多模态输入和多步骤任务执行，并强调可扩展的基础设施。
-  - 关键差异：智能体能力的增强方式是通过外部多模态技能库还是端到端策略训练；安全评估是面向浏览器任务还是编码代理，攻击是手工制作还是RL优化。
-  - 趋势演进：早期框架（2024–2025）建立了训练流水线；2026年的工作则推进到长周期真实世界基准、安全审计和记忆增强的智能体架构。
-  - 开放问题：如何处理超过一小时任务中的约束遵循、错误恢复和隐藏状态推理；安全加固能否跨应用领域泛化；在攻击字符串未公开的情况下如何复现安全结果。
+  - 主流方向：构建端到端训练与部署框架，整合在线强化学习、弱监督学习以及结构化技能/记忆库，以提升GUI智能体在真实任务中的完成度。
+  - 研究共性：多模态视觉输入为核心，以模拟或真实交互环境中的任务成功率为评估指标，旨在弥合短期基准与长期、安全关键工作流之间的差距。
+  - 关键差异：训练范式分为利用未标注截图的离线弱监督和基于真实交互的在线强化学习；记忆表示存在全帧截图与动作接地裁剪的路径分歧；安全评估揭示领域条件差异，浏览器任务中安全但编码任务中漏洞严重。
+  - 趋势演进：领域正从静态、短周期基准转向在线、长周期和安全审计评估，同时强调开源、可复现框架，能够跨不同harness和环境训练智能体。
+  - 开放问题：如何统一训练难度差异大的harness、将领域条件安全泛化至所有计算机使用场景、在长周期任务中维持约束、以及无需大量人工编写即可自动构建技能。
   literature_review:
     line_of_work_matrix:
-    - line: Runnable pipelines and deployment stacks
-      what_it_solves: Turning GUI agent training and inference into reproducible,
-        containerized workflows that can run on real websites or operating systems
-        with reinforcement learning.
-      what_remains_open: Agents trained with these pipelines still exhibit weak error
-        recovery and constraint adherence; trainability varies heavily across harness
-        designs, and scaling to truly long-horizon tasks remains unproven.
-    - line: Real-time and interactive serving
-      what_it_solves: Enabling online, multi-turn reinforcement learning on live environments,
-        where agents receive trajectory-level feedback and can adapt to dynamic, stateful
-        interactions.
-      what_remains_open: Safety of interactive agents is domain-conditioned and fails
-        catastrophically on coding tasks; guided exploration of sensitive screens
-        is only conceptually proposed without experimental validation.
+    - line: Runnable training and deployment pipelines
+      what_it_solves: Transforming agent models into scalable, end-to-end workflows
+        that support training, inference, and evaluation across diverse environments
+        (web, desktop) and agent harnesses.
+      what_remains_open: Harnesses differ substantially in learnability; trained agents
+        exhibit weak error recovery; generalization from low-data interaction to long-horizon
+        tasks and integration of safety constraints remain unverified.
+    - line: Real-time interactive serving and safety
+      what_it_solves: Enabling agents to learn from live, multi-turn interactions
+        and assessing safety risks such as prompt injection in dynamic browser and
+        coding environments.
+      what_remains_open: Online RL introduces unresolved safety risks during training;
+        domain-conditioned safety hardening does not transfer across domains; user-sensitive
+        state detection lacks experimental validation and standardized criteria.
     - line: Artifacts and reproducible engineering
-      what_it_solves: Providing reusable multimodal skill libraries, memory frameworks,
-        and public benchmarks that make agent capabilities inspectable and partially
-        reproducible.
-      what_remains_open: Reproducibility is undermined by unreleased optimized attack
-        strings, limited task coverage in benchmarks, and missing experimental validation
-        for some proposed components.
+      what_it_solves: Providing reusable skill libraries, action-grounded memory structures,
+        and standardized benchmarks to make GUI agent systems inspectable, shareable,
+        and rigorously comparable.
+      what_remains_open: Skill artifacts require manual authoring and lack cross-application
+        transfer; memory mechanisms have not been tested jointly with safety constraints;
+        existing benchmarks do not cover all attack surfaces and show low independent
+        reproducibility.
     consensus:
-    - GUI agents must be evaluated on realistic, multi-step tasks with live environments
-      rather than on static, pre-collected trajectories.
-    - Multimodal input, especially visual grounding from screenshots, is essential
-      for GUI element identification and workflow verification.
-    - Current state-of-the-art agents achieve only a fraction of human performance
-      on long-horizon computer-use tasks, and failure analysis reveals systematic
-      weaknesses in state tracking and verification.
+    - Multimodal visual input is the core modality for GUI agents, with tasks formulated
+      as step-by-step action sequences.
+    - Task success rate is the primary evaluation metric, with growing recognition
+      that partial scores and long-horizon completion reveal more meaningful capability
+      gaps.
+    - Current agents consistently fail on error recovery, constraint following, and
+      hidden-state reasoning, indicating fundamental limitations beyond basic UI grounding.
+    - Open-source frameworks and reproducible artifacts are considered essential for
+      advancing the field, moving away from closed, proprietary evaluations.
     disagreements:
-    - Agent capability is improved either by injecting external multimodal skill libraries
-      (e.g., VISUALSKILL) or by end-to-end RL training of the policy model itself
-      (e.g., OpenWebRL), with unclear trade-offs in generality and maintenance cost.
-    - 'Safety evaluation setups differ: one line shows frontier agents resist hand-crafted
-      browser prompt injections, while another highlights that the same agents are
-      fully vulnerable to skill injection on coding tasks, questioning whether browser
-      hardening can be generalized.'
-    - Benchmark scopes vary from short, single-session tasks to workflows spanning
-      over an hour and hundreds of tool calls, leading to different conclusions about
-      agent readiness for deployment.
+    - 'Training signal: weakly-supervised learning from massive unannotated screenshots
+      versus online multi-turn RL from live website interactions.'
+    - 'Memory representation: full-image visual memory worsens action-level errors,
+      while action-grounded image crops improve task success by 33.3%.'
+    - 'Safety evaluation: hand-crafted injection attacks show 0% success on browser
+      agents but up to 100% on coding agents, revealing domain-conditioned safety
+      that challenges earlier red-teaming conclusions.'
+    - 'Task horizon: short, single-step tasks contrast with long-horizon workflows
+      requiring hundreds of tool calls, where current agents achieve only ~20% completion.'
+    - 'Interaction model: explicit skill libraries with multimodal retrieval versus
+      end-to-end policy learning without structured knowledge bases.'
     open_questions:
-    - How can agents maintain constraints and recover from mid-task errors in workflows
-      lasting over an hour, as seen in OSWorld 2.0 where top models complete only
-      ~20% of tasks?
-    - What mechanisms enable safety hardening to transfer across application domains,
-      given that browser-focused hardening left coding agents vulnerable?
-    - Can visual memory systems be made to improve action-level accuracy without introducing
-      the hidden operation blindness and grounding errors observed with full-image
-      memory?
-    - How can the community ensure reproducibility of safety evaluations when optimized
-      attack strings and confidential training data are not publicly released?
+    - How can a single training framework handle harnesses with vastly different learnability,
+      and what design choices make some harnesses substantially harder to learn?
+    - Can safety hardening be generalized beyond browser-based tasks, and what mechanisms
+      would prevent domain-conditioned vulnerabilities in coding agents?
+    - What training strategies enable agents to maintain constraints and reason about
+      hidden states over hundreds of interaction steps?
+    - How can skill artifacts be automatically constructed and adapted to new applications
+      without extensive manual authoring and live UI exploration?
+    - How can online RL training be made safe against prompt injection and other adversarial
+      inputs during live interaction?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 可运行流水线与部署栈
-      解决的问题: 将GUI智能体训练和推理转化为可复现的容器化工作流，支持在真实网站或操作系统上使用强化学习进行训练。
-      尚未覆盖: 通过这些流水线训练的智能体仍在错误恢复和约束遵循上表现薄弱；不同框架设计的可训练性差异很大，扩展到真正长周期任务的能力尚未得到验证。
-    - 路线: 实时与交互式服务
-      解决的问题: 在真实环境中进行在线多轮强化学习，使智能体能够获得轨迹级反馈并适应动态、有状态的交互。
-      尚未覆盖: 交互式智能体的安全性是领域条件的，在编码任务上会灾难性失败；对敏感屏幕的引导式探索仅处于概念提出阶段，缺乏实验验证。
+    - 路线: 可运行训练与部署流水线
+      解决的问题: 将智能体模型转化为可扩展的端到端工作流，支持跨多种环境（网页、桌面）和智能体harness的训练、推理与评估。
+      尚未覆盖: 不同harness的可学习性差异显著；训练后的智能体错误恢复能力弱；从少量交互数据到长周期任务的泛化以及安全约束的集成尚未验证。
+    - 路线: 实时交互式服务与安全
+      解决的问题: 使智能体能够从真实多轮交互中学习，并评估动态浏览器和编码环境中的提示注入等安全风险。
+      尚未覆盖: 在线强化学习在训练过程中引入未解决的安全风险；领域条件安全加固无法跨领域迁移；用户敏感状态检测缺乏实验验证和标准化准则。
     - 路线: 工件与可复现工程
-      解决的问题: 提供可复用的多模态技能库、记忆框架和公开基准，使智能体能力可检查并部分可复现。
-      尚未覆盖: 可复现性因未公开的优化攻击字符串、基准测试任务覆盖有限以及部分组件缺乏实验验证而受到削弱。
+      解决的问题: 提供可复用的技能库、动作接地记忆结构和标准化基准，使GUI智能体系统可检查、可共享和可严格比较。
+      尚未覆盖: 技能工件依赖人工编写，缺乏跨应用迁移；记忆机制尚未与安全约束联合测试；现有基准未覆盖所有攻击面，独立复现性低。
     共识:
-    - GUI智能体必须在真实环境的多步骤任务上进行评估，而非在静态的预收集轨迹上。
-    - 多模态输入，特别是从截图中进行视觉定位，对于UI元素识别和工作流验证至关重要。
-    - 当前最先进的智能体在长周期计算机使用任务上仅达到人类水平的一小部分，失败分析揭示了状态跟踪和验证方面的系统性弱点。
+    - 多模态视觉输入是GUI智能体的核心模态，任务被表述为逐步动作序列。
+    - 任务成功率是主要评估指标，同时逐步认识到部分得分和长周期完成率能揭示更有意义的能力差距。
+    - 当前智能体在错误恢复、约束遵循和隐藏状态推理方面持续失败，表明存在超出基本UI接地的根本性局限。
+    - 开源框架和可复现工件被视为推动领域发展的必要条件，逐渐摆脱封闭、专有的评估方式。
     分歧:
-    - 智能体能力的提升方式不同：一种是通过注入外部多模态技能库（如VISUALSKILL）来增强，另一种是通过端到端强化学习直接训练策略模型（如OpenWebRL），两者在通用性和维护成本上的权衡尚不明确。
-    - 安全评估的设置各异：一条路线表明前沿智能体可抵抗手工制作的浏览器提示注入，而另一条路线则指出相同智能体在编码任务上完全易受技能注入攻击，质疑浏览器安全加固能否泛化。
-    - 基准测试的范围从短会话任务到超过一小时、数百次工具调用的工作流不等，导致对智能体部署就绪程度得出不同结论。
+    - 训练信号：利用海量未标注截图的弱监督学习与基于真实网站交互的在线多轮强化学习形成对比。
+    - 记忆表示：全图像视觉记忆加剧动作级错误，而动作接地图像裁剪使任务成功率提升33.3%。
+    - 安全评估：手工注入攻击在浏览器智能体上成功率为0%，但在编码智能体上高达100%，揭示领域条件安全性，挑战了先前红队测试的结论。
+    - 任务周期：短单步任务与需要数百次工具调用的长周期工作流形成对比，当前智能体在后者中仅完成约20%。
+    - 交互模式：具备多模态检索的显式技能库与无结构化知识库的端到端策略学习存在分歧。
     开放问题:
-    - 在超过一小时的工作流中，智能体如何保持约束并在任务中途恢复，如OSWorld 2.0所示顶级模型仅完成约20%的任务？
-    - 何种机制能使安全加固跨应用领域迁移，鉴于浏览器加固未能保护编码智能体？
-    - 视觉记忆系统能否在提高动作级准确性的同时，避免全图像记忆所引入的隐藏操作盲区和接地错误？
-    - 在优化攻击字符串和保密训练数据未公开的情况下，社区如何确保安全评估的可复现性？
+    - 单一训练框架如何应对可学习性差异巨大的harness，哪些设计选择导致某些harness更难学习？
+    - 安全加固能否泛化至浏览器之外的任务，何种机制能防止编码智能体的领域条件漏洞？
+    - 何种训练策略能让智能体在数百步交互中维持约束并推理隐藏状态？
+    - 如何自动构建技能工件并适应新应用，而无需大量人工编写和实时UI探索？
+    - 如何在真实交互过程中使在线强化学习对提示注入等对抗性输入具有安全性？
   synthesis_status: llm
   generation_notes: []
 - id: theory
@@ -551,7 +576,7 @@ topics:
   description: Formal analysis, task abstractions, interaction theory, or reliability/safety
     framing for GUI agents
   description_zh: ''
-  paper_count: 80
+  paper_count: 81
   top_tags:
   - AI
   - CL
@@ -565,10 +590,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 65.6
-    recency: 99.0
-    reproducibility: 40.6
-    topical_relevance: 52.4
+    methodology_quality: 65.2
+    recency: 99.1
+    reproducibility: 40.4
+    topical_relevance: 52.1
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
@@ -615,106 +640,114 @@ topics:
     score: 70.4
     url: https://arxiv.org/abs/2606.19926v1
   related_work_outline:
-  - 'Mainstream direction: The field is converging on building comprehensive GUI-agent
-    benchmarks and methods that scale agent performance through task synthesis, skill
-    libraries, and context management, while starting to examine reliability via uncertainty
-    quantification.'
-  - 'Shared research pattern: Most works use vision-language models on multimodal
-    screenshots, define fine-grained evaluation metrics, and propose either new benchmarks
-    or new training pipelines to improve agent grounding and interaction accuracy.'
-  - 'Key differences: Works differ in interaction types (click, drag, dynamic scrolling),
-    platform (desktop vs. mobile vs. browser), training paradigm (weakly supervised,
-    online RL, few-shot), and evaluation focus (end-to-end success vs. uncertainty
-    calibration vs. sub-goal completion).'
-  - 'Trend evolution: From 2024 to 2026, the frontier moved from broad desktop benchmarks
-    to specialized interaction benchmarks (drag, dynamic screens) and to reliability
-    analysis (uncertainty quantification), while scaling methods shifted from pure
-    imitation to online RL with synthetic tasks.'
-  - 'Open questions: How to provide formal guarantees for agent behavior under distribution
-    shift, whether uncertainty estimates can improve multi-step decision-making, and
-    how to unify representations across static and dynamic interfaces remain unresolved.'
+  - 'Mainstream direction: Building formal evaluation frameworks and taxonomies for
+    GUI agent capabilities, emphasizing reliability, uncertainty quantification, and
+    dynamic interaction properties.'
+  - 'Shared research pattern: Most works introduce a new benchmark or dataset that
+    isolates a specific agent capability (e.g., dragging, uncertainty, long-horizon
+    context, dynamic UI) and then evaluate current frontier models against it, revealing
+    a systematic gap.'
+  - 'Key differences: Works differ in the interaction modality they target (click
+    vs. drag vs. CLI vs. dynamic screen) and in the aspect of agent reliability they
+    formalize (task completion vs. uncertainty calibration vs. context management
+    vs. observation efficiency).'
+  - 'Trend evolution: All evidence is from 2026, showing a current frontier shift
+    from static task success to richer dimensions of agent evaluation, including cost-efficiency,
+    uncertainty, and proactive control.'
+  - 'Open questions: Whether the formal conditions and taxonomies proposed alter downstream
+    model design or training; whether uncertainty ranking transfer holds across deployment
+    distributions; and how to close the gap between benchmark-specific findings and
+    general agent safety guarantees.'
   related_work_outline_zh:
-  - 主流方向：研究集中在构建全面的GUI代理基准，以及通过任务合成、技能库和上下文管理来扩展代理性能，同时开始通过不确定性量化关注可靠性。
-  - 研究共性：多数工作使用视觉语言模型处理多模态截图，定义细粒度评估指标，并提出新基准或新训练流程以提升代理的GUI定位和交互准确率。
-  - 关键差异：交互类型（点击、拖拽、动态滚动）、平台（桌面 vs 移动端 vs 浏览器）、训练范式（弱监督、在线RL、少样本）和评估重点（端到端成功率 vs 不确定性校准
-    vs 子目标完成度）各不相同。
-  - 趋势演进：2024至2026年，前沿从广泛的桌面基准转向专门的交互基准（拖拽、动态屏幕）和可靠性分析（不确定性量化），而扩展方法从纯模仿学习转向结合合成任务的在线RL。
-  - 开放问题：如何在分布偏移下为代理行为提供形式化保证，不确定性估计能否改进多步决策，以及如何统一静态与动态界面的表示，仍然悬而未决。
+  - 主流方向：为GUI智能体能力构建形式化评估框架和分类体系，重点关注可靠性、不确定性量化和动态交互属性。
+  - 研究共性：多数工作提出一个新的基准或数据集，用于隔离某项特定智能体能力（如拖拽、不确定性、长时域上下文、动态界面），然后评估当前前沿模型在该基准上的表现，揭示系统性差距。
+  - 关键差异：工作之间的差异在于针对的交互模态（点击 vs. 拖拽 vs. CLI vs. 动态屏幕）和形式化的智能体可靠性维度（任务完成 vs. 不确定性校准
+    vs. 上下文管理 vs. 观察效率）。
+  - 趋势演进：所有证据均来自2026年，显示当前前沿正从静态任务成功率转向更丰富的智能体评估维度，包括成本效率、不确定性和主动控制。
+  - 开放问题：提出的形式化条件和分类体系是否改变下游模型设计或训练；不确定性排名迁移是否在部署分布下保持；以及如何弥合基准特定发现与通用智能体安全保障之间的差距。
   literature_review:
     line_of_work_matrix:
-    - line: Formal task definitions and interaction taxonomies
-      what_it_solves: Clarifies what agent capabilities must be evaluated and under
-        which environmental assumptions, covering click, drag, dynamic-screen, and
-        multi-app interactions.
-      what_remains_open: Whether the formal assumptions (e.g., deterministic rules,
-        static screen semantics) hold in real-world stochastic interfaces, and how
-        to align taxonomies across platforms.
-    - line: Scaling agent performance via data, task synthesis, and context
-      what_it_solves: Connects model size, data volume, and training objectives to
-        improved agent success rates, using weak supervision, online RL with synthetic
-        tasks, and proactive context management.
-      what_remains_open: There is no theoretical guarantee that scaling laws will
-        hold under distribution shift, and the reliability of learned policies degrades
-        in long-horizon tasks without formal verification.
-    - line: Reliability and safety framing through uncertainty quantification
-      what_it_solves: Introduces post-hoc uncertainty estimation to assess grounding
-        confidence, enabling selective trust and spatial safety regions for GUI actions.
-      what_remains_open: UQ ranking transfer fails across model families and interfaces,
-        and current methods are not integrated into multi-step agent trajectories,
-        leaving the safety impact unvalidated.
+    - line: Formalizing agent interaction domains and evaluation protocols
+      what_it_solves: Provides precise definitions of novel GUI interaction types
+        (drag, dynamic screen, long-horizon) and corresponding metrics, enabling systematic
+        comparison of agent capabilities beyond simple task success.
+      what_remains_open: The formalizations are tied to specific benchmarks; it is
+        unclear whether the defined properties (e.g., observation control, proactive
+        context management) transfer to real-world deployment or influence model architecture
+        design.
+    - line: Uncertainty quantification and reliability benchmarking for GUI agents
+      what_it_solves: Characterizes the trustworthiness of agent actions via post-hoc
+        uncertainty methods, revealing that within-model ranking is stable but cross-model
+        transfer is weak, and that conformal prediction can provide spatial safety
+        guarantees.
+      what_remains_open: The analysis is limited to single-step grounding; there is
+        no evidence that UQ rankings or conformal guarantees hold for multi-step trajectories
+        or under distribution shift, which is critical for safety-critical deployment.
+    - line: Scaling and sample-efficient training of GUI agents via RL and weak supervision
+      what_it_solves: Demonstrates that online RL with verifiable task synthesis and
+        weak supervision from unannotated screenshots can achieve state-of-the-art
+        performance with fewer annotations, addressing data scarcity and training
+        efficiency.
+      what_remains_open: The scaling laws connecting model size, data, and RL objectives
+        to expected behavior are not formally derived; the observed improvements are
+        empirical and lack guarantees on failure prediction or transfer across platforms.
     consensus:
-    - Vision-language models are the backbone for GUI agents, but their raw grounding
-      accuracy is insufficient for reliable deployment.
-    - Fine-grained evaluation metrics (sub-goal scores, information efficiency, multi-checkpoint)
-      expose capability gaps that aggregated success rates hide.
-    - Task-specific data augmentation (skill libraries, interaction datasets, synthetic
-      task generation) consistently lifts agent performance.
-    - There is a growing consensus that agent evaluation must go beyond single-step
-      success to include reliability and uncertainty awareness.
+    - 'Current GUI agents lack reliability in nuanced interaction dimensions: they
+      fail to control observation frequency, quantify uncertainty, and manage long-horizon
+      context without explicit mechanisms.'
+    - A benchmark-driven approach is the dominant methodology for surfacing agent
+      limitations; each benchmark isolates a specific formal property (e.g., cost-accuracy
+      trade-off, uncertainty ranking, drag grounding) and shows that frontier models
+      perform poorly on that dimension.
+    - Introducing structured representations (hierarchical skill libraries, context
+      fields, uncertainty scores) consistently improves performance over unstructured
+      baselines, indicating that current end-to-end models lack innate organization
+      for complex GUI tasks.
     disagreements:
-    - 'Interaction abstraction: some works treat only click and type as primitives,
-      while others argue for drag, dynamic scroll, and even context management as
-      first-class actions.'
-    - 'Training signal: whether to rely on cheap unannotated screenshots with weak
-      supervision, or to invest in costly online RL with verifiable rewards.'
-    - 'Evaluation target: some benchmarks target static desktop productivity, others
-      target dynamic content consumption, leading to different assumptions about the
-      observation model.'
-    - 'Deployment setting: mobile long-horizon tasks require proactive memory management,
-      while desktop benchmarks assume the agent can reprocess the full screen history,
-      creating incompatible context representations.'
+    - 'The primary interaction primitives studied differ: click-based grounding (Argus)
+      vs. drag-based actions (DragOn) vs. dynamic UI observation (LivingScreen) vs.
+      multi-modal skill retrieval (VISUALSKILL), leading to incompatible evaluation
+      criteria.'
+    - Some works aim to improve agents through post-hoc calibration (uncertainty quantification)
+      while others focus on changing the training regime (online RL, weak supervision),
+      implying different assumptions about whether current models are fundamentally
+      limited or just undertrained.
+    - 'The role of context management is treated differently: MemGUI-Agent makes context
+      actions a first-class policy output, whereas others treat context as passive
+      input history, revealing a disagreement on whether context management should
+      be learned or architecturally imposed.'
     open_questions:
-    - Can uncertainty quantification be integrated into the agent's decision loop
-      to trigger human intervention or autonomous exploration?
-    - How do scaling laws derived from synthetic tasks transfer to real-world, open-ended
-      GUI environments?
-    - What is the minimal set of interaction primitives that can cover all GUI actions
-      without losing the benefits of specialized taxonomies?
+    - Can the formal properties and taxonomies proposed by these benchmarks be operationalized
+      as training objectives or architecture constraints, rather than just evaluation
+      metrics?
+    - How do uncertainty calibration and observation control interact in multi-step
+      agent trajectories, and do improvements in one dimension degrade the other?
+    - Under what distribution shifts do the uncertainty ranking transfers and conformal
+      coverage guarantees break down, and what re-calibration strategies are needed
+      for safe deployment?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 形式化任务定义与交互分类
-      解决的问题: 明确代理能力必须评估哪些维度，以及在何种环境假设下进行，涵盖点击、拖拽、动态屏幕和多应用交互。
-      尚未覆盖: 形式化假设（如确定性规则、静态屏幕语义）在真实随机界面中是否成立，以及如何跨平台对齐分类法。
-    - 路线: 通过数据、任务合成与上下文扩展代理性能
-      解决的问题: 将模型规模、数据量和训练目标与代理成功率的提升联系起来，使用弱监督、基于合成任务的在线RL和主动上下文管理。
-      尚未覆盖: 没有理论保证缩放规律在分布偏移下依然有效，且长时域任务中学习策略的可靠性会下降，缺乏形式化验证。
-    - 路线: 基于不确定性量化的可靠性与安全框架
-      解决的问题: 引入后验不确定性估计来评估GUI定位的置信度，实现选择性信任和空间安全区域。
-      尚未覆盖: UQ排名迁移在模型族和接口之间失败，当前方法未集成到多步代理轨迹中，安全影响未经验证。
+    - 路线: 形式化智能体交互域和评估协议
+      解决的问题: 为新型GUI交互类型（拖拽、动态屏幕、长时域）提供精确定义和相应指标，使系统比较智能体能力超越简单任务成功率。
+      尚未覆盖: 形式化与特定基准绑定；尚不清楚定义的属性（如观察控制、主动上下文管理）是否迁移到真实部署或影响模型架构设计。
+    - 路线: GUI智能体的不确定性量化和可靠性基准测试
+      解决的问题: 通过后验不确定性方法刻画智能体动作的可信度，揭示模型内排名稳定但跨模型迁移弱，共形预测可提供空间安全保证。
+      尚未覆盖: 分析仅限于单步基础；没有证据表明UQ排名或共形保证在多步轨迹或分布偏移下成立，这对安全关键部署至关重要。
+    - 路线: 通过强化学习和弱监督实现GUI智能体的缩放与样本高效训练
+      解决的问题: 证明通过可验证任务合成的在线RL和来自未标注截图的弱监督，可以在较少标注下实现最先进性能，解决数据稀缺和训练效率问题。
+      尚未覆盖: 连接模型规模、数据和RL目标与预期行为的缩放定律尚未形式化推导；观察到的改进是经验性的，缺乏对失败预测或跨平台迁移的保证。
     共识:
-    - 视觉语言模型是GUI代理的骨干，但其原始定位准确率不足以实现可靠部署。
-    - 细粒度评估指标（子目标得分、信息效率、多检查点）揭示了聚合成功率所掩盖的能力差距。
-    - 任务特定的数据增强（技能库、交互数据集、合成任务生成）能够持续提升代理性能。
-    - 越来越多的工作认为代理评估必须超越单步成功，纳入可靠性和不确定性意识。
+    - 当前GUI智能体在细微交互维度上缺乏可靠性：它们无法控制观察频率、量化不确定性，并在没有显式机制的情况下管理长时域上下文。
+    - 基准驱动的方法是揭示智能体局限性的主要方法；每个基准隔离一个特定的形式属性（如成本-准确性权衡、不确定性排名、拖拽基础），并显示前沿模型在该维度上表现不佳。
+    - 引入结构化表示（分层技能库、上下文字段、不确定性分数）相较于非结构化基线始终提升性能，表明当前端到端模型缺乏对复杂GUI任务的内在组织。
     分歧:
-    - 交互抽象：部分工作仅将点击和键入视为基本动作，而另一些工作主张将拖拽、动态滚动甚至上下文管理作为一等动作。
-    - 训练信号：是依赖廉价的未标注截图进行弱监督，还是投入成本进行具有可验证奖励的在线RL。
-    - 评估目标：部分基准针对静态桌面生产力，另一些针对动态内容消费，导致对观察模型的假设不同。
-    - 部署设置：移动端长时域任务需要主动记忆管理，而桌面基准假设代理可以重新处理整个屏幕历史，造成不兼容的上下文表示。
+    - 研究的主要交互原语不同：基于点击的基础（Argus） vs. 拖拽动作（DragOn） vs. 动态UI观察（LivingScreen） vs. 多模态技能检索（VISUALSKILL），导致评估标准互不兼容。
+    - 一些工作通过后验校准（不确定性量化）改进智能体，而另一些聚焦于改变训练机制（在线RL、弱监督），暗示对当前模型是根本上受限还是仅训练不足的假设不同。
+    - 上下文管理的角色处理方式不同：MemGUI-Agent将上下文动作作为第一类策略输出，而其他工作将上下文视为被动输入历史，揭示了上下文管理应该是学习获得还是架构强加的分歧。
     开放问题:
-    - 能否将不确定性量化集成到代理的决策循环中，以触发人工干预或自主探索？
-    - 从合成任务推导出的缩放规律如何迁移到真实、开放的GUI环境？
-    - 能够覆盖所有GUI动作的最小交互原语集合是什么，同时不失去专用分类法的优势？
+    - 这些基准提出的形式属性和分类体系能否被操作为训练目标或架构约束，而不仅仅是评估指标？
+    - 不确定性校准和观察控制在多步智能体轨迹中如何相互作用，某一维度的改进是否会降低另一维度？
+    - 在何种分布偏移下，不确定性排名迁移和共形覆盖保证会失效，以及需要哪些重新校准策略以实现安全部署？
   synthesis_status: llm
   generation_notes: []
 - id: survey
@@ -723,7 +756,7 @@ topics:
   description: Surveys, taxonomies, tutorials, position papers, or roadmap papers
     for GUI agents
   description_zh: ''
-  paper_count: 34
+  paper_count: 35
   top_tags:
   - AI
   - CL
@@ -736,10 +769,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 58.8
+    methodology_quality: 58.0
     recency: 97.8
-    reproducibility: 38.9
-    topical_relevance: 46.5
+    reproducibility: 38.7
+    topical_relevance: 45.8
   top_papers:
   - id: bridging-videoqa-and-video-guided-agentic-tasks-via-generali-2026
     title: Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe
@@ -789,135 +822,96 @@ topics:
     score: 65.6
     url: https://arxiv.org/abs/2606.03951v1
   related_work_outline:
-  - 'Mainstream direction: The field is converging on end-to-end GUI agents that combine
-    vision-language models with online reinforcement learning, verifiable task synthesis,
-    and long-horizon context management.'
-  - 'Shared research pattern: Most works introduce a targeted benchmark or synthetic
-    task pipeline, train or fine-tune a VLM-based agent, and evaluate on both in-domain
-    and out-of-distribution tasks to measure generalization.'
-  - 'Key differences: Works diverge along whether they optimize for single-step grounding
-    vs. multi-step trajectories, the type of supervision (online RL, SFT, or autonomous
-    evaluator feedback), and the target platform (mobile, browser, or desktop OS).'
-  - 'Trend evolution: From 2024 to 2026, the community is shifting from static benchmarks
-    and hand-crafted rewards toward dynamic task generation, autonomous evaluation,
-    and proactive context-aware architectures.'
-  - 'Open questions: How to generalize safety and uncertainty quantification across
-    different agent interfaces, how to correct noisy reward signals without manual
-    labels, and how to scale task synthesis while maintaining verifiability.'
+  - 'Mainstream direction: Rigorous benchmarking and evaluation of GUI agents, focusing
+    on controlled probe tasks for grounding, safety, uncertainty, and fraud detection,
+    rather than broad capability surveys.'
+  - 'Shared research pattern: Designing benchmarks that suppress spurious cues (URLs,
+    reputation) and testing diverse agents under identical protocols to surface systematic
+    weaknesses, often with reproduciility audits.'
+  - 'Key differences: Domains vary (browser, mobile, coding, video-guided); evaluation
+    targets differ (task success, safety ASR, UQ ranking, benign recall); improvement
+    methods split between end-to-end RL fine-tuning and modular context/procedural
+    enhancements.'
+  - 'Trend evolution: From 2024–2025 towards 2026, the focus is narrowing from general
+    computer-use benchmarks to specialized safety audits, uncertainty quantification,
+    and training-based improvements, while survey papers remain absent in this evidence
+    window.'
+  - 'Open questions: The evidence lacks a unified taxonomy or roadmap; cross-domain
+    generalization of safety and evaluation findings is unverified; autonomous reward
+    signals for RL are still noisy and require correction.'
   related_work_outline_zh:
-  - 主流方向：领域正趋向于将视觉-语言模型与在线强化学习、可验证任务合成和长程上下文管理相结合的端到端GUI智能体。
-  - 研究共性：多数工作提出一个针对性基准或合成任务流水线，训练或微调基于VLM的智能体，并在域内和分布外任务上评估泛化能力。
-  - 关键差异：工作在对单步基础与多步轨迹的优化、监督类型（在线RL、SFT或自主评估器反馈）以及目标平台（移动端、浏览器或桌面OS）上存在分歧。
-  - 趋势演进：2024至2026年间，社区正从静态基准和手工设计奖励转向动态任务生成、自主评估和主动上下文感知架构。
-  - 开放问题：如何在不同的代理接口间泛化安全性和不确定性量化，如何在不依赖手工标签的情况下校正噪声奖励信号，以及如何在保持可验证性的同时扩展任务合成。
+  - 主流方向：通过严格基准测试评估GUI智能体，重点放在受控的探测任务（如接地、安全性、不确定性、欺诈检测）上，而非宽泛的能力综述。
+  - 研究共性：设计抑制虚假线索（URL、信誉）的基准，在相同协议下测试多种智能体，以揭示系统性弱点，并经常进行可重复性审计。
+  - 关键差异：领域不同（浏览器、移动端、编码、视频引导）；评估目标不同（任务成功率、安全攻击成功率、UQ排名、良性召回率）；改进方法分为端到端RL微调与模块化上下文/程序增强。
+  - 趋势演进：从2024-2025年到2026年，焦点从通用计算机使用基准转向专门的安全审计、不确定性量化和基于训练的改进，而本证据窗口内未见综述论文。
+  - 开放问题：缺乏统一分类体系或路线图；安全性和评估结果的跨领域泛化未经验证；自主RL奖励信号仍存在噪声，需要校正。
   literature_review:
     line_of_work_matrix:
-    - line: Online RL training with verifiable task synthesis
-      what_it_solves: Scaling agent training data via automatically generated tasks
-        with verifiable completion criteria, reducing dependence on human demonstrations.
-      what_remains_open: Whether the synthesized tasks cover real-world diversity
-        without introducing distributional bias, and whether the verifier itself is
-        robust enough to serve as a reward signal.
-    - line: Autonomous evaluation and noise correction
-      what_it_solves: Replacing human judgment with VLM-based evaluators to provide
-        scalable reward signals for RL fine-tuning, and modeling evaluator noise to
-        improve training stability.
-      what_remains_open: The assumption that a single final screenshot captures task
-        completion may fail for long-horizon tasks; the noise correction model relies
-        on empirical estimates of false positive/negative rates that may not transfer
-        across domains.
-    - line: Uncertainty quantification and safety benchmarking
-      what_it_solves: Measuring the reliability of agent actions through post-hoc
-        uncertainty methods, and auditing safety against prompt injection attacks
-        under controlled conditions.
-      what_remains_open: Uncertainty rankings transfer poorly across model classes
-        and interfaces; safety hardening is domain-conditioned and does not generalize,
-        leaving coding agents vulnerable even when browser agents are hardened.
-    - line: Proactive context management for long-horizon tasks
-      what_it_solves: Maintaining compact, structured context over extended interaction
-        sequences by treating context management as a first-class action, preventing
-        performance degradation from history overflow.
-      what_remains_open: The approach has been validated on mobile GUI tasks; whether
-        the same context structure generalizes to desktop or web agents with different
-        UI patterns is not yet shown.
-    - line: Multimodal tutorial generation from human demonstrations
-      what_it_solves: Converting raw screen recordings into structured, hierarchical
-        tutorials that improve both human learning and agent planning without manual
-        authoring.
-      what_remains_open: The evaluation relies on a new benchmark derived from official
-        documentation; the long-term impact on agent learning curves and whether tutorials
-        can replace real exploration is unverified.
+    - line: Benchmark-driven evaluation synthesis
+      what_it_solves: Systematically comparing GUI agent capabilities under controlled
+        conditions, revealing weaknesses in grounding, safety, and uncertainty handling.
+      what_remains_open: Most benchmarks are domain-specific and lack a unified taxonomy;
+        cross-benchmark generalization of findings is unclear, and long-horizon trajectory
+        evaluation is underrepresented.
+    - line: Safety and reliability analysis
+      what_it_solves: Quantifying agent vulnerabilities to prompt injection, auditing
+        safety claims, and measuring uncertainty in GUI grounding.
+      what_remains_open: Current analyses cover only hand-crafted attacks and single-step
+        grounding; multi-step RL-optimized exploits and cross-domain safety transfer
+        are not addressed.
+    - line: Task design and reward shaping for agent training
+      what_it_solves: Improving agent performance through verifiable task synthesis,
+        context management, and noisy autonomous reward signals, enabling scalable
+        RL fine-tuning.
+      what_remains_open: Methods are evaluated on specific benchmarks, and their transferability
+        to other architectures, domains, or real-world deployment remains an open
+        gap.
     consensus:
-    - Vision-language models serve as the backbone for perceiving and acting on GUI
-      screens, and the field agrees on the need for structured evaluation beyond isolated
-      single-step accuracy.
-    - Online interaction with environments, whether through RL or autonomous feedback,
-      is more effective than static supervised fine-tuning on pre-collected demonstrations
-      for improving agent robustness.
-    - Task synthesis and automated evaluation are critical for scaling training, with
-      shared agreement that verifiable rewards or outcome checks are necessary to
-      avoid reward hacking.
-    - Safety and reliability are emerging as first-class concerns, with papers converging
-      on the need for domain-specific safety evaluation and post-hoc uncertainty quantification
-      to detect unreliable actions.
+    - Rigorous evaluation requires suppressing shortcuts such as URLs or reputation
+      signals to reveal true agent understanding.
+    - Current GUI agents still struggle with long-horizon tasks and need better context
+      management or memory.
+    - Uncertainty quantification and safety audits are emerging as critical components
+      for trustworthy deployment.
     disagreements:
-    - Some works focus on single-step grounding accuracy (e.g., UI element localization)
-      while others optimize multi-step task completion, leading to different evaluation
-      metrics and failure modes.
-    - 'The choice of supervisory signal varies: some use synthetic task verifiers
-      as binary rewards, others use autonomous VLM evaluators, and a few rely on constrained
-      human demonstrations, each with different assumptions about noise and scalability.'
-    - 'Safety evaluations differ in attack surface: one work tests hand-crafted prompt
-      injection on browser agents, while another focuses on coding-domain skill injection,
-      revealing conflicting conclusions about the robustness of frontier agents.'
-    - Context management strategies range from passive history truncation to proactive
-      structured folding, but there is no agreement on whether the agent should decide
-      what to keep or whether a fixed schema should be imposed.
+    - Approaches diverge between end-to-end policy learning via online RL and modular
+      systems with explicit context management actions.
+    - 'Evaluation settings differ: some focus on single-step GUI grounding, others
+      on multi-step trajectories; domains include browser, mobile, and coding, making
+      direct comparisons difficult.'
+    - 'Safety results are domain-conditioned: agents resist prompt injection on browser
+      tasks but fail on coding tasks, showing that safety findings do not generalize
+      across interfaces.'
     open_questions:
-    - Can uncertainty quantification methods that work for open-weight models be adapted
-      to closed-source agents where internal states are inaccessible, and what is
-      the minimal observable interface needed?
-    - How does the safety of a GUI agent degrade when the same model is deployed across
-      multiple interfaces (browser, mobile, desktop) simultaneously, and can domain-specific
-      hardening be unified?
-    - What is the relative contribution of task synthesis diversity versus training
-      algorithm choice in the final agent performance, and how can we design controlled
-      experiments to disentangle them?
-    - Under what conditions do generated tutorials or keyframe summaries actually
-      improve agent learning efficiency, as opposed to simply providing a shortcut
-      that harms generalization to unseen tasks?
+    - How can we build a unified taxonomy of GUI agent tasks that spans diverse interfaces,
+      modalities, and evaluation dimensions?
+    - What evaluation protocols ensure that benchmark success rates predict real-world
+      agent performance, especially for long-horizon tasks?
+    - Can safety hardening be made domain-agnostic, or will it always require per-domain
+      calibration and re-evaluation?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 可验证任务合成下的在线RL训练
-      解决的问题: 通过自动生成具有可验证完成条件的任务，扩展智能体训练数据，减少对人类演示的依赖。
-      尚未覆盖: 合成任务是否覆盖真实世界多样性而不引入分布偏差，以及验证器本身是否足够鲁棒以充当奖励信号。
-    - 路线: 自主评估与噪声校正
-      解决的问题: 用基于VLM的评估器替代人工判断，为RL微调提供可扩展的奖励信号，并建模评估器噪声以提高训练稳定性。
-      尚未覆盖: 假设单张最终截图能捕获任务完成情况，在长程任务中可能失效；噪声校正模型依赖对假阳性/阴性率的经验估计，这些估计可能无法跨域迁移。
-    - 路线: 不确定性量化与安全性基准测试
-      解决的问题: 通过事后不确定性方法衡量智能体动作的可靠性，并在受控条件下审计对抗提示注入的安全性。
-      尚未覆盖: 不确定性排名在不同模型类别和接口间迁移性差；安全加固具有领域条件性，无法泛化，导致编码智能体在浏览器智能体被加固后仍然脆弱。
-    - 路线: 面向长程任务的主动上下文管理
-      解决的问题: 在扩展的交互序列中维护紧凑、结构化的上下文，将上下文管理视为第一类动作，防止因历史溢出导致的性能下降。
-      尚未覆盖: 该方法仅在移动GUI任务上验证；相同的上下文结构是否能泛化到具有不同UI模式的桌面或网页智能体尚未得到证明。
-    - 路线: 从人类演示生成多模态教程
-      解决的问题: 将原始屏幕录制转化为结构化、层次化的教程，无需人工编写即可提升人类学习和智能体规划能力。
-      尚未覆盖: 评估基于从官方文档衍生的新基准；教程对智能体学习曲线的长期影响以及教程是否能替代真实探索尚未验证。
+    - 路线: 基于基准的评估综合
+      解决的问题: 在受控条件下系统比较GUI智能体能力，揭示其在接地、安全性和不确定性处理方面的弱点。
+      尚未覆盖: 多数基准为特定领域设计，缺乏统一分类体系；跨基准的发现泛化性不明确，长时域轨迹评估不足。
+    - 路线: 安全性与可靠性分析
+      解决的问题: 量化智能体对提示注入的脆弱性，审计安全声明，并测量GUI接地中的不确定性。
+      尚未覆盖: 当前分析仅覆盖手工攻击和单步接地；多步RL优化攻击和跨领域安全迁移未涉及。
+    - 路线: 面向智能体训练的任务设计与奖励塑形
+      解决的问题: 通过可验证任务合成、上下文管理和带噪自主奖励信号提升智能体性能，实现可扩展的RL微调。
+      尚未覆盖: 方法在特定基准上评估，其向其他架构、领域或真实部署的可迁移性仍是开放缺口。
     共识:
-    - 视觉-语言模型是感知和操作GUI屏幕的骨干，领域一致认为需要超越孤立的单步准确率的结构化评估。
-    - 通过与环境的在线交互（无论是通过RL还是自主反馈）比在预收集演示上的静态监督微调更能有效提升智能体的鲁棒性。
-    - 任务合成和自动化评估对于扩展训练至关重要，研究者普遍认同需要可验证的奖励或结果检查来避免奖励黑客行为。
-    - 安全性和可靠性正在成为首要关注点，多篇论文汇聚于需要领域特定的安全评估和事后不确定性量化来检测不可靠动作。
+    - 严格评估需要抑制URL或信誉等捷径信号，以揭示智能体真实理解能力。
+    - 当前GUI智能体在长时域任务上仍面临困难，需要更好的上下文管理或记忆机制。
+    - 不确定性量化和安全审计正在成为可信部署的关键组件。
     分歧:
-    - 部分工作关注单步基础准确率（如UI元素定位），而其他工作优化多步任务完成，导致不同的评估指标和失败模式。
-    - 监督信号的选择各不相同：一些使用合成任务验证器作为二元奖励，另一些使用自主VLM评估器，还有少数依赖受约束的人类演示，每种方法对噪声和可扩展性的假设不同。
-    - 安全评估在攻击面上存在差异：一项工作测试浏览器智能体上的手工提示注入，另一项则聚焦编码领域的技能注入，关于前沿智能体鲁棒性的结论相互矛盾。
-    - 上下文管理策略从被动历史截断到主动结构化折叠不等，但对于智能体是自主决定保留什么，还是应强加固定模式，尚无共识。
+    - 路线分为端到端在线RL策略学习与具有显式上下文管理动作的模块化系统。
+    - 评估设置差异较大：有的关注单步GUI接地，有的关注多步轨迹；领域涵盖浏览器、移动端和编码，直接比较困难。
+    - 安全结果具有领域条件性：智能体在浏览器任务上抵抗提示注入，但在编码任务上失效，说明安全发现不能跨界面泛化。
     开放问题:
-    - 在内部状态不可访问的闭源智能体上，能否适配在开源权重模型上有效的不确定性量化方法，所需的最小可观测接口是什么？
-    - 当同一模型同时部署在多个接口（浏览器、移动端、桌面）时，GUI智能体的安全性如何退化，领域特定的加固能否统一？
-    - 任务合成多样性与训练算法选择对最终智能体性能的相对贡献如何，我们如何设计可控实验来解耦这两者？
-    - 在什么条件下，生成的教程或关键帧摘要能真正提升智能体学习效率，而不是简单提供一条捷径，从而损害对未见任务的泛化？
+    - 如何构建一个统一的GUI智能体任务分类体系，覆盖多样化的界面、模态和评估维度？
+    - 何种评估协议能够确保基准成功率预测真实世界中的智能体表现，尤其是长时域任务？
+    - 安全加固能否做到领域无关，还是永远需要针对每个领域进行校准和重新评估？
   synthesis_status: llm
   generation_notes: []
 - id: application
@@ -926,7 +920,7 @@ topics:
   description: Domain applications of GUI agents, such as office automation, mobile
     apps, web tasks, software operation, or professional tools
   description_zh: ''
-  paper_count: 46
+  paper_count: 48
   top_tags:
   - AI
   - CL
@@ -940,10 +934,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 67.0
+    methodology_quality: 65.6
     recency: 98.4
-    reproducibility: 39.3
-    topical_relevance: 55.1
+    reproducibility: 39.1
+    topical_relevance: 53.7
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
@@ -988,129 +982,126 @@ topics:
     score: 66.8
     url: https://arxiv.org/abs/2606.16659v1
   related_work_outline:
-  - 'Mainstream direction: Building domain-specific benchmarks and enhancement methods
-    to evaluate and improve GUI agents on real-world tasks across desktop, mobile,
-    web, dynamic interfaces, and drag interactions.'
-  - 'Shared research pattern: Most works construct a task suite or benchmark on a
-    specific application domain, then evaluate frontier vision-language models, revealing
-    performance gaps attributable to limited observation control, interaction modality
-    coverage, or reasoning over visual history.'
-  - 'Key differences: The target platform/application (macOS desktop, short-video
-    platforms, drag-based interactions, video-guided tasks, fraud detection) and the
-    improvement strategy (multimodal skill libraries, execution compilation, history-aware
-    critics, keyframe extraction) vary substantially.'
-  - 'Trend evolution: From 2024 to 2026, the focus shifts from broad desktop/click
-    benchmarks toward finer-grained interaction modalities (drag, dynamic screens)
-    and toward agent efficiency/reliability methods, all within the current frontier
-    of frontier VLMs.'
-  - 'Open questions: How to unify evaluation across heterogeneous interaction modalities
-    and platforms, whether skill and knowledge transfers across applications, how
-    agents can control observation in dynamically changing interfaces, and how to
-    close the gap between benchmark performance and real-world deployment.'
+  - 'Mainstream direction: Building comprehensive benchmarks and skill-augmented methods
+    for GUI agents on desktop, mobile, and web platforms, with a focus on real-world
+    task completion and fine-grained evaluation.'
+  - 'Shared research pattern: All papers evaluate multimodal (vision-language) agents
+    on task-oriented GUI interactions, using screen captures and action histories,
+    and report performance gaps between proprietary models and human-level or perfect
+    success.'
+  - 'Key differences: Evaluation targets range from static desktop apps to dynamic
+    short-video interfaces; interaction modalities include click, drag, and CLI; improvement
+    strategies split into skill libraries, execution replay, and critic modules, while
+    metrics vary from Pass@1 to cost-accuracy and fine-grained sub-goal scores.'
+  - 'Trend evolution: Within the 2026 frontier, benchmarks are expanding from single-app
+    to multi-app, from static to living-screen environments, and from pure accuracy
+    to efficiency and robustness measures, with a growing emphasis on visual grounding
+    and skill reuse.'
+  - 'Open questions: Can skills and replays transfer across operating systems and
+    application domains? How to equip agents with observation control for dynamic
+    interfaces? What safety guarantees exist when agents are deployed for fraud detection
+    or other real-world tasks without URL/reputation shortcuts?'
   related_work_outline_zh:
-  - 主流方向：构建面向特定领域的基准测试与增强方法，以评估和提升GUI代理在桌面、移动、网页、动态界面和拖拽等真实任务上的能力。
-  - 研究共性：多数工作围绕特定应用场景构建任务集或基准，然后评测前沿视觉语言模型，揭示性能差距，这些差距通常归因于观察控制不足、交互模态覆盖不全或对视觉历史的推理薄弱。
-  - 关键差异：目标平台/应用（macOS桌面、短视频平台、拖拽交互、视频引导任务、欺诈检测）和提升策略（多模态技能库、执行编译、历史感知评判、关键帧提取）存在显著差异。
-  - 趋势演进：2024至2026年，焦点从宽泛的桌面/点击基准转向更细粒度的交互模态（拖拽、动态屏幕）以及代理效率与可靠性方法，演变处于当前前沿视觉语言模型的探索阶段。
-  - 开放问题：如何统一异构交互模态与平台下的评测，技能与知识能否跨应用迁移，代理如何在动态变化界面中控制观察，以及如何缩小基准性能与真实部署之间的差距。
+  - 主流方向：面向桌面、移动和网页平台的 GUI 代理综合基准测试与技能增强方法，重点在于真实任务完成和细粒度评估。
+  - 研究共性：所有论文均评估多模态（视觉-语言）代理在任务导向 GUI 交互上的表现，使用屏幕截图和动作历史，并报告专有模型与人类水平或完美成功之间的差距。
+  - 关键差异：评估目标从静态桌面应用延伸到动态短视频界面；交互模态涵盖点击、拖拽和命令行；改进策略分为技能库、执行重放和评判模块，而指标从 Pass@1 到成本-准确性和细粒度子目标评分不等。
+  - 趋势演进：在 2026 年前沿内，基准正从单应用扩展到多应用，从静态到动态屏幕环境，从纯准确性扩展到效率和鲁棒性度量，并越来越强调视觉基础与技能复用。
+  - 开放问题：技能和重放能否跨操作系统和应用领域迁移？如何为动态界面赋予代理观察控制能力？当代理在无 URL/信誉捷径的真实世界任务（如欺诈检测）中部署时，存在哪些安全保证？
   literature_review:
     line_of_work_matrix:
-    - line: Domain-specific benchmark suites and evaluation frameworks
-      what_it_solves: Systematically assesses GUI agent capabilities on real-world
-        tasks from office automation, dynamic video platforms, drag interactions,
-        and fraud detection, revealing performance gaps and failure modes.
-      what_remains_open: No unified benchmark across platforms and interaction modalities;
-        benchmarks are mostly static snapshots lacking continuous alignment with evolving
-        real-world environments; evaluation cost and reproducibility remain concerns.
-    - line: Agent efficiency and reliability enhancement methods
-      what_it_solves: Improves agent speed on repeated tasks via execution compilation,
-        planning accuracy via history-aware visual critics, and task success via multimodal
-        skill libraries that retain visual figures.
-      what_remains_open: Cross-application transfer of skills and compiled programs;
-        dynamic updating when UIs or workflows change; robustness of critics to unseen
-        task distributions and edge cases.
-    - line: Multimodal interaction expansion beyond click-based paradigms
-      what_it_solves: Extends GUI agents to drag-based operations, dynamic content
-        that changes between actions, and video-guided tasks, addressing missing observation
-        control and interaction grounding.
-      what_remains_open: Generalization across combinations of interaction modalities
-        (e.g., drag + dynamic screen); human-level cost-accuracy trade-offs; robustness
-        to real-world streaming and latency constraints.
-    - line: Safety-critical application of GUI agents
-      what_it_solves: Tests agentic reasoning for fraud detection without reputation
-        shortcuts, revealing that current models over-rely on suspicious cues and
-        struggle with benign recall under sanitized evidence.
-      what_remains_open: Limited to SMS-to-webpage fraud with 699 cases; no evaluation
-        of adversarial robustness, other scam types, or real-time deployment; explainability
-        of agent decisions remains unaddressed.
+    - line: General GUI agent benchmarks and skill libraries
+      what_it_solves: Provides standardized environments and reusable multimodal skill
+        artifacts to evaluate and improve agent performance on desktop/mobile tasks
+        requiring GUI and CLI interaction.
+      what_remains_open: Skill libraries are built per application and may not generalize
+        to unseen apps; benchmarks cover fixed sets of applications and tasks, leaving
+        open-domain robustness unverified.
+    - line: Dynamic and video-guided GUI interaction
+      what_it_solves: Adapts GUI agents to interfaces where content changes between
+        actions (e.g., short-video platforms) or where tasks are defined by video
+        instructions, requiring agents to jointly reason about temporal dynamics and
+        UI elements.
+      what_remains_open: Agents lack observation control, leading to over-/under-observation;
+        video-guided tasks depend on keyframe extraction quality, and the benchmarks
+        are limited to specific platforms (short-video, ego-centric video).
+    - line: Efficiency and reliability via execution replay and critics
+      what_it_solves: Reduces latency and cost by compiling successful trajectories
+        into state-machine programs for fast replay, and increases robustness by intercepting
+        erroneous actions via history-aware visual grounding.
+      what_remains_open: Replay relies on deterministic screen matching and may fail
+        under UI drift; the critic is trained on existing trajectories and may not
+        generalize to entirely new action types or domains.
+    - line: Domain-specific safety-critical applications
+      what_it_solves: Applies web agents to SMS-to-webpage fraud detection in a controlled
+        setting that removes URL and reputation shortcuts, forcing models to rely
+        on content-based evidence.
+      what_remains_open: Real-world deployment would reintroduce shortcuts; the benchmark's
+        small scale (699 cases, 10 scenarios) and the weak benign recall of agents
+        limit practical trustworthiness.
     consensus:
-    - Current GUI agents, even advanced VLMs, exhibit significant performance gaps
-      when applied to real-world, domain-specific tasks beyond simplified click-based
-      benchmarks.
-    - Visual grounding and history-aware reasoning are critical for improving agent
-      performance, yet most models lack effective observation control and long-horizon
-      planning.
-    - Benchmarks that capture diverse interaction types (e.g., drag, dynamic content,
-      CLI+GUI) and fine-grained metrics are necessary to reveal hidden weaknesses
-      that single-pass metrics obscure.
-    - Enhancing agents with external knowledge (skills, compiled programs, critics)
-      yields consistent gains, but the generalizability of these enhancements across
-      platforms and task distributions is unproven.
+    - Multimodal vision-language models are the backbone of current GUI agents, but
+      they still fall short of human-level reliability on complex, multi-step tasks.
+    - Fine-grained evaluation beyond aggregate success rate (e.g., sub-goal completion,
+      cost-accuracy, multi-checkpoint scoring) is necessary to differentiate agent
+      capabilities.
+    - Skill augmentation, whether textual or multimodal, lifts agent performance significantly,
+      but the construction of such skills remains application-specific and labor-intensive.
+    - Agents struggle with execution errors and short-sighted planning, motivating
+      the integration of history-aware critics and runtime verification.
     disagreements:
-    - 'Task scope: some works focus on static desktop productivity (e.g., macOS apps),
-      others on dynamic, entertainment-oriented interfaces (short-video apps), and
-      still others on high-stakes safety tasks (fraud detection), leading to different
-      evaluation priorities and success criteria.'
-    - 'Improvement strategy: methods diverge into pre-computed skill libraries (VISUALSKILL),
-      runtime compilation of execution traces (PreAct), and critic models that intervene
-      before action execution (HiViG), each with different assumptions about task
-      repetition and agent architecture.'
-    - 'Efficiency vs. success: PreAct emphasizes speedup on repeated tasks, while
-      most benchmarks optimize for task success rate, indicating a trade-off between
-      computational cost and accuracy that is not jointly addressed.'
-    - 'Evaluation realism: FraudSMSWalker deliberately suppresses URL and reputation
-      cues to test pure reasoning, whereas other benchmarks retain all real-world
-      information, reflecting different positions on whether shortcuts should be removed
-      or leveraged.'
+    - 'Interaction modality focus: some works emphasize click-based actions while
+      others highlight drag-based or CLI-inclusive interactions, leading to different
+      benchmark designs and failure mode coverage.'
+    - 'Evaluation metric design: MacAgentBench uses deterministic rule-based multi-checkpoint
+      scoring, LivingScreen uses cost-accuracy jointly, and others use simple Pass@1
+      or score lifts, which are not directly comparable.'
+    - 'Improvement strategy: PreAct pursues speed via trajectory compilation, VISUALSKILL
+      pursues accuracy via multimodal skill retrieval, and HiViG pursues robustness
+      via visual grounding and macro-action history, reflecting different assumptions
+      about the primary bottleneck (latency, skill grounding, or planning).'
+    - 'Deployment context: most benchmarks target office automation and general computer
+      use, while FraudSMSWalker targets a security-critical application with artificially
+      suppressed reputation cues, creating a tension between controlled evaluation
+      and real-world applicability.'
     open_questions:
-    - Can a single agent architecture handle the full spectrum of interaction modalities
-      (click, drag, dynamic content, video guidance) without task-specific modifications?
-    - How can skills and compiled programs be updated or transferred when the underlying
-      application UI or workflow changes, without requiring full re-training or re-compilation?
-    - What is the right balance between observation frequency and task completion
-      cost in dynamic interfaces, and can agents learn to adaptively control their
-      own observation rate?
-    - Are current benchmarks sufficient to predict real-world deployment success,
-      especially for safety-critical applications like fraud detection where the cost
-      of false positives and false negatives is highly asymmetric?
+    - How can skill libraries and replay programs be transferred across different
+      operating systems or application genres without manual re-authoring?
+    - What mechanisms can give agents explicit observation control to avoid over-
+      or under-observation in dynamic, living-screen environments?
+    - Can the gains from visual skill retention, history-aware critics, and replay
+      compilation be combined without conflicts, and would they generalize to safety-critical
+      domains like fraud detection?
+    - What is the minimum set of evaluation dimensions (accuracy, latency, cost, robustness
+      to UI drift) required to certify a GUI agent for real-world deployment?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 领域特定基准与评估体系
-      解决的问题: 系统评估GUI代理在办公自动化、动态视频平台、拖拽交互和欺诈检测等真实任务上的能力，揭示性能差距与失败模式。
-      尚未覆盖: 缺乏跨平台与跨交互模态的统一基准；现有基准多为静态快照，未与真实环境持续对齐；评估成本与可复现性仍存顾虑。
-    - 路线: 代理效率与可靠性增强方法
-      解决的问题: 通过执行编译提升重复任务速度，借助历史感知视觉评判改善规划准确性，并利用保留视觉图形的多模态技能库提升任务成功率。
-      尚未覆盖: 技能与编译程序的跨应用迁移；UI或工作流变化时的动态更新；评判模型对未见任务分布与边缘情况的鲁棒性。
-    - 路线: 超越点击范式的多模态交互扩展
-      解决的问题: 将GUI代理扩展到拖拽操作、操作间内容变化的动态界面以及视频引导任务，弥补观察控制与交互基础能力的不足。
-      尚未覆盖: 交互模态组合（如拖拽+动态界面）的泛化；人类水平的成本-准确性权衡；对真实世界流式传输与延迟约束的鲁棒性。
-    - 路线: 安全关键应用中的GUI代理
-      解决的问题: 测试代理在无信誉捷径下的欺诈检测推理能力，揭示当前模型过度依赖可疑线索、在净化证据下难以保持良性召回的问题。
-      尚未覆盖: 仅限于短信到网页欺诈的699个案例；未评估对抗鲁棒性、其他诈骗类型或实时部署；决策可解释性尚未涉及。
+    - 路线: 通用 GUI 代理基准与技能库
+      解决的问题: 提供标准化环境和可复用的多模态技能工件，以评估和提升代理在需要 GUI 和 CLI 交互的桌面/移动任务上的表现。
+      尚未覆盖: 技能库按应用构建，可能无法泛化到未见过的应用；基准覆盖的应用和任务集固定，开放域鲁棒性未经验证。
+    - 路线: 动态与视频引导的 GUI 交互
+      解决的问题: 将 GUI 代理适配到内容在操作之间变化的界面（如短视频平台）或由视频指令定义的任务，要求代理同时推理时间动态和 UI 元素。
+      尚未覆盖: 代理缺乏观察控制，导致过度观察或观察不足；视频引导任务依赖关键帧提取质量，且基准限于特定平台（短视频、第一人称视频）。
+    - 路线: 通过执行重放与评判模型提升效率与可靠性
+      解决的问题: 通过将成功轨迹编译为状态机程序实现快速重放以降低延迟和成本，并通过历史感知的视觉基础拦截错误动作以增强鲁棒性。
+      尚未覆盖: 重放依赖确定性屏幕匹配，在 UI 变化时可能失效；评判模型在已有轨迹上训练，可能无法泛化到全新动作类型或领域。
+    - 路线: 特定领域的安全关键应用
+      解决的问题: 在移除 URL 和信誉捷径的受控设置下，将网页代理应用于短信到网页的欺诈检测，迫使模型依赖基于内容的证据。
+      尚未覆盖: 真实部署会重新引入捷径；基准规模较小（699 个案例，10 个场景），且代理的良性召回率较弱，限制了实际可信度。
     共识:
-    - 当前GUI代理，即使是先进的视觉语言模型，在应用于真实、领域特定任务时仍表现出显著性能差距，远非简化点击基准所能反映。
-    - 视觉基础与历史感知推理对提升代理性能至关重要，但多数模型仍缺乏有效的观察控制与长程规划能力。
-    - 捕捉多样化交互类型（如拖拽、动态内容、命令行+图形界面）并提供细粒度指标的基准，对于揭示单一指标掩盖的潜在弱点不可或缺。
-    - 通过外部知识（技能、编译程序、评判模型）增强代理可带来持续收益，但此类增强方法跨平台、跨任务分布的泛化性尚未得到证实。
+    - 多模态视觉-语言模型是当前 GUI 代理的骨干，但在复杂的多步骤任务上仍达不到人类水平的可靠性。
+    - 超越整体成功率（如子目标完成度、成本-准确性、多检查点评分）的细粒度评估对于区分代理能力是必要的。
+    - 技能增强（无论是文本还是多模态）能显著提升代理性能，但此类技能的构建仍依赖特定应用且劳动密集。
+    - 代理在执行错误和短视规划方面存在困难，这推动了历史感知评判模型和运行时验证的集成。
     分歧:
-    - 任务范围：部分工作聚焦静态桌面生产力（如macOS应用），其他关注动态娱乐界面（短视频应用），还有面向高风险安全任务（欺诈检测），导致评估优先级与成功标准各异。
-    - 改进策略：方法分为预计算技能库（VISUALSKILL）、运行时执行轨迹编译（PreAct）以及在动作执行前干预的评判模型（HiViG），各自对任务重复性与代理架构的假设不同。
-    - 效率与成功率：PreAct强调重复任务加速，而多数基准以任务成功率为优化目标，显示计算成本与准确率之间的权衡尚未被联合处理。
-    - 评估真实性：FraudSMSWalker刻意抑制URL与信誉线索以测试纯粹推理，其他基准则保留全部真实信息，这反映了在应移除还是利用捷径线索上的不同立场。
+    - 交互模态焦点：一些工作强调基于点击的动作，而另一些则突出拖拽或包含 CLI 的交互，导致基准设计和故障模式覆盖不同。
+    - 评估指标设计：MacAgentBench 使用确定性基于规则的多检查点评分，LivingScreen 联合使用成本-准确性，而其他工作使用简单的 Pass@1
+      或得分提升，指标之间不可直接比较。
+    - 改进策略：PreAct 通过轨迹编译追求速度，VISUALSKILL 通过多模态技能检索追求准确性，HiViG 通过视觉基础和宏观动作历史追求鲁棒性，反映了对主要瓶颈（延迟、技能基础或规划）的不同假设。
+    - 部署场景：大多数基准面向办公自动化和通用计算机使用，而 FraudSMSWalker 面向人工抑制信誉线索的安全关键应用，形成了受控评估与现实适用性之间的张力。
     开放问题:
-    - 单一代理架构能否在不做任务特定修改的情况下，处理点击、拖拽、动态内容、视频引导等全谱系交互模态？
-    - 当底层应用UI或工作流发生变化时，技能与编译程序如何更新或迁移，而无需完整重训练或重编译？
-    - 在动态界面中，观察频率与任务完成成本之间的最佳平衡点是什么？代理能否学会自适应控制自身观察率？
-    - 现有基准能否充分预测真实世界部署的成功，尤其是欺诈检测等安全关键应用中，假阳性与假阴性的代价高度不对称？
+    - 技能库和重放程序如何在不进行人工重新编写的情况下跨不同操作系统或应用类型迁移？
+    - 什么机制可以赋予代理明确的观察控制，以避免在动态、实时屏幕环境中的过度观察或观察不足？
+    - 视觉技能保留、历史感知评判模型和重放编译带来的增益能否无冲突地结合，并且它们能否泛化到欺诈检测等安全关键领域？
+    - 认证一个 GUI 代理用于真实部署所需的最低评估维度集（准确性、延迟、成本、对 UI 变化的鲁棒性）是什么？
   synthesis_status: llm
   generation_notes: []
