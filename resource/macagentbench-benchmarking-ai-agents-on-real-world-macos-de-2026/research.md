@@ -1,7 +1,7 @@
 # MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop
 
 - Status: planned
-- Generated at: 2026-08-09T01:13:31Z
+- Generated at: 2026-08-10T01:15:53Z
 - Read-first score: 79.4
 - Paper: https://arxiv.org/abs/2606.22557v1
 - Code: https://github.com/JetAstra/MacAgentBench.
