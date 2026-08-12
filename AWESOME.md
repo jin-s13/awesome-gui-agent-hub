@@ -113,6 +113,7 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 36.7 | method, system | [Perceive Before Reasoning: A Pre-Reasoning Perception Framework for Efficient and Reliable Proactive Mobile Agents](https://arxiv.org/abs/2606.03236v1) | Proposes a two-stage framework (PRPF) with a lightweight perceptor for intervention gating and a reasoner for proactive mobile agents, reducing false triggers and improving effici... |
 | 2026 | 35.9 | method | [OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis](https://arxiv.org/abs/2603.20278) | OpenResearcher is a reproducible pipeline for synthesizing long-horizon deep research trajectories using offline browser primitives over a 15M-document corpus. |
 | 2026 | 34 | method, system | [LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks](https://arxiv.org/abs/2608.01964) | Proposes LongHorizon-Harness, a task-state management system for LLM agents, improving performance on long-horizon benchmarks via Manage-Execute-Audit loop. |
+| 2026 | 33.2 | method | [The Next Screenshot Knows: Gated Hindsight Distillation for Mobile GUI Agents](https://arxiv.org/abs/2608.06065) | Proposes Gated Hindsight Distillation (GHD) to train mobile GUI agents using next screenshot as privileged information, improving task success on AndroidWorld and AndroidLab. |
 | 2026 | 32.5 | method | [DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment](https://arxiv.org/abs/2607.07820) | Self-distillation framework for web agents using a verifiable environment with 420K multi-hop QA tasks, achieving competitive performance on benchmarks. |
 | 2026 | 31.4 | method | [DocOps: A Verifiable Benchmark for Autonomous Agents in Complex Document Operations](https://arxiv.org/abs/2607.19865) | DocOps is a verifiable benchmark for evaluating autonomous agents on complex document operations, revealing key failure modes. |
 | 2026 | 26.4 | method | [AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations from LLMs](https://openreview.net/forum?id=wl4c9jvcyY) |  |
@@ -128,4 +129,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **115**.
+Total papers: **116**.
