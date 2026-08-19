@@ -109,6 +109,8 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 43.7 | method | [UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation](https://arxiv.org/abs/2607.06306) | Introduces UI2App, a benchmark evaluating how well models infer interactions from screenshots to generate executable web applications. |
 | 2026 | 43.4 | benchmark, application | [OmegaUse-OfficeVal: Benchmarking LLM Agents on Long-Horizon Office-Suite Tasks with Economic Grounding](https://arxiv.org/abs/2607.27155) | Introduces OmegaUse-OfficeVal, a benchmark for LLM agents on long-horizon office-suite tasks with economic grounding, comparing human vs LLM costs and quality. |
 | 2026 | 43 | method, system | [SkillHarness: Harnessing Safe Skills for Computer-Use Agents](https://arxiv.org/abs/2606.20636v1) | SkillHarness proposes a framework for safe skill learning in dynamic environments for Computer-Use Agents, using skill boundaries and selective reuse to reduce unsafe rates by 57.... |
+| 2026 | 41.2 | method | [UI-Mate: Advancing Open-Weight Foundation GUI Agents with In-Context Demonstrations](https://arxiv.org/abs/2608.15930) | Foundation GUI agents can automate complex digital tasks, but deployment is hindered by scarce and biased training data, ambiguous prompts, and unreliable execution. Routine workf... |
+| 2026 | 41.2 | method, system | [UI-Mate: Advancing Open-Weight Foundation GUI Agents with In-Context Demonstrations](https://arxiv.org/abs/2608.15930v1) | Foundation GUI agents can automate complex digital tasks, but deployment is hindered by scarce and biased training data, ambiguous prompts, and unreliable execution. Routine workf... |
 | 2026 | 40.3 | method, benchmark | [When Web Agents Finish but Still Fail: Reproducible Triggers and Trace Diagnostics for Parallel Web Exploration](https://arxiv.org/abs/2606.20724v2) | Study of hidden failures in long-horizon web agents, introducing Parallel WebBench benchmark and GRPO training, identifying persistent failure modes. |
 | 2026 | 38.8 | benchmark | [OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models](https://arxiv.org/abs/2607.28609) | Computer-using agents (CUAs) are advancing rapidly across the digital world. A CUA trajectory records the agent's actions, states, and reasoning. Verifying whether it fulfilled th... |
 | 2026 | 37.8 | method | [SlimSearcher: Training Efficiency-Aware Web Agents via Adaptive Reward Gating](https://arxiv.org/abs/2606.07074v1) | SlimSearcher trains efficiency-aware web agents using Pareto-efficient filtration and adaptive reward gating to reduce tool calls while maintaining accuracy. |
@@ -133,4 +135,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **120**.
+Total papers: **122**.
