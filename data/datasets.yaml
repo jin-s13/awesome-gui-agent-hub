@@ -360,6 +360,11 @@
     title: 'UI-Mate: Advancing Open-Weight Foundation GUI Agents with In-Context Demonstrations'
     url: https://arxiv.org/abs/2608.15930
     title_zh: UI-Mate：通过上下文演示推进开放权重基础 GUI 智能体
+  - id: mobileworldsafety-benchmarking-gui-agent-safety-against-env-2026
+    title: 'MobileWorldSafety: Benchmarking GUI Agent Safety Against Environmental
+      Injection Attacks in Android Apps'
+    url: https://arxiv.org/abs/2608.17659v1
+    title_zh: MobileWorldSafety：在Android应用中针对环境注入攻击的GUI代理安全性基准测试
   name_zh: 面向长时域移动GUI代理的任务状态表示
   description_zh: 提出TSR框架，解耦任务状态与感官输入，提升长时域移动GUI代理成功率达12%。
 - id: paper-benchmarking-living-screen-native-gui-agents-on-short-video-2026
@@ -1312,6 +1317,11 @@
     title: 'UI-Mate: Advancing Open-Weight Foundation GUI Agents with In-Context Demonstrations'
     url: https://arxiv.org/abs/2608.15930
     title_zh: UI-Mate：通过上下文演示推进开放权重基础 GUI 智能体
+  - id: mobileworldsafety-benchmarking-gui-agent-safety-against-env-2026
+    title: 'MobileWorldSafety: Benchmarking GUI Agent Safety Against Environmental
+      Injection Attacks in Android Apps'
+    url: https://arxiv.org/abs/2608.17659v1
+    title_zh: MobileWorldSafety：在Android应用中针对环境注入攻击的GUI代理安全性基准测试
   name_zh: GUI agent
   description_zh: 开发了一个探索智能体，通过系统探索查询空间来识别GUI环境中的用户敏感状态。
   notes_zh: 派生自论文：GUI agent：用户敏感屏幕的引导式探索
@@ -1634,3 +1644,63 @@
   notes_zh: 派生自论文：SPIEval：评估大语言模型作为移动助手处理分散个人信息的能力
   year: 2026
   preview: https://arxiv.org/html/2608.10692v1/x1.png
+- id: hf-guiagentt-koen-web-agent-sft-mixes
+  name: GUIAgentt/koen-web-agent-sft-mixes
+  description: "Korean-English Web Agent SFT Mixes\n\t\n\n브라우저 GUI 에이전트 SFT 용 한국어·영어\
+    \ 혼합 데이터. 언어 비율만 다르고 나머지는\n동일하게 통제된 4개 구성이라, 비율이 성능에 미치는 영향을 직접 비교할 수 있다.\n\n\t\
+    \n\t\t\n\t\n\t\n\t\t구성\n\t\n\n\n\t\n\t\t\nconfig\nko : en\n스텝\n궤적\n\n\n\t\t\n\
+    ko_only_20k\n10 : 0\n20,001\n3,042\n\n\nmix_ko_en_5050\n5 : 5\n20,008\n2,663\n\
+    \n\nmix_ko_en_2080\n2 : 8\n20,003\n2,436\n\n\nen_only_20k\n0 : 10\n20,009\n2,274\n\
+    \n\n\t\n\n비율은 궤적 수가 아니라 스텝 수 기준이다. 스텝 하나가 학습 샘플 하나인데\n한국어 궤적은 평균 6.6스텝, 영어는 8.7스텝이라,\
+    \ 궤적 수로 5:5 를 맞추면 실제\ngradient 기여가 5:5 가 되지 않는다. 궤적은 절대 쪼개지 않는다.\n네 구성의 표본은 서로\
+    \ 중첩된다.… See the full description on the dataset page: https://huggingface.co/datasets/GUIAgentt/koen-web-agent-sft-mixes."
+  tags:
+  - language:ko
+  - language:en
+  - license:odc-by
+  - size_categories:10K<n<100K
+  - format:json
+  - modality:tabular
+  - modality:text
+  - library:datasets
+  - library:pandas
+  - library:polars
+  - library:mlcroissant
+  - region:us
+  - web-agents
+  - gui-agents
+  - supervised-fine-tuning
+  - multilingual
+  - korean
+  links:
+    huggingface: https://huggingface.co/datasets/GUIAgentt/koen-web-agent-sft-mixes
+  sources:
+  - repo: huggingface-datasets
+    category: dataset
+  year: 2026
+  notes: downloads=0, likes=0, license=odc-by
+- id: paper-mobileworldsafety-benchmarking-gui-agent-safety-against-env-2026
+  name: MobileWorldSafety
+  description: LLM-powered GUI agents that autonomously operate smartphones are rapidly
+    transitioning from research prototypes to early real-world deployment. However,
+    because these agents routinely process untrusted environmental content, they are
+    highly...
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2608.17659v1
+  sources:
+  - repo: papers
+    category: dataset
+  notes: 'Derived from paper: MobileWorldSafety: Benchmarking GUI Agent Safety Against
+    Environmental Injection Attacks in Android Apps'
+  related_papers:
+  - id: mobileworldsafety-benchmarking-gui-agent-safety-against-env-2026
+    title: 'MobileWorldSafety: Benchmarking GUI Agent Safety Against Environmental
+      Injection Attacks in Android Apps'
+    url: https://arxiv.org/abs/2608.17659v1
+    title_zh: MobileWorldSafety：在Android应用中针对环境注入攻击的GUI代理安全性基准测试
+  name_zh: MobileWorldSafety
+  description_zh: 由LLM驱动的GUI代理能够自主操作智能手机，正迅速从研究原型过渡到早期实际部署。然而，由于这些代理经常处理不可信的环境内容，它们极易受到环境注入攻击，包括间接提示注入和对抗性指令。此类攻击可以通过日常移动使用中遇到的各种渠道操纵代理行为，而用户毫无察觉。尽管存在这些风险，现有基准往往未能涵盖日常用户场景，缺乏对移动设备上GUI代理在环境注入攻击下的系统性评估。为弥补这一空白，我们提出了MobileWorldSafety，一个基于真实Android应用构建的包含142个风险任务的基准。对于每个任务，我们在最终系统状态上定义一个可通过程序验证的风险指标，并使用两阶段流水线评估结果：基于规则的验证处理明确情况，而LLM评判员裁决模糊情况。这区分了安全失败与能力失败，并实现了客观且可复现的评估。对六个代理（包括通用代理和专用GUI代理）的评估表明，所有代理仍然高度脆弱，攻击成功率从40.4%到66.9%不等。这些发现表明，当对抗性内容以普通移动上下文呈现时，当前代理往往无法保持安全对齐。MobileWorldSafety为量化这些漏洞和推进稳健移动GUI代理的研究奠定了基础。
+  notes_zh: 派生自论文：MobileWorldSafety：在Android应用中针对环境注入攻击的GUI代理安全性基准测试
+  year: 2026
+  preview: https://arxiv.org/html/2608.17659v1/intro.png
