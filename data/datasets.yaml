@@ -1837,3 +1837,72 @@
   notes_zh: 派生自论文：Game2World Engine：解锁野外游戏视频用于世界模型训练
   year: 2026
   preview: https://arxiv.org/html/2608.24680v1/AAAI_27_dataset_figure.png
+- id: hf-gui-wm-agentnet-success-v1
+  name: gui-wm/agentnet-success-v1
+  description: "agentnet-success-v1\n\t\n\nGUI state transitions (s, a, s') walked\
+    \ on an Ubuntu desktop by\nQwen3.8-27B, from tasks taken from AgentNet and run\
+    \ inside OSWorld's\nDocker environment.\nWalks the judge ruled had finished the\
+    \ task. Use these to score an agent: the trajectory is a worked example, and action_target\
+    \ gives the element each step was aiming at, so an answer can be marked right\
+    \ by control rather than by pixel.\nThis repository is the one-condition pool.\
+    \ Tasks are drawn from the 623… See the full description on the dataset page:\
+    \ https://huggingface.co/datasets/gui-wm/agentnet-success-v1."
+  tags:
+  - task_categories:image-to-text
+  - language:en
+  - license:apache-2.0
+  - size_categories:n<1K
+  - format:json
+  - modality:text
+  - library:datasets
+  - library:pandas
+  - library:polars
+  - library:mlcroissant
+  - region:us
+  - gui
+  - world-model
+  - agent
+  - osworld
+  - agentnet
+  links:
+    huggingface: https://huggingface.co/datasets/gui-wm/agentnet-success-v1
+  sources:
+  - repo: huggingface-datasets
+    category: dataset
+  year: 2026
+  notes: downloads=0, likes=0, license=apache-2.0
+- id: hf-gui-wm-agentnet-partial-and-fail-v1
+  name: gui-wm/agentnet-partial-and-fail-v1
+  description: "agentnet-partial-and-fail-v1\n\t\n\nGUI state transitions (s, a, s')\
+    \ walked on an Ubuntu desktop by\nQwen3.8-27B, from tasks taken from AgentNet\
+    \ and run inside OSWorld's\nDocker environment.\nWalks the judge ruled partial\
+    \ or failed. These are the larger half and, for a world model, the more useful\
+    \ one: a walk that did not finish still opened dialogs, switched tabs and changed\
+    \ settings, and each of those is a real transition. Measured over eighty-eight\
+    \ walks, a failure visits 13.5 distinct… See the full description on the dataset\
+    \ page: https://huggingface.co/datasets/gui-wm/agentnet-partial-and-fail-v1."
+  tags:
+  - task_categories:image-to-text
+  - language:en
+  - license:apache-2.0
+  - size_categories:10K<n<100K
+  - format:parquet
+  - modality:tabular
+  - modality:text
+  - library:datasets
+  - library:dask
+  - library:polars
+  - library:mlcroissant
+  - region:us
+  - gui
+  - world-model
+  - agent
+  - osworld
+  - agentnet
+  links:
+    huggingface: https://huggingface.co/datasets/gui-wm/agentnet-partial-and-fail-v1
+  sources:
+  - repo: huggingface-datasets
+    category: dataset
+  year: 2026
+  notes: downloads=0, likes=0, license=apache-2.0
