@@ -137,6 +137,7 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 32.2 | method, system | [UI-Venus-2 Technical Report](https://arxiv.org/abs/2609.00028) | Multimodal GUI agents have emerged as a promising paradigm for digital task automation, yet transitioning from benchmark-oriented models to dependable real-world applications rema... |
 | 2026 | 31.4 | method | [DocOps: A Verifiable Benchmark for Autonomous Agents in Complex Document Operations](https://arxiv.org/abs/2607.19865) | DocOps is a verifiable benchmark for evaluating autonomous agents on complex document operations, revealing key failure modes. |
 | 2026 | 29.8 | method | [GameWAM: A World Action Model for Video Games](https://arxiv.org/abs/2608.26200) | Modern video games combine first-person perception, rapid visual changes, persistent world state, and heterogeneous native controls. Existing game agents map visual and task conte... |
+| 2026 | 29.1 | method, application | [Conformal Risk-Controlled Agents for Safeguarded Mobile GUI Automation · 2026-04 · 📱](https://arxiv.org/abs/2604.09155) |  |
 | 2026 | 26.4 | method | [AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations from LLMs](https://openreview.net/forum?id=wl4c9jvcyY) |  |
 | 2026 | 26.4 | method | [UI-Pro: A Hidden Recipe for Building Vision-Language Models for GUI Grounding](https://openreview.net/forum?id=5wmAfwDBoi) |  |
 | 2026 | 25.8 | method | [Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements](https://arxiv.org/abs/2608.17310) | Proposes Agentic ESOpt, an evolution-strategy-based framework for full-parameter fine-tuning of long-horizon LLM agents with minimal GPU memory, enabling parameter-context co-evol... |
@@ -153,4 +154,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **140**.
+Total papers: **141**.
