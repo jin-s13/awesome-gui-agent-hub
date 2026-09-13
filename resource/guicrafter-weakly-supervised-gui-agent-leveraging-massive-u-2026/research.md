@@ -1,7 +1,7 @@
 # GUICrafter: Weakly-Supervised GUI Agent Leveraging Massive Unannotated Screenshots
 
 - Status: planned
-- Generated at: 2026-09-12T02:38:59Z
+- Generated at: 2026-09-13T02:35:12Z
 - Read-first score: 71.6
 - Paper: https://arxiv.org/abs/2606.29705v1
 - Code: https://github.com/fansunqi/GUICrafter.
