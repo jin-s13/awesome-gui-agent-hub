@@ -1,17 +1,17 @@
-# Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction
+# GUI-HARVEST: Self-Improving GUI Agents through Evidence-Driven Harness Evolution
 
 - Status: planned
 - Generated at: 2026-10-05T03:33:05Z
-- Read-first score: 73.7
-- Paper: https://arxiv.org/abs/2606.29445v1
-- Code: https://github.com/VG-GUI-TASKER/VG-GUI-TASKER.
+- Read-first score: 73.6
+- Paper: https://arxiv.org/abs/2610.00948v1
+- Code: https://github.com/GaryYang12345/GUI-HARVEST.
 
 ## Score Signals
 
 - recency: 100.0 - Uses a gentle age decay so recent papers surface without erasing older foundations.
-- methodology_quality: 90 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
-- reproducibility: 85 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
-- topical_relevance: 51.8 - Uses existing LLM keyword relevance scores normalized to 0-100.
+- reproducibility: 81 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
+- methodology_quality: 80 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
+- topical_relevance: 60.0 - Uses existing LLM keyword relevance scores normalized to 0-100.
 - citation_impact: 0.0 - No OpenAlex identifier was available for this paper.
 - graph_prestige: 0.0 - No local citation edges were available, so graph prestige is excluded.
 - citation_velocity: 0.0 - No OpenAlex identifier was available for this paper.
