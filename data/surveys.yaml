@@ -1,5 +1,5 @@
 schema_version: awesome-hub.surveys.v1
-generated_at: '2026-10-09T04:10:29Z'
+generated_at: '2026-10-10T03:54:20Z'
 topics:
 - id: method
   label: method
@@ -21,10 +21,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 61.0
+    methodology_quality: 61.5
     recency: 99.4
     reproducibility: 38.4
-    topical_relevance: 43.9
+    topical_relevance: 44.5
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
@@ -208,10 +208,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 61.7
+    methodology_quality: 61.8
     recency: 99.3
     reproducibility: 38.5
-    topical_relevance: 44.9
+    topical_relevance: 45.1
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
@@ -401,10 +401,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 59.3
+    methodology_quality: 59.9
     recency: 99.3
     reproducibility: 38.1
-    topical_relevance: 44.0
+    topical_relevance: 44.5
   top_papers:
   - id: visualskill-multimodal-skills-for-computer-use-agents-2026
     title: 'VISUALSKILL: Multimodal Skills for Computer-Use Agents'
@@ -607,10 +607,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 61.6
+    methodology_quality: 61.9
     recency: 99.5
     reproducibility: 38.4
-    topical_relevance: 45.1
+    topical_relevance: 45.4
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
@@ -789,10 +789,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 56.8
+    methodology_quality: 58.0
     recency: 99.0
     reproducibility: 37.8
-    topical_relevance: 40.9
+    topical_relevance: 42.2
   top_papers:
   - id: bridging-videoqa-and-video-guided-agentic-tasks-via-generali-2026
     title: Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe
@@ -824,6 +824,12 @@ topics:
     year: 2026
     score: 70.4
     url: https://arxiv.org/abs/2606.19926v1
+  - id: deskforge-dense-supervision-from-desktop-environments-for-c-2026
+    title: 'DeskForge: Dense Supervision from Desktop Environments for Computer-Use
+      Agents'
+    year: 2026
+    score: 67.3
+    url: https://arxiv.org/abs/2610.02320
   - id: fraudsmswalker-benchmarking-agentic-large-language-models-f-2026
     title: 'FraudSMSWalker: Benchmarking Agentic Large Language Models for SMS-to-Webpage
       Fraud Detection'
@@ -837,114 +843,105 @@ topics:
     year: 2026
     score: 65.9
     url: https://arxiv.org/abs/2606.05233v1
-  - id: reinforcement-learning-for-computer-use-agents-with-autonomo-2026
-    title: Reinforcement Learning for Computer-Use Agents with Autonomous Evaluation
-    year: 2026
-    score: 65.8
-    url: https://arxiv.org/abs/2606.24515v1
   related_work_outline:
-  - 'Mainstream direction: The evidence is dominated by recent method and benchmark
-    studies rather than finished surveys, so the main task is to organize GUI-agent
-    work into taxonomies of capability, evaluation, and trust, with emphasis on verifiable
-    RL, harness-level self-improvement, uncertainty, and safety.'
-  - 'Shared research pattern: Papers translate task completion into executable evaluation
-    signals, such as screenshots, repeated runs, verifiable Docker tasks, or sanitized
-    webpage evidence, and improve either the policy, the execution harness, or the
-    evaluation protocol while keeping success grounded in interaction.'
-  - 'Key differences: They differ by optimization target: frozen-model harness edits,
-    online RL with synthesized tasks, proactive context management, or noisy evaluator
-    reward. They also differ by deployment setting and evaluation grain, from single-step
-    grounding to multi-step trajectories.'
-  - 'Trend evolution: Within the 2024-2026 frontier, the cluster moves from static
-    GUI grounding toward verifiable task synthesis, sample-efficient RL, long-horizon
-    context, and security or uncertainty audits; the year span is too narrow for longer
-    historical trend claims.'
-  - 'Open questions: Cross-setup and cross-interface transfer remains weakly evidenced;
-    safety and uncertainty findings appear regime-specific; many records omit limitation
-    or reproducibility details, leaving generalization, deployment readiness, and
-    gap prioritization unresolved.'
+  - 'Mainstream direction: The packet foregrounds GUI-agent evaluation and training
+    artifacts—benchmarks, task synthesis, RL/harness optimization, dense supervision,
+    uncertainty, and safety audits—rather than retrospective survey papers.'
+  - 'Shared research pattern: Works introduce controlled environments or benchmarks,
+    evaluate frozen or fine-tuned VLM backbones on success, accuracy, or transfer,
+    and report deltas against baselines; several publish datasets or code signals.'
+  - 'Key differences: Contributions split by intervention point: data generation,
+    policy training, execution harness, context management, uncertainty calibration,
+    and red-team safety; evaluation targets range from grounding to long-horizon,
+    fraud, and domain safety.'
+  - 'Trend evolution: Across the narrow 2024–2026 window, the frontier moves from
+    static GUI grounding and benchmarks toward verifiable online RL, self-improving
+    frozen agents, dense supervision, and safety/uncertainty audits.'
+  - 'Open questions: Cross-benchmark result compatibility, transferability of uncertainty
+    and safety findings, benign recall under sanitized evidence, and missing limitations
+    or reproducibility details remain verification gaps.'
   related_work_outline_zh:
-  - 主流方向：当前证据以近期方法和评测研究为主，而非已完成的综述；主流任务是把GUI智能体工作组织为能力、评测和可信度等分类体系，重点包括可验证强化学习、执行框架级自改进、不确定性与安全。
-  - 研究共性：论文普遍把任务完成转化为可执行的评测信号，例如截图、重复运行、可验证Docker任务或净化后的网页证据，并围绕策略、执行框架或评测协议进行改进。
-  - 关键差异：优化目标不同，有的编辑冻结模型周围的执行框架，有的对策略做在线强化学习，有的主动管理上下文，有的把有噪声评估器反馈作为奖励；部署设置和评测粒度也不同。
-  - 趋势演进：在2024至2026年前沿窗口内，研究从静态GUI定位走向可验证任务合成、样本高效强化学习、长程上下文管理以及安全与不确定性审计；时间跨度较窄，难以判断更长历史趋势。
-  - 开放问题：跨设置与跨接口迁移的证据仍较弱；安全与不确定性发现依赖特定场景；多条记录缺少局限性与可重复性细节，泛化、部署就绪度和缺口优先级仍未解决。
+  - 主流方向：证据包突出GUI智能体的评测与训练工件，包括基准、任务合成、在线强化学习、harness优化、密集监督、不确定性与安全审计，而非回顾式综述。
+  - 研究共性：工作通常引入受控环境或基准，在冻结或微调的视觉语言模型骨干上评估成功率、准确率或迁移，并报告相对基线增益；部分公开数据或代码信号。
+  - 关键差异：工作介入点不同：数据生成、策略训练、执行harness、上下文管理、不确定性校准、安全红队；评测目标从基础定位到长程、欺诈、领域安全不等。
+  - 趋势演进：在2024–2026前沿窗口内，从静态GUI定位和基准走向可验证在线强化学习、冻结模型自改进、密集监督以及安全与不确定性审计。
+  - 开放问题：跨基准结果兼容性、不确定性与安全结论迁移、净化证据下良性召回，以及缺失的局限性与可复现细节仍是验证缺口。
   literature_review:
     line_of_work_matrix:
     - line: Taxonomy and roadmap synthesis
-      what_it_solves: Maps fragmented GUI-agent work into directions, milestones,
-        and gaps, including grounding, long-horizon memory, verifiable learning, uncertainty,
-        and safety.
-      what_remains_open: The packet lacks actual survey articles, so systematic coverage
-        and bias control are not directly evidenced; synthesis quality therefore remains
-        a verification gap.
+      what_it_solves: Would map fragmented GUI-agent directions, milestones, and gaps
+        into a structured research overview.
+      what_remains_open: This packet lacks direct survey or taxonomy evidence, so
+        systematic coverage and selection criteria are not verifiable from the top
+        entries.
     - line: Comparative evaluation synthesis
-      what_it_solves: Summarizes how different interaction settings and task types
-        shape conclusions about agent capability, including desktop/web, mobile, video-guided,
-        safety, and fraud scenarios.
-      what_remains_open: Compatibility across tasks and metrics is unresolved; safety
-        and uncertainty results show weak cross-domain or cross-model transfer, requiring
-        target-specific reassessment.
+      what_it_solves: Would summarize how benchmarks, baselines, metrics, and protocols
+        shape cross-paper conclusions on GUI-agent performance.
+      what_remains_open: Top results span single-step grounding, long-horizon tasks,
+        uncertainty, fraud, and safety, with no evidence of common normalization or
+        compatibility checks.
     - line: Open problem and gap mapping
-      what_it_solves: Turns broad literature coverage into concrete next research
-        questions around harness evolution, reinforcement-learning sample efficiency,
-        context management, and trust.
-      what_remains_open: Prioritization of gaps under limited reproducibility, missing
-        baseline details, and absent limitation statements remains an evidence gap
-        rather than a resolved ordering.
+      what_it_solves: Would turn broad GUI-agent evidence into concrete next questions
+        around transfer, robustness, and deployment safety.
+      what_remains_open: Prioritization among grounding, long-horizon completion,
+        benign recall, uncertainty calibration, and adversarial robustness is not
+        grounded in the packet.
     consensus:
-    - 'A shared focus on executable, interaction-grounded evaluation signals: task
-      completion is judged from interface state, screenshots, repeated runs, or sanitized
-      web evidence rather than only language output.'
-    - 'Improvement is often decoupled from rebuilding the backbone model: edit the
-      harness, synthesize verifiable tasks, manage context, or correct noisy rewards
-      around a frozen or partially frozen model.'
-    - 'Evaluation is becoming more adversarial and regime-specific: safety, uncertainty,
-      fraud, and long-horizon settings expose capability boundaries that aggregate
-      success rates can hide.'
+    - Controlled task designs and benchmark-based evaluation are central to assessing
+      GUI-agent progress.
+    - Frozen or open-weight vision-language backbones can be improved through external
+      supervision, harness changes, context management, or generated tasks.
+    - Single-step or per-task success improvements do not automatically transfer across
+      benchmarks, domains, or model tiers.
+    - Safety, uncertainty, and generalization are treated as separate evaluation surfaces,
+      with transfer evidence often weak or missing.
     disagreements:
-    - 'Optimization target differs: one line optimizes the executable harness around
-      a frozen policy, another applies online reinforcement learning to the policy,
-      and another treats autonomous evaluator feedback as reward.'
-    - 'Evaluation setting differs: desktop/web, mobile, video-guided, browser security,
-      and SMS-to-web fraud produce success-rate scales that are not directly comparable.'
-    - 'Supervision and evaluation grain differ: single-step executable grounding,
-      multi-step agent trajectories, and repeated-run evidence units lead to different
-      conclusions about reliability.'
-    - 'Safety and trust claims conflict by domain: browser prompt-injection resistance
-      can coexist with coding-domain vulnerability, so a single safety score is not
-      meaningful.'
+    - 'Intervention level differs: some works modify training tasks or online RL,
+      others edit the execution harness, manage context, or calibrate post-hoc uncertainty.'
+    - 'Supervision signal differs: verifiable RL tasks, dense desktop annotations,
+      keyframe extraction, and human-curated fraud or safety cases create different
+      coverage biases.'
+    - 'Evaluation setting differs: single-step executable grounding versus long-horizon
+      mobile or desktop task completion versus adversarial and sanitized-evidence
+      scenarios.'
+    - 'Deployment assumptions differ: some assume internal model access for hidden-state
+      uncertainty, while others evaluate closed-source vendors or frozen models with
+      limited observability.'
     open_questions:
-    - Can uncertainty and safety rankings transfer across interfaces or model classes
-      without target-specific re-evaluation?
-    - Which verifiable reward or harness-editing signals generalize across unseen
-      interfaces, and which only overfit to task-specific success criteria?
-    - Do omitted limitations and reproducibility details hide systematic failure modes
-      in long-horizon, safety, and uncertainty research?
+    - How should GUI-agent results be normalized across heterogeneous benchmarks and
+      evaluation protocols to support comparative conclusions?
+    - When do gains from generated supervision, harness optimization, or context management
+      transfer to unseen interfaces and longer-horizon tasks?
+    - How can uncertainty and safety audits be evaluated under shifted domains, closed-source
+      access, and sanitized evidence without losing benign recall?
+    - What systematic survey criteria would separate robust cross-paper findings from
+      artifacts of selective benchmark or method coverage?
   literature_review_zh:
     研究路线矩阵:
     - 路线: 分类体系与路线图综合
-      解决的问题: 将分散的GUI智能体研究整理为方向、里程碑与缺口，覆盖基础定位、长程记忆、可验证学习、不确定性与安全等主题。
-      尚未覆盖: 证据包缺少真正的综述文章，系统性覆盖与选择性偏见的控制无法直接验证，综合质量仍是验证缺口。
+      解决的问题: 将碎片化的GUI智能体方向、里程碑和缺口组织为结构化研究概览。
+      尚未覆盖: 本证据包缺乏直接综述或分类证据，顶部条目无法验证系统覆盖和筛选标准。
     - 路线: 对比评测综合
-      解决的问题: 归纳不同交互设置与任务类型如何影响智能体能力结论，包括桌面网页、移动端、视频引导、安全与欺诈等场景。
-      尚未覆盖: 不同任务和指标是否兼容仍未解决；安全与不确定性结果在跨领域或跨模型迁移时较弱，需要目标特定再评估。
+      解决的问题: 总结基准、基线和指标如何影响跨论文的GUI智能体性能结论。
+      尚未覆盖: 顶部结果横跨单步定位、长程任务、不确定性、欺诈与安全，未显示共同的归一化或兼容性检验。
     - 路线: 开放问题与缺口映射
-      解决的问题: 把广泛文献覆盖转化为具体下一步研究问题，如harness演化、强化学习样本效率、上下文管理与可信度。
-      尚未覆盖: 在可重复性有限、基线细节缺失和局限性说明缺位的情况下，哪些缺口最应优先解决仍缺少证据排序。
+      解决的问题: 将广泛GUI智能体证据转化为关于迁移、鲁棒性和部署安全的具体研究问题。
+      尚未覆盖: 定位、长程完成、良性召回、不确定性校准和对抗鲁棒性之间的优先级未在证据包中得到支撑。
     共识:
-    - 普遍采用可执行的、以交互为证据的成功判定：从界面状态、截图、重复运行或净化后的网页证据判断任务完成，而非仅看语言输出。
-    - 改进方式往往不重构基础模型，而是围绕冻结模型编辑执行框架、合成可验证任务、管理上下文或校正噪声奖励。
-    - 评测越来越强调特定部署场景下的边界条件，如安全、不确定性、欺诈和长程任务，单一成功率不足以反映能力。
+    - 受控任务设计与基于基准的评测是衡量GUI智能体进展的核心方式。
+    - 冻结或开放权重视觉语言骨干可通过外部监督、harness修改、上下文管理或生成任务得到提升。
+    - 单步或单任务成功率提升不会自动迁移到不同基准、领域或模型层级。
+    - 安全性、不确定性和泛化被作为独立评测面处理，迁移证据通常较弱或缺失。
     分歧:
-    - 优化目标不同：有的优化冻结策略周围的执行框架，有的对策略本身做在线强化学习，有的把自主评估器反馈作为奖励信号。
-    - 评测场景不同：桌面网页、移动端、视频引导、浏览器安全与短信到网页欺诈等场景下的成功率不可直接比较。
-    - 监督与评测粒度不同：单步可执行定位、多步智能体轨迹、重复运行证据单元等设置会改变可靠性结论。
-    - 安全与信任结论按领域分化：同一模型可能在浏览器任务中抵抗提示注入，但在编码任务中表现出高脆弱性。
+    - 介入层级不同：部分工作修改训练任务或在线强化学习，部分编辑执行harness、管理上下文或校准后验不确定性。
+    - 监督信号不同：可验证强化学习任务、密集桌面标注、关键帧提取和人工整理欺诈或安全案例带来不同覆盖偏差。
+    - 评测设置不同：单步可执行定位、长程移动或桌面任务完成、对抗与净化证据场景各有不同。
+    - 部署假设不同：部分依赖内部状态进行隐藏状态不确定性估计，部分仅面对闭源供应商或冻结模型，可观测性有限。
     开放问题:
-    - 不确定性与安全排序能否在跨接口、跨模型类别之间无需目标特定再评估而迁移？
-    - 哪些可验证奖励或执行框架编辑能跨未见界面泛化，哪些只是拟合任务特定的成功标准？
-    - 在局限性与可重复性细节缺失的情况下，长程、安全与不确定性研究中的系统性失败模式是否被低估？
+    - 应如何在异构基准和评测协议之间归一化GUI智能体结果，以支持比较性结论？
+    - 生成监督、harness优化或上下文管理带来的提升何时能迁移到未见界面和更长程任务？
+    - 在分布偏移、闭源访问和净化证据下，如何评估不确定性与安全审计而不损害良性召回？
+    - 哪些系统综述标准能区分稳健的跨论文发现与选择性基准或方法覆盖造成的假象？
   synthesis_status: llm
   generation_notes: []
 - id: application
@@ -967,10 +964,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 64.1
+    methodology_quality: 64.5
     recency: 99.2
     reproducibility: 37.3
-    topical_relevance: 48.1
+    topical_relevance: 48.6
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
