@@ -1,7 +1,7 @@
 # Bridging VideoQA and Video-Guided Agentic Tasks via Generalized Keyframe Extraction
 
 - Status: planned
-- Generated at: 2026-10-10T03:54:15Z
+- Generated at: 2026-10-11T03:23:59Z
 - Read-first score: 73.7
 - Paper: https://arxiv.org/abs/2606.29445v1
 - Code: https://github.com/VG-GUI-TASKER/VG-GUI-TASKER.

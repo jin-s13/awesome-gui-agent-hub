@@ -1,7 +1,7 @@
 # Uncertainty Quantification for Computer-Use Agents: A Benchmark across Vision-Language Models and GUI Grounding Datasets
 
 - Status: planned
-- Generated at: 2026-10-10T03:54:15Z
+- Generated at: 2026-10-11T03:23:59Z
 - Read-first score: 70.6
 - Paper: https://arxiv.org/abs/2606.25760v1
 - Code: 
