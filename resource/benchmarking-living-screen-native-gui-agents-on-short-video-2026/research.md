@@ -1,7 +1,7 @@
 # Benchmarking Living-Screen-Native GUI Agents on Short-Video Platforms
 
 - Status: planned
-- Generated at: 2026-10-20T03:05:30Z
+- Generated at: 2026-10-21T03:01:19Z
 - Read-first score: 73.7
 - Paper: https://arxiv.org/abs/2606.04701v1
 - Code: https://github.com/BITHLP/LivingScreen.
