@@ -1,5 +1,5 @@
 schema_version: awesome-hub.surveys.v1
-generated_at: '2026-10-24T02:56:16Z'
+generated_at: '2026-10-25T02:43:57Z'
 topics:
 - id: method
   label: method
@@ -21,10 +21,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 60.0
+    methodology_quality: 60.3
     recency: 99.5
     reproducibility: 39.4
-    topical_relevance: 42.3
+    topical_relevance: 42.6
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
@@ -204,10 +204,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 60.7
+    methodology_quality: 61.0
     recency: 99.4
     reproducibility: 39.4
-    topical_relevance: 43.3
+    topical_relevance: 43.6
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
@@ -396,10 +396,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 59.2
+    methodology_quality: 59.8
     recency: 99.4
     reproducibility: 39.4
-    topical_relevance: 43.0
+    topical_relevance: 43.5
   top_papers:
   - id: visualskill-multimodal-skills-for-computer-use-agents-2026
     title: 'VISUALSKILL: Multimodal Skills for Computer-Use Agents'
@@ -445,120 +445,109 @@ topics:
     score: 68.0
     url: https://arxiv.org/abs/2609.16635v1
   related_work_outline:
-  - 'Mainstream direction: The topic is converging on runnable GUI and computer-use
-    agents that are trained or configured to act in real desktop, mobile, and web
-    environments, with strong emphasis on visual grounding, end-to-end policy training,
-    and deployed harness compatibility.'
-  - 'Shared research pattern: Work combines a model or agent with an outer runtime
-    layer—supervised or RL training loops, skill/memory modules, or evaluation harnesses—and
-    validates on task-success benchmarks such as OSWorld-Verified, WebVoyager, CUA-World,
-    and diagnostic probes.'
-  - 'Key differences: Some efforts train end-to-end policies across unified GUI or
-    GUI-plus-code action spaces; others leave the base agent fixed and add retrieval-style
-    skill libraries, replayable memories, or RL proxies. Supervision and evaluation
-    targets also split between end-to-end RL/SFT, weak supervision from unannotated
-    screenshots, and failure-mode diagnostics such as recovery and personalization.'
-  - 'Trend evolution: Within the 2024–2026 frontier, the focus is moving from single-task
-    GUI policies toward deployable systems that coordinate GUI actions, code execution,
-    memory, and harness-native RL; recent works increasingly evaluate repair, personalization,
-    and cost/latency trade-offs rather than only success rate.'
-  - 'Open questions: Error recovery remains weak even after RL; skill and memory layers
-    are constrained by deterministic applicability and per-application construction;
-    weak supervision and cross-platform transfer need independent reproduction beyond
-    reported benchmarks.'
+  - 'Mainstream direction: Runnable GUI/computer-use agent systems are being built
+    as trainable multimodal policies plus deployment and diagnostic scaffolding, with
+    emphasis on end-to-end RL, weak supervision, memory/skills, and recovery/personalization
+    evaluation.'
+  - 'Shared research pattern: Papers pair an agent policy or fixed model with a system
+    artifact—training harness, skill library, replay memory, or evaluation benchmark—and
+    validate on task success or deployment cost across GUI/computer-use environments.'
+  - 'Key differences: Some work trains the model end-to-end; other work keeps it frozen
+    and adds memory/tool scaffolding. Evaluation targets differ among desktop/web/mobile
+    task success, recovery consistency, personalization, token/time efficiency, and
+    cross-platform transfer.'
+  - 'Trend evolution: The 2024-2026 window, especially the 2026 top evidence, shows
+    a frontier shift from standalone GUI models toward runnable training/deployment
+    stacks and reliability diagnostics; the narrow span limits longer-term trend claims.'
+  - 'Open questions: Error recovery after injected or natural failures, non-deterministic
+    replay, cross-harness/platform generalization, and independent reproduction remain
+    verification gaps.'
   related_work_outline_zh:
-  - 主流方向：领域正汇聚到可运行的GUI/计算机使用智能体，它们在真实桌面、移动与网页环境中执行任务，重点包括视觉定位、端到端策略训练，以及与现有部署harness的兼容。
-  - 研究共性：工作通常把模型或智能体与外部运行层结合，例如监督/RL训练循环、技能/记忆模块或评估harness，并在OSWorld-Verified、WebVoyager、CUA-World以及诊断探针等任务上进行验证。
-  - 关键差异：一类工作直接训练端到端策略，动作空间为GUI或GUI+代码统一；另一类保持基础智能体固定，叠加检索式技能库、可重放记忆或RL代理。监督与评测目标也有差异：端到端RL/SFT、未标注截图的弱监督，以及恢复与个性化等失败模式诊断。
-  - 趋势演进：在2024–2026前沿期内，重点从单一GUI任务策略转向可部署系统，系统需要协调GUI操作、代码执行、记忆和harness原生RL；近期工作也更关注修复、个性化以及成本/延迟权衡，而不只是成功率。
-  - 开放问题：即使经过RL，错误恢复仍弱；技能与记忆层受确定性适用条件和按应用构建的限制；弱监督和跨平台迁移需要在已报告基准之外进行独立复现。
+  - 主流方向：可运行的GUI/计算机使用智能体系统正被构建为可训练多模态策略与部署及诊断脚手架，重点覆盖端到端强化学习、弱监督、记忆/技能与恢复/个性化评测。
+  - 研究共性：论文通常将智能体策略或固定模型与系统工件配对，如训练框架、技能库、重放记忆或评测基准，并在GUI/计算机使用环境中验证任务成功或部署成本。
+  - 关键差异：部分工作端到端训练模型，部分保持模型冻结并添加记忆或工具脚手架；评测目标在桌面/网页/移动任务成功、恢复一致性、个性化、token/时间效率和跨平台迁移之间存在差异。
+  - 趋势演进：2024-2026窗口特别是2026年排名靠前证据显示前沿从单独GUI模型转向可运行训练/部署栈和可靠性诊断；时间范围较窄，长期趋势判断受限。
+  - 开放问题：自然或注入错误后的恢复、非确定性重放、跨框架/平台泛化以及独立复现仍是证据缺口。
   literature_review:
     line_of_work_matrix:
-    - line: End-to-end trained GUI/computer-use policies
-      what_it_solves: Trains a multimodal policy to ground screenshots and produce
-        actions, reducing human annotation or improving task success across desktop,
-        mobile, and web benchmarks.
-      what_remains_open: Error recovery remains weak after RL; cross-platform transfer
-        and scalability beyond reported benchmarks are not independently verified;
-        many abstracts omit explicit limitations.
-    - line: Harness-native RL and orchestration frameworks
-      what_it_solves: Turns deployed agent harnesses into trainable rollouts by intercepting
-        model calls and running stateful multi-process inference in isolated environments.
-      what_remains_open: Harness design strongly influences trainability; some abilities
-        such as recovery remain weak; reproducibility signals such as code and dataset
-        availability are incomplete.
-    - line: Skill and memory layers over GUI agents
-      what_it_solves: Converts validated trajectories or authored documentation into
-        reusable multimodal skills or replayable memories to cut token cost, time,
-        and grounding errors.
-      what_remains_open: Memory reuse is limited to deterministic or compatible runtime
-        states; skill construction is per-application and needs coverage beyond tested
-        applications.
-    - line: Diagnostic evaluation for recovery and personalization
-      what_it_solves: Measures when and why agents fail on recovery consistency or
-        user-preference execution rather than only aggregate task completion.
-      what_remains_open: Current agents show large personalization drops and fail
-        to exploit latent recovery; ideal recovery is simulated or condition-specific,
-        and long-horizon replay cost is unresolved.
+    - line: End-to-end training and deployment loops for GUI/computer-use agents
+      what_it_solves: Converts GUI actions, code execution, weak screenshot supervision,
+        or harness rollouts into trainable agent policies that operate across desktop,
+        web, mobile, or harness environments.
+      what_remains_open: Error recovery remains weak after RL; some harnesses are
+        harder to train than others; several papers do not report limitations or cross-platform
+        robustness evidence.
+    - line: Reusable execution memory and skill libraries
+      what_it_solves: Reduces repeated planning cost and retains multimodal workflow
+        knowledge as callable skills or replayable trajectories for GUI/computer-use
+        tasks.
+      what_remains_open: Replay is limited to deterministic applicability and rejects
+        ambiguous or incompatible steps; coverage beyond validated trajectories and
+        parameter-controlled tasks is not fully shown.
+    - line: Diagnostic evaluation and behavioral benchmarks for recovery and personalization
+      what_it_solves: Measures whether agents recover to transition-consistent states
+        and whether mobile GUI agents honor user preferences across task stages.
+      what_remains_open: Existing recovery evaluation has high-cost or rollback constraints;
+        personalization diagnosis covers explicit profiles and behavior logs but broader
+        deployment settings remain open.
     consensus:
-    - GUI/computer-use agents need visual grounding and environment-grounded evaluation
-      on realistic interactive tasks.
-    - External runtime layers—training loops, skill libraries, memory, or evaluation
-      harnesses—can improve task success or efficiency without necessarily retraining
-      the base model.
-    - Reported gains are usually measured against task-success benchmarks and matched
-      baselines, with error recovery, personalization, and adaptability remaining
-      weak across systems.
-    - Executable, reproducible artifacts are still unevenly available; missing code,
-      dataset, or limitation details are verification gaps rather than proof of absence.
+    - 'GUI/computer-use capability is evaluated as a system property, not only as
+      model accuracy: task completion, token cost, execution time, recovery, and preference
+      adherence all appear as evidence.'
+    - Training or adaptation increasingly uses verifiable environment outcomes, weak
+      screenshot signals, RL, or validated trajectories rather than only static demonstrations.
+    - Agent behavior is decomposed into stages or actions, with diagnosis at the stage/action
+      level used to locate capability and reliability bottlenecks.
+    - 'Multimodal visual grounding remains central: retaining figures or visual evidence
+      and grounding UI elements are treated as important for computer-use workflows.'
     disagreements:
-    - Whether to train an end-to-end policy over a unified action space or keep the
-      base agent fixed and add external skills, memory, or RL proxies.
-    - Whether supervision should come from unannotated screenshots with weak labels,
-      hybrid application-artifact supervision, or online RL in deployed harnesses.
-    - Whether evaluation should target aggregate benchmark success or diagnostic failure
-      modes such as recovery consistency and preference execution.
-    - Whether the agent should emit GUI-only actions or a combined GUI-plus-code action
-      space, and whether generation should be diffusion-based or follow standard LLM
-      decoding.
+    - One line modifies the agent policy through training or RL, while another keeps
+      the policy fixed and adds external memory, skill retrieval, or replay scaffolding.
+    - Some work targets end-task success on OSWorld, WebVoyager, or mobile tasks;
+      other work targets deployment cost, recovery consistency, or personalization
+      failure as the primary measurable outcome.
+    - 'Interaction mode differs: some systems unify GUI actions with code execution
+      in one action space, while others use tool calls or replayable action sequences
+      around a GUI-only policy.'
+    - 'Supervision differs in form: weak screenshot curricula, artifact-validated
+      trajectories, human-authored multimodal skills, and online verifiable rollouts
+      make different assumptions about available data.'
     open_questions:
-    - Can post-training or memory layers reduce error recovery failures that remain
-      weak even after RL training?
-    - Do skill and replayable-memory systems generalize beyond deterministic, per-application
-      or benchmark-specific conditions?
-    - Can weak supervision from unannotated screenshots scale to broad computer-use
-      tasks while maintaining the reported data-efficiency gains?
-    - How should personalization and recovery be evaluated independently from overall
-      task success, and which metrics best capture user-specific execution?
+    - How should recovery be evaluated when environment resets are infeasible, action
+      replay is expensive, or rollback is limited to web settings?
+    - What conditions determine whether end-to-end training or an external memory/skill
+      harness better handles ambiguous, non-deterministic GUI states?
+    - How well does weak-supervision or RL training transfer across desktop, mobile,
+      web, and proprietary harness environments, especially when harness design affects
+      trainability?
+    - Several system papers lack explicit limitation or reproducibility details in
+      the packet; independent verification of results and artifacts remains a gap.
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 端到端训练的GUI/计算机使用策略
-      解决的问题: 训练多模态策略对屏幕进行视觉定位并生成动作，减少人工标注或提升桌面、移动、网页基准上的任务成功率。
-      尚未覆盖: RL后错误恢复仍然弱；跨平台迁移与已报告基准之外的可扩展性缺乏独立验证；许多摘要未明确说明局限。
-    - 路线: Harness原生RL与编排框架
-      解决的问题: 通过拦截模型调用并在隔离环境中运行有状态多进程推理，把已部署的智能体harness转化为可训练的rollout。
-      尚未覆盖: Harness设计显著影响可训练性；恢复等能力仍然较弱；代码、数据集等可复现信号不完整。
-    - 路线: GUI智能体的技能与记忆层
-      解决的问题: 把已验证轨迹或编写文档转化为可复用多模态技能或可重放记忆，以降低token成本、执行时间和定位错误。
-      尚未覆盖: 记忆复用受确定性或兼容运行态限制；技能构建按应用定制，覆盖范围需超出已测应用。
-    - 路线: 面向恢复与个性化的诊断评测
-      解决的问题: 测量智能体在恢复一致性或用户偏好执行上何时、为何失败，而不只看总体任务完成度。
-      尚未覆盖: 当前智能体在个性化任务上大幅下滑且未利用潜在恢复能力；理想恢复依赖条件模拟，长时程重放成本未解决。
+    - 路线: 端到端训练与部署闭环的GUI/计算机使用智能体
+      解决的问题: 将GUI操作、代码执行、弱截图监督或框架回滚转化为可训练智能体策略，使其在桌面、网页、移动或框架环境中运行。
+      尚未覆盖: 错误恢复在强化学习后仍较弱；不同框架可训练性差异大；部分论文未报告局限或跨平台鲁棒性证据。
+    - 路线: 可复用执行记忆与技能库
+      解决的问题: 通过可调用技能或可重放轨迹保留多模态工作流知识，降低重复规划成本并缩短执行时间。
+      尚未覆盖: 重放限于确定性适用条件并拒绝模糊或不兼容步骤；对已验证轨迹和参数控制任务之外的覆盖尚不充分。
+    - 路线: 面向恢复与个性化的诊断评测基准
+      解决的问题: 衡量智能体是否恢复到过渡一致状态，以及移动GUI智能体是否在任务阶段中遵循用户偏好。
+      尚未覆盖: 现有恢复评测存在高成本或回滚限制；个性化诊断覆盖显式画像和行为日志，更广泛部署环境仍待验证。
     共识:
-    - GUI/计算机使用智能体需要视觉定位，并需要在真实交互任务上进行环境扎根评测。
-    - 外部运行层——训练循环、技能库、记忆或评估harness——可以在不重新训练基础模型的情况下提升任务成功率或效率。
-    - 报告的性能通常以任务成功基准和匹配基线衡量，但错误恢复、个性化和适应性在各系统中仍然较弱。
-    - 可执行、可复现的工件供给仍不均衡；缺失代码、数据集或局限细节属于验证缺口，不应视为该工作没有这些内容的证据。
+    - GUI/计算机使用能力被视为系统属性，而不仅是模型准确率；任务完成、token成本、执行时间、恢复和偏好遵循均作为证据出现。
+    - 训练或适应越来越多地使用可验证环境结果、弱截图信号、强化学习或验证轨迹，而非只依赖静态演示。
+    - 智能体行为被分解为阶段或动作，并通过阶段/动作级诊断定位能力和可靠性瓶颈。
+    - 多模态视觉grounding仍然核心：保留图形或视觉证据并定位UI元素被视为计算机使用工作流的重要组成。
     分歧:
-    - 一种路线在统一动作空间上训练端到端策略，另一种保持基础智能体固定并叠加外部技能、记忆或RL代理。
-    - 监督来源存在差异：未标注截图的弱监督、应用-工件混合监督，或在已部署harness中进行的在线RL。
-    - 评测目标不同：有的关注聚合基准成功率，有的关注恢复一致性和偏好执行等诊断性失败模式。
-    - 动作输出空间不同：有的仅输出GUI动作，有的统一输出GUI+代码；生成范式也存在扩散生成与常见LLM解码的差异。
+    - 一类工作通过训练或强化学习修改智能体策略，另一类保持策略固定并添加外部记忆、技能检索或重放脚手架。
+    - 部分工作以OSWorld、WebVoyager或移动任务上的最终成功为目标；其他工作以部署成本、恢复一致性或个性化失败作为主要结果。
+    - 交互模式不同：有些系统在统一动作空间中结合GUI操作与代码执行，有些则围绕纯GUI策略使用工具调用或可重放动作序列。
+    - 监督信号形式不同：弱截图课程、工件验证轨迹、人工撰写的多模态技能和在线可验证回滚对可用数据假设不同。
     开放问题:
-    - 后训练或记忆层能否减少错误恢复失败？现有证据显示RL后恢复能力仍然较弱。
-    - 技能与可重放记忆系统能否跨出确定性、单应用或基准特定条件进行泛化？
-    - 基于未标注截图的弱监督能否扩展到更广泛的计算机使用任务，同时保持已报告的数据效率优势？
-    - 如何独立于总体任务成功率评测个性化与恢复，哪些指标最能反映用户特定执行？
+    - 当环境重置不可行、动作重放昂贵或回滚仅限Web设置时，如何评测恢复？
+    - 在模糊、非确定性GUI状态下，何种条件决定端到端训练或外部记忆/技能框架更有效？
+    - 弱监督或强化学习训练在桌面、移动、网页和专有框架环境中的迁移效果如何，尤其在框架设计影响可训练性时？
+    - 若干系统论文在证据包中缺少明确局限或可复现细节；结果和工件的独立验证仍是缺口。
   synthesis_status: llm
   generation_notes: []
 - id: theory
@@ -581,10 +570,10 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 60.1
+    methodology_quality: 60.5
     recency: 99.6
     reproducibility: 39.3
-    topical_relevance: 43.1
+    topical_relevance: 43.4
   top_papers:
   - id: macagentbench-benchmarking-ai-agents-on-real-world-macos-de-2026
     title: 'MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop'
