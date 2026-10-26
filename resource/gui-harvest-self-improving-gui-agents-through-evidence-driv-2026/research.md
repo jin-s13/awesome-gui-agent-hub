@@ -1,7 +1,7 @@
 # GUI-HARVEST: Self-Improving GUI Agents through Evidence-Driven Harness Evolution
 
 - Status: planned
-- Generated at: 2026-10-25T02:43:52Z
+- Generated at: 2026-10-26T02:44:04Z
 - Read-first score: 73.6
 - Paper: https://arxiv.org/abs/2610.00948v1
 - Code: https://github.com/GaryYang12345/GUI-HARVEST.
