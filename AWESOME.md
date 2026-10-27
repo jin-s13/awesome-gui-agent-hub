@@ -239,8 +239,10 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 29.3 | method | [Tev: Scaling Long-Horizon Agentic Environments with Dense Progress Rewards](https://arxiv.org/abs/2610.18868) | Long-horizon agents have drawn growing attention for their ability to work autonomously -- from hours to days -- on economically valuable tasks, a capability essential to automate... |
 | 2026 | 29.1 | method, application | [Conformal Risk-Controlled Agents for Safeguarded Mobile GUI Automation · 2026-04 · 📱](https://arxiv.org/abs/2604.09155) |  |
 | 2026 | 28.8 | method | [How Many Pixels Is a Digit Worth? Place-Aware Coordinate Entropy for GUI Agent Confidence Estimation](https://arxiv.org/abs/2609.24277v1) | GUI agents predict click coordinates as digit-token sequences, but standard text-LLM confidence estimation methods rank correct clicks from wrong ones only weakly. GUI-specific al... |
+| 2026 | 28.8 | method | [Steering Black-Box Large Language Model Agents with Pitfall Anticipation World Model](https://arxiv.org/abs/2610.29139) | Introduces PAWM, a pitfall anticipation world model that selectively steers black-box LLM agents, improving performance on ScienceWorld and WebArena-Lite. |
 | 2026 | 28.7 | method, system | [What It Is, Not What It Says: Securing Agentic Browsing Interactions with Web Semantics](https://arxiv.org/abs/2610.22697) | AI agents increasingly browse the web on users' behalf, yet they consume webpages as screenshots or text, exposing their LLMs to unvetted third-party content. Browsers enforce sem... |
 | 2026 | 28.3 | method | [LoWAgent: A Low-Resource Multilingual Benchmark for Web Agents](https://arxiv.org/abs/2610.27205v1) | Web agents are typically evaluated on English-language interfaces, leaving their ability to operate across the world's multilingual websites largely unexplored. This gap is especi... |
+| 2026 | 27.3 | method | [HiSTEVE 1.0: Harnessing Human-Interface VLA Agents for Open-World Games](https://arxiv.org/abs/2610.31162) | Building virtual embodied agents that operate in open-ended games like human players is a long-standing goal requiring both long-horizon autonomy and reliable native-interface con... |
 | 2026 | 26.4 | method | [AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations from LLMs](https://openreview.net/forum?id=wl4c9jvcyY) |  |
 | 2026 | 26.4 | method | [UI-Pro: A Hidden Recipe for Building Vision-Language Models for GUI Grounding](https://openreview.net/forum?id=5wmAfwDBoi) |  |
 | 2026 | 25.9 | method | [Scaling Verifiable Environments for Long-horizon Work Agents](https://arxiv.org/abs/2610.04906) | WorkForge synthesizes verifiable work-agent environments from real-world resources, scaling to 16.7K environments across 40 domains and improving post-training performance on GDPV... |
@@ -258,4 +260,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **245**.
+Total papers: **247**.
