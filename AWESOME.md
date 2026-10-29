@@ -235,6 +235,7 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 31.3 | method | [Qwen-Planner-Agent: A Closed-Loop AI-for-AI Framework for Real-World Mobile Planner Agents](https://arxiv.org/abs/2609.29892) | The rapid progression of large language models is extending AI from passive content generation into the active workflows of engineering and scientific discovery. This shift raises... |
 | 2026 | 31.3 | method, system | [Qwen-Planner-Agent: A Closed-Loop AI-for-AI Framework for Real-World Mobile Planner Agents](https://arxiv.org/abs/2609.29892v1) | The rapid progression of large language models is extending AI from passive content generation into the active workflows of engineering and scientific discovery. This shift raises... |
 | 2026 | 30.8 | method | [Learning What to Ask for Tomorrow: Active Preference Acquisition for Long-Term Personalized Web Agents](https://arxiv.org/abs/2610.31107v1) | Web agents increasingly serve the same user across repeated online tasks such as booking travel, shopping, and scheduling, so their long-term usefulness depends on how well they k... |
+| 2026 | 30.8 | method | [Your Policy Is Secretly a Harness: The Decision Geometry of Agent Interfaces](https://arxiv.org/abs/2610.37255) | Language model agents are post-trained and deployed through a harness, the prompts, tools, and control logic that present a task to the model and execute its outputs. Harnesses ar... |
 | 2026 | 30.7 | method | [Focused Omni-Modal GUI Agents](https://arxiv.org/abs/2610.26203) | Graphical User Interface (GUI) agents increasingly act over streaming omni-modal observations spanning screenshots, audio, video, interaction history, and device states. However,... |
 | 2026 | 30.7 | method | [Focused Omni-Modal GUI Agents](https://arxiv.org/abs/2610.26203v1) | Graphical User Interface (GUI) agents increasingly act over streaming omni-modal observations spanning screenshots, audio, video, interaction history, and device states. However,... |
 | 2026 | 29.8 | method | [GameWAM: A World Action Model for Video Games](https://arxiv.org/abs/2608.26200) | Modern video games combine first-person perception, rapid visual changes, persistent world state, and heterogeneous native controls. Existing game agents map visual and task conte... |
@@ -262,4 +263,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **249**.
+Total papers: **250**.
