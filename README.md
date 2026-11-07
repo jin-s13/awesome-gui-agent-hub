@@ -30,7 +30,7 @@ citation signals, TLDRs, deep analysis notes, and literature-review style summar
 
 - Papers indexed: **276**
 - Datasets indexed: **76**
-- Papers with deep analysis: **176**
+- Papers with deep analysis: **177**
 - Papers matched with OpenAlex metadata: **0**
 - Research runs: **0**
 
