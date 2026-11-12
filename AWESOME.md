@@ -9,6 +9,7 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 | Year | Score | Type | Paper | TLDR |
 | --- | ---: | --- | --- | --- |
+| 2026 | — | benchmark | [ClawBench: Can AI Agents Complete Everyday Online Tasks?](https://arxiv.org/abs/2604.08523v2) | Production-website benchmark covering 153 everyday online tasks across 144 platforms and 15 categories, with request interception and multi-layer execution traces. [Code](https://github.com/reacher-z/ClawBench) · [Project](https://claw-bench.com) |
 | 2026 | 79.4 | benchmark | [MacAgentBench: Benchmarking AI Agents on Real-World macOS Desktop](https://arxiv.org/abs/2606.22557v1) | MacAgentBench benchmarks AI agents on real-world macOS desktop tasks with 676 tasks across 25 apps, using fine-grained scoring. |
 | 2026 | 74.4 | method | [VISUALSKILL: Multimodal Skills for Computer-Use Agents](https://arxiv.org/abs/2606.18448v1) | Proposes VISUALSKILL, a hierarchical multimodal skill library for computer-use agents, improving performance by retaining visual figures in skill artifacts. |
 | 2026 | 73.7 | benchmark, application | [Benchmarking Living-Screen-Native GUI Agents on Short-Video Platforms](https://arxiv.org/abs/2606.04701v1) | Introduces LivingScreen benchmark for GUI agents on dynamic short-video platforms, finding models lack observation control. |
