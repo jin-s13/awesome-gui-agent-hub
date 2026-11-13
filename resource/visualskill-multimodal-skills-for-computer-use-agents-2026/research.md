@@ -1,7 +1,7 @@
 # VISUALSKILL: Multimodal Skills for Computer-Use Agents
 
 - Status: planned
-- Generated at: 2026-11-12T05:22:17Z
+- Generated at: 2026-11-13T04:36:23Z
 - Read-first score: 74.4
 - Paper: https://arxiv.org/abs/2606.18448v1
 - Code: https://github.com/XMHZZ2018/VisualSkills.
