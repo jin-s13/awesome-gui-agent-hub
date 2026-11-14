@@ -1,7 +1,7 @@
 # SCALECUA: Scaling Computer Use Agents with Verifiable Task Synthesis and Efficient Online RL
 
 - Status: planned
-- Generated at: 2026-11-13T04:36:23Z
+- Generated at: 2026-11-14T04:34:38Z
 - Read-first score: 73.0
 - Paper: https://arxiv.org/abs/2607.11185v1
 - Code: https://github.com/THUDM/SCALE-CUA.

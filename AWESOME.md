@@ -262,6 +262,7 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 30.8 | method | [Learning What to Ask for Tomorrow: Active Preference Acquisition for Long-Term Personalized Web Agents](https://arxiv.org/abs/2610.31107v1) | Web agents increasingly serve the same user across repeated online tasks such as booking travel, shopping, and scheduling, so their long-term usefulness depends on how well they k... |
 | 2026 | 30.7 | method | [Focused Omni-Modal GUI Agents](https://arxiv.org/abs/2610.26203) | Graphical User Interface (GUI) agents increasingly act over streaming omni-modal observations spanning screenshots, audio, video, interaction history, and device states. However,... |
 | 2026 | 30.7 | method | [Focused Omni-Modal GUI Agents](https://arxiv.org/abs/2610.26203v1) | Graphical User Interface (GUI) agents increasingly act over streaming omni-modal observations spanning screenshots, audio, video, interaction history, and device states. However,... |
+| 2026 | 30.3 | method | [A Cross-Scenario Survey and Analysis of Self-Evolving Multimodal Agents](https://arxiv.org/abs/2611.14256) | Recent work shows that multimodal agents increasingly self-improve without recurring human annotation. However, each self-improvement mechanism is designed and evaluated within a... |
 | 2026 | 29.8 | method | [GameWAM: A World Action Model for Video Games](https://arxiv.org/abs/2608.26200) | Modern video games combine first-person perception, rapid visual changes, persistent world state, and heterogeneous native controls. Existing game agents map visual and task conte... |
 | 2026 | 29.3 | method | [Tev: Scaling Long-Horizon Agentic Environments with Dense Progress Rewards](https://arxiv.org/abs/2610.18868) | Long-horizon agents have drawn growing attention for their ability to work autonomously -- from hours to days -- on economically valuable tasks, a capability essential to automate... |
 | 2026 | 29.1 | method, application | [Conformal Risk-Controlled Agents for Safeguarded Mobile GUI Automation · 2026-04 · 📱](https://arxiv.org/abs/2604.09155) |  |
@@ -290,4 +291,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **277**.
+Total papers: **278**.
