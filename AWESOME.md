@@ -213,6 +213,7 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 | 2026 | 40.7 | method | [Reflect, Revise, Reuse: Training-Free Skill Evolution for GUI Agents](https://arxiv.org/abs/2609.17653) | GUI agents execute long-horizon tasks on dynamic graphical user interfaces, where pop-ups, delayed loads, and relocated widgets routinely invalidate plans fixed before execution.... |
 | 2026 | 40.7 | method | [WebHarbor: Docking Real Websites for Evolving GUI Agent Environments](https://arxiv.org/abs/2611.03634) | GUI web agents require realistic and interactive environments that remain stable during both evaluation and training. Live website evaluation suffers from changing content, access... |
 | 2026 | 40.3 | method, benchmark | [When Web Agents Finish but Still Fail: Reproducible Triggers and Trace Diagnostics for Parallel Web Exploration](https://arxiv.org/abs/2606.20724v2) | Study of hidden failures in long-horizon web agents, introducing Parallel WebBench benchmark and GRPO training, identifying persistent failure modes. |
+| 2026 | 39.7 | method | [WebArena-Pro: A Heterogeneous, Multimodal, Reproducible Benchmark for Web Agents](https://arxiv.org/abs/2611.17955) | Introduces WebArena-Pro, a reproducible benchmark of 300 web tasks across 20 multimodal self-hosted applications, evaluating web agents with audio/video support. |
 | 2026 | 39 | method | [Web$hell: A Unified Interface for Agentic Web Access](https://arxiv.org/abs/2610.13416) | Web$hell unifies web access for LLM agents via WebContract/WebCompiler/WebCache, achieving strong task performance at lower cost across web search, navigation, and deep research b... |
 | 2026 | 38.8 | benchmark | [OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models](https://arxiv.org/abs/2607.28609) | Computer-using agents (CUAs) are advancing rapidly across the digital world. A CUA trajectory records the agent's actions, states, and reasoning. Verifying whether it fulfilled th... |
 | 2026 | 38.8 | method | [WebFovea: When the Model Is Right but the Click Is Wrong -- Reliable Round Trips for Vision-Based Web Agents on Live Websites](https://arxiv.org/abs/2610.03036) | We present WebFovea, a vision-based web agent that placed 2nd in the WebRetriever Challenge 2026 with a final score of 57.0 out of 100. The challenge evaluates agents end to end o... |
@@ -291,4 +292,4 @@ A curated hub for GUI agent papers, benchmarks, datasets, projects, and computer
 
 ---
 
-Total papers: **278**.
+Total papers: **279**.
