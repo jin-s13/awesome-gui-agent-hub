@@ -1,7 +1,7 @@
 # DragOn: A Benchmark and Dataset for Drag-Based GUI Interactions
 
 - Status: planned
-- Generated at: 2026-11-19T05:34:48Z
+- Generated at: 2026-11-20T05:20:38Z
 - Read-first score: 70.4
 - Paper: https://arxiv.org/abs/2606.06322v1
 - Code: 
